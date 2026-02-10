@@ -304,8 +304,8 @@ Ipv6L3Protocol::AddAutoconfiguredAddress(uint32_t interface,
                                          uint32_t preferredTime,
                                          Ipv6Address defaultRouter)
 {
-    NS_LOG_FUNCTION(this << interface << network << mask << (uint32_t)flags << validTime
-                         << preferredTime);
+    NS_LOG_FUNCTION(this << interface << network << mask << static_cast<uint32_t>(flags) << validTime
+                << preferredTime);
     Ipv6InterfaceAddress address;
 
     Address addr = GetInterface(interface)->GetDevice()->GetAddress();
