@@ -1121,6 +1121,7 @@ class worker_thread(threading.Thread):
             # If we are actually supposed to skip this job, do so.  Note that
             # if is_skip is true, returncode is undefined.
             #
+            xml_results_file = xml_results_file.replace(":", "_").replace(" ", "_").replace("(", "").replace(")", "")
             if job.is_skip:
                 if args.verbose:
                     print("Skip %s" % job.shell_command)
@@ -1984,6 +1985,7 @@ def run_tests():
         else:
             kind = "TestSuite"
 
+        xml_results_file = xml_results_file.replace(":", "_").replace(" ", "_").replace("(", "").replace(")", "")
         if job.is_skip:
             status = "SKIP"
             status_print = colors.GREY + status + colors.NORMAL
@@ -2099,6 +2101,7 @@ def run_tests():
             # fails valgrind, we'll see the PASS entry for the working TestSuite
             # followed by a VALGR failing test suite of the same name.
             #
+            xml_results_file = xml_results_file.replace(":", "_").replace(" ", "_").replace("(", "").replace(")", "")
             if job.is_skip:
                 with open(xml_results_file, "a", encoding="utf-8") as f:
                     f.write("<Test>\n")
