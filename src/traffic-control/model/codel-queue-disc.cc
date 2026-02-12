@@ -39,7 +39,7 @@ NS_LOG_COMPONENT_DEFINE("CoDelQueueDisc");
 static inline uint32_t
 ReciprocalDivide(uint32_t A, uint32_t R)
 {
-    return (uint32_t)(((uint64_t)A * R) >> 32);
+    return static_cast<uint32_t>((static_cast<uint64_t>(A) * R) >> 32);
 }
 
 /* end kernel borrowings */
@@ -306,7 +306,8 @@ CoDelQueueDisc::DoDequeue()
                     NS_LOG_LOGIC("Running ControlLaw for input m_dropNext: " << (double)m_dropNext /
                                                                                     1000000);
                     m_dropNext = ControlLaw(now, Time2CoDel(m_interval), m_recInvSqrt);
-                    NS_LOG_LOGIC("Scheduled next drop at " << (double)m_dropNext / 1000000);
+                    NS_LOG_LOGIC("Scheduled next drop at "
+                                 << static_cast<double>(m_dropNext) / 1000000);
                     goto end;
                 }
                 NS_LOG_LOGIC(
@@ -387,10 +388,11 @@ CoDelQueueDisc::DoDequeue()
                 m_recInvSqrt = ~0U >> REC_INV_SQRT_SHIFT;
             }
             m_lastCount = m_count;
-            NS_LOG_LOGIC("Running ControlLaw for input now: " << (double)now);
+            NS_LOG_LOGIC("Running ControlLaw for input now: " << static_cast<double>(now));
             m_dropNext = ControlLaw(now, Time2CoDel(m_interval), m_recInvSqrt);
-            NS_LOG_LOGIC("Scheduled next drop at " << (double)m_dropNext / 1000000 << " now "
-                                                   << (double)now / 1000000);
+            NS_LOG_LOGIC("Scheduled next drop at " << static_cast<double>(m_dropNext) / 1000000
+                                                   << " now "
+                                                   << static_cast<double>(now) / 1000000);
         }
     }
 end:
