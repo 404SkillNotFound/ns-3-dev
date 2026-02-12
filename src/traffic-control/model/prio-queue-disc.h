@@ -69,6 +69,7 @@ class PrioQueueDisc : public QueueDisc
     uint16_t GetBandForPriority(uint8_t prio) const;
 
   private:
+    int32_t DoClassify(Ptr<QueueDiscItem> item) const; // <--- ADD THIS (NO override)
     bool DoEnqueue(Ptr<QueueDiscItem> item) override;
     Ptr<QueueDiscItem> DoDequeue() override;
     Ptr<const QueueDiscItem> DoPeek() override;

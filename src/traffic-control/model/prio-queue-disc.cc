@@ -1,9 +1,6 @@
 /*
  * Copyright (c) 2017 Universita' degli Studi di Napoli Federico II
- *
  * SPDX-License-Identifier: GPL-2.0-only
- *
- * Authors:  Stefano Avallone <stavallo@unina.it>
  */
 
 #include "prio-queue-disc.h"
@@ -20,9 +17,7 @@ namespace ns3
 {
 
 NS_LOG_COMPONENT_DEFINE("PrioQueueDisc");
-
 NS_OBJECT_ENSURE_REGISTERED(PrioQueueDisc);
-
 ATTRIBUTE_HELPER_CPP(Priomap);
 
 std::ostream&
@@ -40,8 +35,7 @@ operator>>(std::istream& is, Priomap& priomap)
     {
         if (!(is >> priomap[i]))
         {
-            NS_FATAL_ERROR("Incomplete priomap specification ("
-                           << i << " values provided, 16 required)");
+            NS_FATAL_ERROR("Incomplete priomap");
         }
     }
     return is;
@@ -66,32 +60,64 @@ PrioQueueDisc::GetTypeId()
 PrioQueueDisc::PrioQueueDisc()
     : QueueDisc(QueueDiscSizePolicy::NO_LIMITS)
 {
-    NS_LOG_FUNCTION(this);
 }
 
 PrioQueueDisc::~PrioQueueDisc()
 {
-    NS_LOG_FUNCTION(this);
 }
 
 void
 PrioQueueDisc::SetBandForPriority(uint8_t prio, uint16_t band)
 {
-    NS_LOG_FUNCTION(this << prio << band);
-
-    NS_ASSERT_MSG(prio < 16, "Priority must be a value between 0 and 15");
-
+    NS_ASSERT(prio < 16);
     m_prio2band[prio] = band;
 }
 
 uint16_t
 PrioQueueDisc::GetBandForPriority(uint8_t prio) const
 {
-    NS_LOG_FUNCTION(this << prio);
+    NS_LOG_FUNCTION(this << (uint16_t)prio);
 
     NS_ASSERT_MSG(prio < 16, "Priority must be a value between 0 and 15");
 
-    return m_prio2band[prio];
+    uint16_t band = m_prio2band[prio];
+
+    if (band >= GetNQueueDiscClasses())
+    {
+        return 0;
+    }
+
+    return band;
+}
+
+int32_t
+PrioQueueDisc::DoClassify(Ptr<QueueDiscItem> item) const
+{
+    uint32_t band = m_prio2band[0];
+    SocketPriorityTag priorityTag;
+
+    if (item->GetPacket()->PeekPacketTag(priorityTag))
+    {
+        uint32_t mappedBand = m_prio2band[priorityTag.GetPriority() & 0x0f];
+
+        if (mappedBand < GetNQueueDiscClasses())
+        {
+            band = mappedBand;
+        }
+        else
+        {
+            NS_LOG_DEBUG("Priority mapped to non-existent band " << mappedBand
+                                                                 << ". Defaulting to 0.");
+            band = 0;
+        }
+    }
+
+    if (band >= GetNQueueDiscClasses())
+    {
+        band = 0;
+    }
+
+    return static_cast<int32_t>(band);
 }
 
 bool
@@ -99,99 +125,73 @@ PrioQueueDisc::DoEnqueue(Ptr<QueueDiscItem> item)
 {
     NS_LOG_FUNCTION(this << item);
 
-    uint32_t band = m_prio2band[0];
-
+    uint32_t band = GetBandForPriority(0);
     int32_t ret = Classify(item);
 
     if (ret == PacketFilter::PF_NO_MATCH)
     {
-        NS_LOG_DEBUG("No filter has been able to classify this packet, using priomap.");
-
         SocketPriorityTag priorityTag;
         if (item->GetPacket()->PeekPacketTag(priorityTag))
         {
-            band = m_prio2band[priorityTag.GetPriority() & 0x0f];
+            band = GetBandForPriority(priorityTag.GetPriority() & 0x0f);
         }
     }
     else
     {
-        NS_LOG_DEBUG("Packet filters returned " << ret);
-
+        // Safety for filter returns
         if (ret >= 0 && static_cast<uint32_t>(ret) < GetNQueueDiscClasses())
         {
-            band = ret;
+            band = static_cast<uint32_t>(ret);
         }
     }
 
-    NS_ASSERT_MSG(band < GetNQueueDiscClasses(), "Selected band out of range");
+    // Final safety check before accessing the class
+    if (band >= GetNQueueDiscClasses())
+    {
+        band = 0;
+    }
+
     bool retval = GetQueueDiscClass(band)->GetQueueDisc()->Enqueue(item);
-
-    // If Queue::Enqueue fails, QueueDisc::Drop is called by the child queue disc
-    // because QueueDisc::AddQueueDiscClass sets the drop callback
-
-    NS_LOG_LOGIC("Number packets band " << band << ": "
-                                        << GetQueueDiscClass(band)->GetQueueDisc()->GetNPackets());
-
     return retval;
 }
 
 Ptr<QueueDiscItem>
 PrioQueueDisc::DoDequeue()
 {
-    NS_LOG_FUNCTION(this);
-
-    Ptr<QueueDiscItem> item;
-
     for (uint32_t i = 0; i < GetNQueueDiscClasses(); i++)
     {
-        if ((item = GetQueueDiscClass(i)->GetQueueDisc()->Dequeue()))
+        Ptr<QueueDiscItem> item = GetQueueDiscClass(i)->GetQueueDisc()->Dequeue();
+        if (item)
         {
-            NS_LOG_LOGIC("Popped from band " << i << ": " << item);
-            NS_LOG_LOGIC("Number packets band "
-                         << i << ": " << GetQueueDiscClass(i)->GetQueueDisc()->GetNPackets());
             return item;
         }
     }
-
-    NS_LOG_LOGIC("Queue empty");
-    return item;
+    return nullptr;
 }
 
 Ptr<const QueueDiscItem>
 PrioQueueDisc::DoPeek()
 {
-    NS_LOG_FUNCTION(this);
-
-    Ptr<const QueueDiscItem> item;
-
     for (uint32_t i = 0; i < GetNQueueDiscClasses(); i++)
     {
-        if ((item = GetQueueDiscClass(i)->GetQueueDisc()->Peek()))
+        Ptr<const QueueDiscItem> item = GetQueueDiscClass(i)->GetQueueDisc()->Peek();
+        if (item)
         {
-            NS_LOG_LOGIC("Peeked from band " << i << ": " << item);
-            NS_LOG_LOGIC("Number packets band "
-                         << i << ": " << GetQueueDiscClass(i)->GetQueueDisc()->GetNPackets());
             return item;
         }
     }
-
-    NS_LOG_LOGIC("Queue empty");
-    return item;
+    return nullptr;
 }
 
 bool
 PrioQueueDisc::CheckConfig()
 {
-    NS_LOG_FUNCTION(this);
     if (GetNInternalQueues() > 0)
     {
-        NS_LOG_ERROR("PrioQueueDisc cannot have internal queues");
         return false;
     }
-
     if (GetNQueueDiscClasses() == 0)
     {
-        // create 3 fifo queue discs
         ObjectFactory factory;
         factory.SetTypeId("ns3::FifoQueueDisc");
         for (uint8_t i = 0; i < 2; i++)
@@ -203,14 +203,7 @@ PrioQueueDisc::CheckConfig()
             AddQueueDiscClass(c);
         }
     }
-
-    if (GetNQueueDiscClasses() < 2)
-    {
-        NS_LOG_ERROR("PrioQueueDisc needs at least 2 classes");
-        return false;
-    }
-
-    return true;
+    return GetNQueueDiscClasses() >= 2;
 }
 
 void
