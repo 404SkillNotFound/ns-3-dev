@@ -110,7 +110,14 @@ PrioQueueDisc::DoEnqueue(Ptr<QueueDiscItem> item)
         SocketPriorityTag priorityTag;
         if (item->GetPacket()->PeekPacketTag(priorityTag))
         {
-            band = m_prio2band[priorityTag.GetPriority() & 0x0f];
+            uint8_t prio = priorityTag.GetPriority();
+            if (prio >= 16)
+            {
+                NS_LOG_LOGIC("Priority " << static_cast<uint16_t>(prio)
+                                         << " out of bounds, mapping to 15");
+                prio = 15;
+            }
+            band = m_prio2band[prio];
         }
     }
     else
