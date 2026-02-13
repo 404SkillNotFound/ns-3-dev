@@ -98,8 +98,9 @@ void
 Icmpv6Header::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)m_type << " code = " << (uint32_t)m_code
-       << " checksum = " << (uint32_t)m_checksum << ")";
+    os << "( type = " << static_cast<uint32_t>(m_type)
+       << " code = " << static_cast<uint32_t>(m_code)
+       << " checksum = " << static_cast<uint32_t>(m_checksum) << ")";
 }
 
 uint32_t

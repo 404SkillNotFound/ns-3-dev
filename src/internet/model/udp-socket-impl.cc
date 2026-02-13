@@ -489,7 +489,7 @@ UdpSocketImpl::DoSend(Ptr<Packet> p)
 int
 UdpSocketImpl::DoSendTo(Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t tos)
 {
-    NS_LOG_FUNCTION(this << p << dest << port << (uint16_t)tos);
+    NS_LOG_FUNCTION(this << p << dest << port << static_cast<uint16_t>(tos));
     if (m_boundnetdevice)
     {
         NS_LOG_LOGIC("Bound interface number " << m_boundnetdevice->GetIfIndex());

@@ -886,8 +886,10 @@ Ipv4L3Protocol::BuildHeader(Ipv4Address source,
                             uint8_t tos,
                             bool mayFragment)
 {
-    NS_LOG_FUNCTION(this << source << destination << (uint16_t)protocol << payloadSize
-                         << (uint16_t)ttl << (uint16_t)tos << mayFragment);
+    NS_LOG_FUNCTION(this << source << destination << static_cast<uint16_t>(protocol) << payloadSize
+                         << static_cast<uint16_t>(ttl) << static_cast<uint16_t>(tos)
+                         << mayFragment);
+
     Ipv4Header ipHeader;
     ipHeader.SetSource(source);
     ipHeader.SetDestination(destination);
