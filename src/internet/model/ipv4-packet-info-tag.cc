@@ -119,8 +119,8 @@ Ipv4PacketInfoTag::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
     os << "Ipv4 PKTINFO [DestAddr: " << m_addr;
-    os << ", RecvIf:" << (uint32_t)m_ifindex;
-    os << ", TTL:" << (uint32_t)m_ttl;
+    os << ", RecvIf:" << static_cast<uint32_t>(m_ifindex);
+    os << ", TTL:" << static_cast<uint32_t>(m_ttl);
     os << "] ";
 }
 } // namespace ns3

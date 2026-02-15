@@ -64,10 +64,10 @@ TcpLinuxReno::SlowStart(Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
     if (segmentsAcked >= 1)
     {
         uint32_t sndCwnd = tcb->m_cWnd;
-        tcb->m_cWnd =
-            std::min((sndCwnd + (segmentsAcked * tcb->m_segmentSize)), (uint32_t)tcb->m_ssThresh);
+        tcb->m_cWnd = std::min((sndCwnd + (segmentsAcked * tcb->m_segmentSize)),
+                               static_cast<uint32_t>(tcb->m_ssThresh));
         NS_LOG_INFO("In SlowStart, updated to cwnd " << tcb->m_cWnd << " ssthresh "
-                                                     << tcb->m_ssThresh);
+                                                     << static_cast<uint32_t>(tcb->m_ssThresh));
         return segmentsAcked - ((tcb->m_cWnd - sndCwnd) / tcb->m_segmentSize);
     }
 

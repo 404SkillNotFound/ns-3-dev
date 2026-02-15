@@ -489,7 +489,7 @@ UdpSocketImpl::DoSend(Ptr<Packet> p)
 int
 UdpSocketImpl::DoSendTo(Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t tos)
 {
-    NS_LOG_FUNCTION(this << p << dest << port << (uint16_t)tos);
+    NS_LOG_FUNCTION(this << p << dest << port << static_cast<uint16_t>(tos));
     if (m_boundnetdevice)
     {
         NS_LOG_LOGIC("Bound interface number " << m_boundnetdevice->GetIfIndex());
@@ -1141,8 +1141,9 @@ UdpSocketImpl::ForwardIcmp(Ipv4Address icmpSource,
                            uint8_t icmpCode,
                            uint32_t icmpInfo)
 {
-    NS_LOG_FUNCTION(this << icmpSource << (uint32_t)icmpTtl << (uint32_t)icmpType
-                         << (uint32_t)icmpCode << icmpInfo);
+    NS_LOG_FUNCTION(this << icmpSource << static_cast<uint32_t>(icmpTtl)
+                         << static_cast<uint32_t>(icmpType) << static_cast<uint32_t>(icmpCode)
+                         << icmpInfo);
     if (!m_icmpCallback.IsNull())
     {
         m_icmpCallback(icmpSource, icmpTtl, icmpType, icmpCode, icmpInfo);
@@ -1156,8 +1157,9 @@ UdpSocketImpl::ForwardIcmp6(Ipv6Address icmpSource,
                             uint8_t icmpCode,
                             uint32_t icmpInfo)
 {
-    NS_LOG_FUNCTION(this << icmpSource << (uint32_t)icmpTtl << (uint32_t)icmpType
-                         << (uint32_t)icmpCode << icmpInfo);
+    NS_LOG_FUNCTION(this << icmpSource << static_cast<uint32_t>(icmpTtl)
+                         << static_cast<uint32_t>(icmpType) << static_cast<uint32_t>(icmpCode)
+                         << icmpInfo);
     if (!m_icmpCallback6.IsNull())
     {
         m_icmpCallback6(icmpSource, icmpTtl, icmpType, icmpCode, icmpInfo);

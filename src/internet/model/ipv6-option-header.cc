@@ -72,7 +72,7 @@ Ipv6OptionHeader::GetLength() const
 void
 Ipv6OptionHeader::Print(std::ostream& os) const
 {
-    os << "( type = " << (uint32_t)m_type << " )";
+    os << "( type = " << static_cast<uint32_t>(m_type) << " )";
 }
 
 uint32_t
@@ -146,7 +146,7 @@ Ipv6OptionPad1Header::~Ipv6OptionPad1Header()
 void
 Ipv6OptionPad1Header::Print(std::ostream& os) const
 {
-    os << "( type = " << (uint32_t)GetType() << " )";
+    os << "( type = " << static_cast<uint32_t>(GetType()) << " )";
 }
 
 uint32_t
@@ -205,7 +205,8 @@ Ipv6OptionPadnHeader::~Ipv6OptionPadnHeader()
 void
 Ipv6OptionPadnHeader::Print(std::ostream& os) const
 {
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength() << " )";
+    os << "( type = " << static_cast<uint32_t>(GetType())
+       << " length = " << static_cast<uint32_t>(GetLength()) << " )";
 }
 
 uint32_t
@@ -283,8 +284,9 @@ Ipv6OptionJumbogramHeader::GetDataLength() const
 void
 Ipv6OptionJumbogramHeader::Print(std::ostream& os) const
 {
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength()
-       << " data length = " << (uint32_t)m_dataLength << " )";
+    os << "( type = " << static_cast<uint32_t>(GetType())
+       << " length = " << static_cast<uint32_t>(GetLength())
+       << " data length = " << static_cast<uint32_t>(m_dataLength) << " )";
 }
 
 uint32_t
@@ -365,8 +367,9 @@ Ipv6OptionRouterAlertHeader::GetValue() const
 void
 Ipv6OptionRouterAlertHeader::Print(std::ostream& os) const
 {
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength()
-       << " value = " << (uint32_t)m_value << " )";
+    os << "( type = " << static_cast<uint32_t>(GetType())
+       << " length = " << static_cast<uint32_t>(GetLength())
+       << " value = " << static_cast<uint32_t>(m_value) << " )";
 }
 
 uint32_t

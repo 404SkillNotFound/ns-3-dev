@@ -72,8 +72,8 @@ Ipv6QueueDiscItem::Print(std::ostream& os) const
     }
     os << GetPacket() << " "
        << "Dst addr " << GetAddress() << " "
-       << "proto " << (uint16_t)GetProtocol() << " "
-       << "txq " << (uint16_t)GetTxQueueIndex();
+       << "proto " << static_cast<uint16_t>(GetProtocol()) << " "
+       << "txq " << static_cast<uint16_t>(GetTxQueueIndex());
 }
 
 bool

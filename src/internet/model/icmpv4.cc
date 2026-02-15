@@ -98,7 +98,7 @@ void
 Icmpv4Header::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "type=" << (uint32_t)m_type << ", code=" << (uint32_t)m_code;
+    os << "type=" << static_cast<uint32_t>(m_type) << ", code=" << static_cast<uint32_t>(m_code);
 }
 
 void
@@ -405,7 +405,7 @@ Icmpv4DestinationUnreachable::Print(std::ostream& os) const
     os << " org data=";
     for (uint8_t i = 0; i < 8; i++)
     {
-        os << (uint32_t)m_data[i];
+        os << static_cast<uint32_t>(m_data[i]);
         if (i != 8)
         {
             os << " ";
@@ -521,7 +521,7 @@ Icmpv4TimeExceeded::Print(std::ostream& os) const
     os << " org data=";
     for (uint8_t i = 0; i < 8; i++)
     {
-        os << (uint32_t)m_data[i];
+        os << static_cast<uint32_t>(m_data[i]);
         if (i != 8)
         {
             os << " ";
