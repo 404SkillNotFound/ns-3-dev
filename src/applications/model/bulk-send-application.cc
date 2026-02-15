@@ -173,7 +173,7 @@ BulkSendApplication::SendData(const Address& from, const Address& to)
         }
 
         int actual = m_socket->Send(packet);
-        if ((unsigned)actual == toSend)
+        if (static_cast<unsigned int>(actual) == toSend)
         {
             m_totBytes += actual;
             m_txTrace(packet);
@@ -196,7 +196,8 @@ BulkSendApplication::SendData(const Address& from, const Address& to)
             NS_LOG_DEBUG("Packet size: " << packet->GetSize() << "; sent: " << actual
                                          << "; fragment saved: " << toSend - (unsigned)actual);
             Ptr<Packet> sent = packet->CreateFragment(0, actual);
-            Ptr<Packet> unsent = packet->CreateFragment(actual, (toSend - (unsigned)actual));
+            Ptr<Packet> unsent =
+                packet->CreateFragment(actual, (toSend - static_cast<unsigned int>(actual)));
             m_totBytes += actual;
             m_txTrace(sent);
             m_unsentPacket = unsent;
