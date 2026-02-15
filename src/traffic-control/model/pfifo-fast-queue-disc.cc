@@ -174,8 +174,8 @@ PfifoFastQueueDisc::CheckConfig()
     {
         if (GetInternalQueue(i)->GetMaxSize() < GetMaxSize())
         {
-            NS_LOG_ERROR(
-                "The capacity of some internal queue(s) is less than the queue disc capacity");
+            NS_LOG_ERROR("The capacity of some internal queue(s) is less than the "
+                         "queue disc capacity");
             return false;
         }
     }
