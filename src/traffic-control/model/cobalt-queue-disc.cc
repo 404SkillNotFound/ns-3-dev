@@ -118,11 +118,7 @@ CobaltQueueDisc::GetTypeId()
 static inline uint32_t
 ReciprocalDivide(uint32_t A, uint32_t R)
 {
-<<<<<<< HEAD
-    return (uint32_t)(((uint64_t)A * R) >> 32);
-=======
     return static_cast<uint32_t>((static_cast<uint64_t>(A) * R) >> 32);
->>>>>>> b0dfab718 (traffic-control: modernize casts and use double literals for precision)
 }
 
 /**
