@@ -98,7 +98,8 @@ void
 Icmpv4Header::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "type=" << (uint32_t)m_type << ", code=" << (uint32_t)m_code;
+
+    os << "type=" << +m_type << ", code=" << +m_code;
 }
 
 void

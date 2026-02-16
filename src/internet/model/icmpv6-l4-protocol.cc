@@ -1444,7 +1444,7 @@ Icmpv6L4Protocol::SendErrorDestinationUnreachable(Ptr<Packet> malformedPacket,
 
     NS_LOG_LOGIC("Send Destination Unreachable ( to " << dst << " code " << (uint32_t)code << " )");
 
-    /* 48 = sizeof IPv6 header + sizeof ICMPv6 error header */
+    /* 48 = sizeof IPv6 header + sizeof ICMPv6 error header */  
     if (malformedPacketSize <= 1280 - 48)
     {
         header.SetPacket(malformedPacket);
