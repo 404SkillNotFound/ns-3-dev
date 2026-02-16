@@ -144,15 +144,9 @@ uint16_t
 CoDelQueueDisc::NewtonStep(uint16_t recInvSqrt, uint32_t count)
 {
     NS_LOG_FUNCTION_NOARGS();
-<<<<<<< HEAD
-    uint32_t invsqrt = ((uint32_t)recInvSqrt) << REC_INV_SQRT_SHIFT;
-    uint32_t invsqrt2 = ((uint64_t)invsqrt * invsqrt) >> 32;
-    uint64_t val = (3LL << 32) - ((uint64_t)count * invsqrt2);
-=======
     uint32_t invsqrt = static_cast<uint32_t>(recInvSqrt) << REC_INV_SQRT_SHIFT;
     uint32_t invsqrt2 = (static_cast<uint64_t>(invsqrt) * invsqrt) >> 32;
     uint64_t val = (3LL << 32) - (static_cast<uint64_t>(count) * invsqrt2);
->>>>>>> b0dfab718 (traffic-control: modernize casts and use double literals for precision)
 
     val >>= 2; /* avoid overflow */
     val = (val * invsqrt) >> (32 - 2 + 1);
@@ -309,17 +303,10 @@ CoDelQueueDisc::DoDequeue()
                     NS_LOG_LOGIC("Sojourn time is still above target and it's time for next drop "
                                  "or mark; marking "
                                  << item);
-<<<<<<< HEAD
-                    NS_LOG_LOGIC("Running ControlLaw for input m_dropNext: " << (double)m_dropNext /
-                                                                                    1000000);
-                    m_dropNext = ControlLaw(now, Time2CoDel(m_interval), m_recInvSqrt);
-                    NS_LOG_LOGIC("Scheduled next drop at " << (double)m_dropNext / 1000000);
-=======
                     NS_LOG_LOGIC("Running ControlLaw for input m_dropNext: " << m_dropNext /
                                                                                     1000000.0);
                     m_dropNext = ControlLaw(now, Time2CoDel(m_interval), m_recInvSqrt);
                     NS_LOG_LOGIC("Scheduled next drop at " << m_dropNext / 1000000.0);
->>>>>>> b0dfab718 (traffic-control: modernize casts and use double literals for precision)
                     goto end;
                 }
                 NS_LOG_LOGIC(
@@ -345,17 +332,10 @@ CoDelQueueDisc::DoDequeue()
                 else
                 {
                     /* schedule the next drop */
-<<<<<<< HEAD
-                    NS_LOG_LOGIC("Running ControlLaw for input m_dropNext: " << (double)m_dropNext /
-                                                                                    1000000);
-                    m_dropNext = ControlLaw(m_dropNext, Time2CoDel(m_interval), m_recInvSqrt);
-                    NS_LOG_LOGIC("Scheduled next drop at " << (double)m_dropNext / 1000000);
-=======
                     NS_LOG_LOGIC("Running ControlLaw for input m_dropNext: " << m_dropNext /
                                                                                     1000000.0);
                     m_dropNext = ControlLaw(m_dropNext, Time2CoDel(m_interval), m_recInvSqrt);
                     NS_LOG_LOGIC("Scheduled next drop at " << m_dropNext / 1000000.0);
->>>>>>> b0dfab718 (traffic-control: modernize casts and use double literals for precision)
                 }
             }
         }
