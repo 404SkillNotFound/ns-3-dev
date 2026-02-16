@@ -836,8 +836,13 @@ MatrixPropagationLossModel::SetLoss(Ptr<MobilityModel> ma,
 {
     NS_ASSERT(ma && mb);
 
+<<<<<<< HEAD
     uint64_t p = ((uint64_t)ma->GetObject<Node>()->GetId()) << 32 |
                  ((uint64_t)mb->GetObject<Node>()->GetId());
+=======
+    uint64_t p = static_cast<uint64_t>(ma->GetObject<Node>()->GetId()) << 32 |
+                 static_cast<uint64_t>(mb->GetObject<Node>()->GetId());
+>>>>>>> e013ee2c4 (propagation: modernize casts and remove redundant parentheses)
     auto i = m_loss.find(p);
 
     if (i == m_loss.end())
@@ -860,8 +865,8 @@ MatrixPropagationLossModel::DoCalcRxPower(double txPowerDbm,
                                           Ptr<MobilityModel> a,
                                           Ptr<MobilityModel> b) const
 {
-    uint64_t p =
-        ((uint64_t)a->GetObject<Node>()->GetId()) << 32 | ((uint64_t)b->GetObject<Node>()->GetId());
+    uint64_t p = static_cast<uint64_t>(a->GetObject<Node>()->GetId()) << 32 |
+                 static_cast<uint64_t>(b->GetObject<Node>()->GetId());
     auto i = m_loss.find(p);
 
     if (i != m_loss.end())
