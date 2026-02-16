@@ -304,8 +304,8 @@ Ipv6L3Protocol::AddAutoconfiguredAddress(uint32_t interface,
                                          uint32_t preferredTime,
                                          Ipv6Address defaultRouter)
 {
-    NS_LOG_FUNCTION(this << interface << network << mask << (uint32_t)flags << validTime
-                         << preferredTime);
+    NS_LOG_FUNCTION(this << interface << network << mask << static_cast<uint32_t>(flags)
+                         << validTime << preferredTime);
     Ipv6InterfaceAddress address;
 
     Address addr = GetInterface(interface)->GetDevice()->GetAddress();
@@ -313,7 +313,7 @@ Ipv6L3Protocol::AddAutoconfiguredAddress(uint32_t interface,
     if (!defaultRouter.IsAny())
     {
         GetRoutingProtocol()->NotifyAddRoute(Ipv6Address::GetAny(),
-                                             Ipv6Prefix((uint8_t)0),
+                                             Ipv6Prefix(static_cast<uint8_t>(0)),
                                              defaultRouter,
                                              interface,
                                              network);
@@ -403,7 +403,7 @@ Ipv6L3Protocol::RemoveAutoconfiguredAddress(uint32_t interface,
     }
 
     GetRoutingProtocol()->NotifyRemoveRoute(Ipv6Address::GetAny(),
-                                            Ipv6Prefix((uint8_t)0),
+                                            Ipv6Prefix(static_cast<uint8_t>(0)),
                                             defaultRouter,
                                             interface,
                                             network);
@@ -904,7 +904,8 @@ Ipv6L3Protocol::Send(Ptr<Packet> packet,
                      uint8_t protocol,
                      Ptr<Ipv6Route> route)
 {
-    NS_LOG_FUNCTION(this << packet << source << destination << (uint32_t)protocol << route);
+    NS_LOG_FUNCTION(this << packet << source << destination << static_cast<uint32_t>(protocol)
+                         << route);
     Ipv6Header hdr;
     uint8_t ttl = m_defaultTtl;
     SocketIpv6HopLimitTag tag;
@@ -1588,8 +1589,9 @@ Ipv6L3Protocol::BuildHeader(Ipv6Address src,
                             uint8_t ttl,
                             uint8_t tclass)
 {
-    NS_LOG_FUNCTION(this << src << dst << (uint32_t)protocol << (uint32_t)payloadSize
-                         << (uint32_t)ttl << (uint32_t)tclass);
+    NS_LOG_FUNCTION(this << src << dst << static_cast<uint32_t>(protocol)
+                         << static_cast<uint32_t>(payloadSize) << static_cast<uint32_t>(ttl)
+                         << static_cast<uint32_t>(tclass));
     Ipv6Header hdr;
 
     hdr.SetSource(src);

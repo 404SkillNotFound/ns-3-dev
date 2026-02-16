@@ -2614,9 +2614,9 @@ AnimationInterface::WriteXmlUpdateNodeColor(uint32_t nodeId, uint8_t r, uint8_t 
     element.AddAttribute("p", "c");
     element.AddAttribute("t", Simulator::Now().GetSeconds());
     element.AddAttribute("id", nodeId);
-    element.AddAttribute("r", (uint32_t)r);
-    element.AddAttribute("g", (uint32_t)g);
-    element.AddAttribute("b", (uint32_t)b);
+    element.AddAttribute("r", static_cast<uint32_t>(r));
+    element.AddAttribute("g", static_cast<uint32_t>(g));
+    element.AddAttribute("b", static_cast<uint32_t>(b));
     WriteN(element.ToString(), m_f);
 }
 

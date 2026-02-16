@@ -78,8 +78,8 @@ Ipv6ExtensionHeader::GetLength() const
 void
 Ipv6ExtensionHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " )";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength()) << " )";
 }
 
 uint32_t
@@ -246,8 +246,8 @@ Ipv6ExtensionHopByHopHeader::~Ipv6ExtensionHopByHopHeader()
 void
 Ipv6ExtensionHopByHopHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " )";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength()) << " )";
 }
 
 uint32_t
@@ -308,8 +308,8 @@ Ipv6ExtensionDestinationHeader::~Ipv6ExtensionDestinationHeader()
 void
 Ipv6ExtensionDestinationHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " )";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength()) << " )";
 }
 
 uint32_t
@@ -410,9 +410,11 @@ Ipv6ExtensionFragmentHeader::GetIdentification() const
 void
 Ipv6ExtensionFragmentHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " offset = " << (uint32_t)GetOffset() << " MF = " << (uint32_t)GetMoreFragment()
-       << " identification = " << (uint32_t)m_identification << " )";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength())
+       << " offset = " << static_cast<uint32_t>(GetOffset())
+       << " MF = " << static_cast<uint32_t>(GetMoreFragment())
+       << " identification = " << static_cast<uint32_t>(m_identification) << " )";
 }
 
 uint32_t
@@ -502,9 +504,10 @@ Ipv6ExtensionRoutingHeader::GetSegmentsLeft() const
 void
 Ipv6ExtensionRoutingHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " typeRouting = " << (uint32_t)m_typeRouting
-       << " segmentsLeft = " << (uint32_t)m_segmentsLeft << " )";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength())
+       << " typeRouting = " << static_cast<uint32_t>(m_typeRouting)
+       << " segmentsLeft = " << static_cast<uint32_t>(m_segmentsLeft) << " )";
 }
 
 uint32_t
@@ -598,9 +601,10 @@ Ipv6ExtensionLooseRoutingHeader::GetRouterAddress(uint8_t index) const
 void
 Ipv6ExtensionLooseRoutingHeader::Print(std::ostream& os) const
 {
-    os << "( nextHeader = " << (uint32_t)GetNextHeader() << " length = " << (uint32_t)GetLength()
-       << " typeRouting = " << (uint32_t)GetTypeRouting()
-       << " segmentsLeft = " << (uint32_t)GetSegmentsLeft() << " ";
+    os << "( nextHeader = " << static_cast<uint32_t>(GetNextHeader())
+       << " length = " << static_cast<uint32_t>(GetLength())
+       << " typeRouting = " << static_cast<uint32_t>(GetTypeRouting())
+       << " segmentsLeft = " << static_cast<uint32_t>(GetSegmentsLeft()) << " ";
 
     for (auto it = m_routersAddress.begin(); it != m_routersAddress.end(); it++)
     {
