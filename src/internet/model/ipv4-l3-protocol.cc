@@ -525,7 +525,7 @@ Ipv4L3Protocol::IsDestinationAddress(Ipv4Address address, uint32_t iif) const
     {
         for (uint32_t j = 0; j < GetNInterfaces(); j++)
         {
-            if (j == uint32_t(iif))
+            if (j == static_cast<uint32_t>(iif))
             {
                 continue;
             }
@@ -726,7 +726,8 @@ Ipv4L3Protocol::Send(Ptr<Packet> packet,
                      uint8_t protocol,
                      Ptr<Ipv4Route> route)
 {
-    NS_LOG_FUNCTION(this << packet << source << destination << uint32_t(protocol) << route);
+    NS_LOG_FUNCTION(this << packet << source << destination << static_cast<uint32_t>(protocol)
+                         << route);
 
     bool mayFragment = true;
 
@@ -886,8 +887,9 @@ Ipv4L3Protocol::BuildHeader(Ipv4Address source,
                             uint8_t tos,
                             bool mayFragment)
 {
-    NS_LOG_FUNCTION(this << source << destination << (uint16_t)protocol << payloadSize
-                         << (uint16_t)ttl << (uint16_t)tos << mayFragment);
+    NS_LOG_FUNCTION(this << source << destination << static_cast<uint16_t>(protocol) << payloadSize
+                         << static_cast<uint16_t>(ttl) << static_cast<uint16_t>(tos)
+                         << mayFragment);
     Ipv4Header ipHeader;
     ipHeader.SetSource(source);
     ipHeader.SetDestination(destination);
@@ -1330,7 +1332,7 @@ Ipv4L3Protocol::SetUp(uint32_t i)
     {
         NS_LOG_LOGIC(
             "Interface "
-            << int(i)
+            << static_cast<int>(i)
             << " is set to be down for IPv4. Reason: not respecting minimum IPv4 MTU (68 octets)");
     }
 }
@@ -1757,7 +1759,7 @@ Ipv4L3Protocol::UpdateDuplicate(Ptr<const Packet> p, const Ipv4Header& header)
         }
 
         // concat hash onto ID
-        hash |= (uint64_t)Hash32(bytes);
+        hash |= static_cast<uint64_t>(Hash32(bytes));
     }
 
     // set cleanup job for new duplicate entries
