@@ -3,7 +3,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
    ~~~~~~~~~~~~~ Sub-paragraph (no number)
 
@@ -18,7 +17,6 @@ Framework, of which the Probe class is a part, to generate data output
 with their simulation's results.
 
 Probe Overview
-==============
 
 A Probe object is supposed to be connected to a variable from the
 simulation whose values throughout the experiment are relevant to the user.
@@ -116,7 +114,6 @@ DoubleProbe, and then discuss how other Probe classes may be defined
 by the user.
 
 DoubleProbe Overview
-====================
 
 The DoubleProbe connects to a double-valued |ns3| trace source, and itself
 exports a different double-valued |ns3| trace source.
@@ -201,7 +198,6 @@ a downstream object can hook a trace sink (NotifyViaProbe) to this as follows:
 
 
 Other probes
-============
 
 Besides the DoubleProbe, the following Probes are also available:
 
@@ -213,7 +209,6 @@ Besides the DoubleProbe, the following Probes are also available:
 - Ipv4PacketProbe connects to an |ns3| trace source exporting a packet, an IPv4 object, and an interface.
 
 Creating new Probe types
-========================
 
 To create a new Probe type, you need to perform the following steps:
 
@@ -231,7 +226,6 @@ To create a new Probe type, you need to perform the following steps:
   behave as you would like.
 
 Examples
-========
 
 Two examples will be discussed in detail here:
 
@@ -465,7 +459,6 @@ output the number of bytes on the `OutputBytes` trace source.
 
 
 References
-==========
 
 .. [Cic06] Claudio Cicconetti, Enzo Mingozzi, Giovanni Stea, "An Integrated
     Framework for Enabling Effective Data Collection and Statistical

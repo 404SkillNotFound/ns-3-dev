@@ -41,7 +41,6 @@ each node. It provides a function ``AssignIpv6Addresses`` which takes a
 IPv6Address to every node.
 
 Node Positioning
-================
 
 The algorithm used by the ``BoundingBox`` function to position the leaf nodes
 and router nodes uses properties of a circle to correctly place the nodes even
@@ -59,7 +58,6 @@ This feature is useful if the user wants to visualize the topology using any
 supported visualization tool such as PyViz or NetAnim.
 
 Using PointToPointDumbbellHelper
-================================
 
 A dumbbell topology with point-to-point links can be configured by using the
 ``PointToPointDumbbellHelper``. The first task is to create two

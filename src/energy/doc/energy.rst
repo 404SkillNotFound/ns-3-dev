@@ -3,7 +3,6 @@
 .. highlight:: bash
 
 Energy Framework
-================
 
 Energy is a key issue for wireless devices, and network researchers
 often need to investigate the energy consumption at a node or in the
@@ -305,7 +304,6 @@ The following table is a list of the available presents in |ns3|:
 
    +------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------+
    | Preset Name                                                                                                                  | Description                                     |
-   +==============================================================================================================================+=================================================+
    | `PANASONIC_CGR18650DA_LION <https://www.nsnam.org/wp-content/uploads/2024/lr-wpan-datasheets/LiIonPanasonicCGR18650DA.pdf>`_ | Panasonic Li-Ion  (3.6V, 2450Ah, Size A)        |
    +------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------+
    | `PANASONIC_HHR650D_NIMH <https://www.nsnam.org/wp-content/uploads/2024/lr-wpan-datasheets/NiMHPanasonicHHR650D3.pdf>`_       | Panasonic NiMh HHR550D (1.2V 6.5Ah, Size D)     |

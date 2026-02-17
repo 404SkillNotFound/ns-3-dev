@@ -54,7 +54,6 @@ the capacity of the internal queue provided by the user.
 
 
 References
-==========
 
 .. [Nic12] K. Nichols and V. Jacobson, Controlling Queue Delay, ACM Queue, Vol. 10 No. 5, May 2012.  Available online at `<http://queue.acm.org/detail.cfm?id=2209336>`_.
 
@@ -63,7 +62,6 @@ References
 .. [Buf14] Bufferbloat.net.  Available online at `<http://www.bufferbloat.net/>`_.
 
 Attributes
-==========
 
 The key attributes that the CoDelQueue class holds include the following:
 
@@ -75,7 +73,6 @@ The key attributes that the CoDelQueue class holds include the following:
 * ``CeThreshold:`` The CoDel CE threshold for marking packets. Disabled by default.
 
 Examples
-========
 
 The first example is `codel-vs-pfifo-basic-test.cc` located in ``src/traffic-control/examples``.  To run the file (the first invocation below shows the available
 command-line options):

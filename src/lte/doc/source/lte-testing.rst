@@ -331,9 +331,7 @@ scenarios tested in piecewise test #1.
 
 .. table:: UE measurements test scenarios using piecewise configuration #1
 
-   ====== ================== ================ ========== ===============
    Test # Reporting Criteria Threshold/Offset Hysteresis Time-to-Trigger
-   ====== ================== ================ ========== ===============
    1      Event A1           Low              No         No
    2      Event A1           Normal           No         No
    3      Event A1           Normal           No         Short
@@ -351,7 +349,6 @@ scenarios tested in piecewise test #1.
    15     Event A3           Zero             No         No
    16     Event A4           Normal           No         No
    17     Event A5           Normal-Normal    No         No
-   ====== ================== ================ ========== ===============
 
 Other events such as Event A3, A4, and A5 depend on measurements of neighbouring
 cell, so they are more thoroughly tested in Piecewise test #2. The simulation
@@ -365,9 +362,7 @@ Piecewise test #2.
 
 .. table:: UE measurements test scenarios using piecewise configuration #2
 
-   ====== ================== ================ ========== ===============
    Test # Reporting Criteria Threshold/Offset Hysteresis Time-to-Trigger
-   ====== ================== ================ ========== ===============
    1      Event A1           Low              No         No
    2      Event A1           Normal           No         No
    3      Event A1           Normal           Yes        No
@@ -400,7 +395,6 @@ Piecewise test #2.
    30     Event A5           High-Low         No         No
    31     Event A5           High-Normal      No         No
    32     Event A5           High-High        No         No
-   ====== ================== ================ ========== ===============
 
 One note about the tests with time-to-trigger, they are tested using 3 different
 values of time-to-trigger: *short* (shorter than report interval), *long*
@@ -439,9 +433,7 @@ lists the tested scenarios.
 
 .. table:: UE measurements test scenarios using handover configuration
 
-   ====== ================ =========================== ===========================
    Test # Test Subject     Initial Configuration       Post-Handover Configuration
-   ====== ================ =========================== ===========================
    1      Report interval  480 ms                      240 ms
    2      Report interval  120 ms                      640 ms
    3      Event            Event A1                    Event A2
@@ -459,7 +451,6 @@ lists the tested scenarios.
    15     Threshold/offset RSRP range 52-52 (Event A5) RSRP range 56-56 (Event A5)
    16     Time-to-trigger  1024 ms                     100 ms
    17     Time-to-trigger  1024 ms                     640 ms
-   ====== ================ =========================== ===========================
 
 
 
@@ -1167,16 +1158,13 @@ time than the others to compensate for its higher risk of failure.
 
 .. table:: UE error rate in Initial Cell Selection test
 
-   ==== ==========
    UE # Error rate
-   ==== ==========
    1     0.00%
    2     1.44%
    3    12.39%
    4     0.33%
    5     0.00%
    6     0.00%
-   ==== ==========
 
 The test uses the default Friis path loss model and without any channel fading
 model.

@@ -19,7 +19,6 @@
 //  | CSMA    |    | CSMA    | CSMA   |     | CSMA   |
 //  +---------+    +---------+--------+     +--------+
 //       |              |        |               |
-//       ================        =================
 //
 // - Tracing of queues and packet receptions to file "example-sixlowpan.tr"
 // Note that the Pcap packet dissection will not be very meaningful.

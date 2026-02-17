@@ -10,7 +10,6 @@
 //
 //       n0              n1
 //       |               |
-//       =================
 //         SimpleChannel
 //
 // - Packets flows from n0 to n1

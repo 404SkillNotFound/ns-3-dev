@@ -2,7 +2,6 @@
 .. highlight:: cpp
 
 Global Routing
-==============
 
 This chapter defines the implementation of the ``GlobalRouting`` API present in the internet module. Global routing is not a dynamic routing protocol that
 sends packets over the simulated network.  Instead, it is a simulation

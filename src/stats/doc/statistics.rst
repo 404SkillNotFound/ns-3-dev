@@ -236,7 +236,6 @@ The first thing to do in implementing this experiment is developing the simulati
     Simulator::Destroy();
 
 Logging
-=======
 
 To see what the example program, applications, and stat framework are doing in detail, set the ``NS_LOG`` variable appropriately.  The following will provide copious output from all three.
 
@@ -247,7 +246,6 @@ To see what the example program, applications, and stat framework are doing in d
 Note that this slows down the simulation extraordinarily.
 
 Sample Output
-=============
 
 Compiling and simply running the test program will append `OMNet++`_ formatted output such as the following to ``data.sca``.
 
@@ -352,7 +350,6 @@ The GNUPlot script found at ``examples/stats/wifi-example.gnuplot`` simply defin
   plot "wifi-default.data" with lines title "WiFi Defaults"
 
 End Result
-==========
 
 The resulting graph provides no evidence that the default WiFi model's performance is necessarily unreasonable and lends some confidence to an at least token faithfulness to reality.  More importantly, this simple investigation has been carried all the way through using the statistical framework.  Success!
 

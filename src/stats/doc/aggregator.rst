@@ -3,7 +3,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
    ~~~~~~~~~~~~~ Sub-paragraph (no number)
 
@@ -17,7 +16,6 @@ the Data Collection Framework, of which the Aggregator class is a
 part, to generate data output with their simulation's results.
 
 Aggregator Overview
-===================
 
 An Aggregator object is supposed to be hooked to one or more trace
 sources in order to receive input. Aggregators are the end point of
@@ -49,7 +47,6 @@ To date, two Aggregators have been implemented:
 - FileAggregator
 
 GnuplotAggregator
-=================
 
 The GnuplotAggregator produces output files used to make gnuplots.
 
@@ -194,7 +191,6 @@ written to the GnuplotAggregator using the ``Write2d()`` function.
   }
 
 FileAggregator
-==============
 
 The FileAggregator sends the values it receives to a file.
 

@@ -217,7 +217,6 @@ ComponentCarrier::SetAsPrimary(bool primaryCarrier)
     m_primaryCarrier = primaryCarrier;
 }
 
-//====================================================
 
 NS_OBJECT_ENSURE_REGISTERED(ComponentCarrierBaseStation);
 

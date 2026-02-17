@@ -185,7 +185,6 @@ ShowProgress::CheckProgress()
                         |
                         |   /= ratio
                         |
-           HYSTERESIS  -|=============================================
                         |
                         |
                         |
@@ -193,7 +192,6 @@ ShowProgress::CheckProgress()
                         |
                         |
                         |
-        1/ HYSTERESIS  -|==============================================
                         |
                         |   *= 1 / ratio
                         |

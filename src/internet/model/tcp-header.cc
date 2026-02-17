@@ -351,7 +351,7 @@ TcpHeader::Deserialize(Buffer::Iterator start)
         else
         {
             op = TcpOption::CreateOption(TcpOption::UNKNOWN);
-            NS_LOG_WARN("Option kind " << static_cast<int>(kind) << " unknown, skipping.");
+            NS_LOG_WARN("Option kind " << +kind << " unknown, skipping.");
         }
         optionSize = op->Deserialize(i);
         if (optionSize != op->GetSerializedSize())

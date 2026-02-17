@@ -1,6 +1,5 @@
 
 IEEE 802.15.4: Low-Rate Wireless Personal Area Network (LR-WPAN)
-================================================================
 
 .. include:: replace.txt
 .. highlight:: cpp
@@ -303,7 +302,6 @@ on the 2.4 GHz band (symbol rate of 62.5 ksymbols/s):
 | BcnOrd       |     Time Interval       |
 | SfrmOrd      +                         +
 | exponents    |                         |
-+==============+=========================+
 |      0       |        15.36 ms         |
 +--------------+-------------------------+
 |      1       |        30.72 ms         |

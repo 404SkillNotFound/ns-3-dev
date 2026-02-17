@@ -18,7 +18,6 @@
  * @verbatim
   n1   n2   n3
   |    |    |
-  ===========
   LAN 10.1.1.0
   \endverbatim
  *
@@ -26,7 +25,6 @@
  * @verbatim
   n1   n2   n3
   |    |    |
-  ===========
   LAN 2001:1::/64
   \endverbatim
  *

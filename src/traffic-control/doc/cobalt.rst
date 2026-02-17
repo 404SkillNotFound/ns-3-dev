@@ -61,7 +61,6 @@ Linux model of COBALT is provided in ([Cobalt19]_).
 
 
 References
-==========
 
 .. [Cake16] Linux implementation of Cobalt as a part of the cake framework.
    Available online at
@@ -84,7 +83,6 @@ References
 
 
 Attributes
-==========
 
 The key attributes that the CobaltQueue Disc class holds include the following:
 
@@ -102,7 +100,6 @@ The key attributes that the CobaltQueue Disc class holds include the following:
 * ``DropNext:`` Time until next packet drop.
 
 Examples
-========
 
 An example program named `cobalt-vs-codel.cc` is located in
 ``src/traffic-control/examples``. Use the following command to run the program.

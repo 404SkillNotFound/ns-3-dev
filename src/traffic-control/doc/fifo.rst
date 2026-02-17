@@ -19,7 +19,6 @@ FifoQueueDisc.
 
 
 Attributes
-==========
 
 The FifoQueueDisc class holds the following attribute:
 

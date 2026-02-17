@@ -5,7 +5,6 @@
 .. heading hierarchy:
    ------------- Document Title
    ************* Chapter (#)
-   ============= Section (#.#)
    ############# Subsection (#.#.#)
    ~~~~~~~~~~~~~ Paragraph (no number)
 

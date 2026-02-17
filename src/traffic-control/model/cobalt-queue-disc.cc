@@ -118,7 +118,7 @@ CobaltQueueDisc::GetTypeId()
 static inline uint32_t
 ReciprocalDivide(uint32_t A, uint32_t R)
 {
-    return (uint32_t)(((uint64_t)A * R) >> 32);
+    return static_cast<uint32_t>((static_cast<uint64_t>(A) * R) >> 32);
 }
 
 /**
@@ -215,9 +215,10 @@ void
 CobaltQueueDisc::NewtonStep()
 {
     NS_LOG_FUNCTION(this);
-    uint32_t invsqrt = ((uint32_t)m_recInvSqrt);
-    uint32_t invsqrt2 = ((uint64_t)invsqrt * invsqrt) >> 32;
-    uint64_t val = (3LL << 32) - ((uint64_t)m_count * invsqrt2);
+
+    uint32_t invsqrt = static_cast<uint32_t>(m_recInvSqrt);
+    uint32_t invsqrt2 = (static_cast<uint64_t>(invsqrt) * invsqrt) >> 32;
+    uint64_t val = (3LL << 32) - (static_cast<uint64_t>(m_count) * invsqrt2);
 
     val >>= 2; /* avoid overflow */
     val = (val * invsqrt) >> (32 - 2 + 1);

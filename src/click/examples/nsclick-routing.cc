@@ -11,7 +11,6 @@
 //        (1.1)  (1.2)  (2.1)  (2.2)
 //
 //         eth0   eth0  eth1    eth0
-//       n0 ========= n1 ========= n2
 //            LAN 1       LAN 2
 //
 // - UDP flows from n0 to n2 via n1.

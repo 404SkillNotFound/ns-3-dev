@@ -6,7 +6,6 @@ DPDK NetDevice
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 
@@ -55,7 +54,6 @@ When |ns3| is done using ``DpdkNetDevice``, the ``DpdkNetDevice`` will stop poll
 
 
 Scope and Limitations
-=====================
 
 The current implementation supports only one NIC to be bound to DPDK with single  Rx and Tx on the NIC. This can be extended to support multiple NICs and multiple Rx/Tx queues simultaneously. Currently there is no support for Jumbo frames, which can be added. Offloading, scheduling features can also be added. Flow control and support for qdisc can be added to provide a more extensive model for network testing.
 
@@ -66,12 +64,10 @@ DPDK Installation
 This section contains information on downloading DPDK source code and setting up DPDK for ``DpdkNetDevice`` to work.
 
 Is my NIC supported by DPDK?
-============================
 
 Check `Supported Devices <https://core.dpdk.org/supported/>`_.
 
 Not supported? Use Virtual Machine instead
-==========================================
 
 Install `Oracle VM VirtualBox <https://www.virtualbox.org/>`_. Create a new VM and install Ubuntu on it. Open settings, create a network adapter with following configuration:
 
@@ -91,7 +87,6 @@ DPDK can be installed in 2 ways:
 * Compile DPDK from source
 
 Install DPDK on Ubuntu
-======================
 
 To install DPDK on Ubuntu, run the following command:
 
@@ -102,7 +97,6 @@ To install DPDK on Ubuntu, run the following command:
 Ubuntu 20.04 has packaged DPDK v19.11 LTS which is tested with this module and DpdkNetDevice will only be enabled if this version is available.
 
 Compile from Source
-===================
 
 To compile DPDK from source, you need to perform the following 4 steps:
 
@@ -153,7 +147,6 @@ For example:
 It is advisable that you export these variables in ``.bashrc`` or similar for reusability.
 
 Load DPDK Drivers to kernel
-===========================
 
 Execute the following:
 
@@ -171,7 +164,6 @@ Execute the following:
 These should be done every time you reboot your system.
 
 Configure hugepages
-===================
 
 Refer `System Requirements <https://doc.dpdk.org/guides/linux_gsg/sys_reqs.html>`_ for detailed instructions.
 
@@ -282,7 +274,6 @@ Also, NIC should be bound to DPDK Driver in order to be used with EAL. The defau
  dpdk->SetDpdkDriver("igb_uio");
 
 Attributes
-==========
 
 The ``DpdkNetDevice`` provides a number of attributes:
 
@@ -301,7 +292,6 @@ Output
 As ``DpdkNetDevice`` is inherited from ``FdNetDevice``, all the output methods provided by ``FdNetDevice`` can be used directly.
 
 Examples
-========
 
 The following examples are provided:
 

@@ -62,7 +62,6 @@ for i in 0 1 2
 do
     std=${std_leg[${i}]}
     bw=${bw_leg[${i}]}
-    echo "==============================================="
     echo "Run for wifi-trans-example for ${std} and ${bw} MHz"
     cd $ns3Dir
     ./ns3 run "wifi-trans-example --standard=$std --bw=$bw"
@@ -85,7 +84,6 @@ for std in "${std_n[@]}"
 do
   for bw in "${bw_n[@]}"
   do
-    echo "==============================================="
     echo "Run for wifi-trans-example for ${std} and ${bw} MHz"
     cd $ns3Dir
     ./ns3 run "wifi-trans-example --standard=$std --bw=$bw"
@@ -112,7 +110,6 @@ do
     #160 MHz not available in 2.4 GHz
     [ ${std} = "11ax_2_4GHZ" ] && ([ ${bw} = "80" ] || [ ${bw} = "160" ]) && continue
     #for all other combinations continue
-    echo "==============================================="
     echo "Run for wifi-trans-example for ${std} and ${bw} MHz"
     cd $ns3Dir
     ./ns3 run "wifi-trans-example --standard=$std --bw=$bw"

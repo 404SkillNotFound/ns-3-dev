@@ -37,7 +37,6 @@ The mq queue disc does not require packet filters, does not admit internal queue
 and must have as many child queue discs as the number of device transmission queues.
 
 Examples
-========
 
 A typical usage pattern is to create a traffic control helper used to add the required number of
 queue disc classes, attach child queue discs to the classes and (if needed) add packet filters to the

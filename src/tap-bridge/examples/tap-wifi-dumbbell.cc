@@ -23,7 +23,6 @@
 //                                          P2P 10.1.2      |
 //                 ((*))          ((*))                     |    n5  n6   n7
 //                   |              |                       |     |   |    |
-//                  n1             n2                       ================
 //                     Wifi 10.1.1                           CSMA LAN 10.1.3
 //
 // The Wifi device on node zero is:  10.1.1.1

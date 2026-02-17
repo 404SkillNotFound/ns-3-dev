@@ -226,11 +226,9 @@ CsmaBroadcastTestCase::DropEvent(Ptr<const Packet> p)
 // Example of the sending of a datagram to a broadcast address
 //
 // Network topology
-//     ==============
 //       |          |
 //       n0    n1   n2
 //       |     |
-//     ==========
 //
 //   n0 originates UDP broadcast to 255.255.255.255/discard port, which
 //   is replicated and received on both n1 and n2
@@ -357,11 +355,9 @@ CsmaMulticastTestCase::DropEvent(Ptr<const Packet> p)
 // Network topology
 //
 //                     Lan1
-//                 ===========
 //                 |    |    |
 //       n0   n1   n2   n3   n4
 //       |    |    |
-//       ===========
 //           Lan0
 //
 // - Multicast source is at node n0;
@@ -551,7 +547,6 @@ CsmaOneSubnetTestCase::DropEvent(Ptr<const Packet> p)
 //
 //       n0    n1   n2   n3
 //       |     |    |    |
-//       =================
 //              LAN
 //
 // - CBR/UDP flows from n0 to n1 and from n3 to n0
@@ -692,7 +687,6 @@ CsmaPacketSocketTestCase::DropEvent(Ptr<const Packet> p)
 //
 //       n0    n1   n2   n3
 //       |     |    |    |
-//     =====================
 //
 // - Packet socket flow from n0 to n1 and from node n3 to n0
 // -- We will test reception at node n0
@@ -826,7 +820,6 @@ CsmaPingTestCase::DropEvent(Ptr<const Packet>)
 //
 //       n0    n1   n2   n3
 //       |     |    |    |
-//     =====================
 //
 //  node n0,n1,n3 pings to node n2
 //  node n0 generates protocol 2 (IGMP) to node n3
@@ -960,7 +953,6 @@ CsmaRawIpSocketTestCase::DropEvent(Ptr<const Packet> p)
 //    (sender)         (receiver)
 //       n0    n1   n2   n3
 //       |     |    |    |
-//     =====================
 //
 // Node n0 sends data to node n3 over a raw IP socket.  The protocol
 // number used is 2.
@@ -1076,17 +1068,14 @@ CsmaStarTestCase::DropEvent(Ptr<const Packet> p)
 //
 //            n2     +          +     n3          .
 //             | ... |\        /| ... |           .
-//             ======= \      / =======           .
 //              CSMA    \    /   CSMA             .
 //                       \  /                     .
 //            n1     +--- n0 ---+     n4          .
 //             | ... |   /  \   | ... |           .
-//             =======  /    \  =======           .
 //              CSMA   /      \  CSMA             .
 //                    /        \                  .
 //            n6     +          +     n5          .
 //             | ... |          | ... |           .
-//             =======          =======           .
 //              CSMA             CSMA             .
 //
 void

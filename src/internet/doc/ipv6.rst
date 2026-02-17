@@ -114,7 +114,6 @@ only IPv6 and node 2 only IPv4:
 
 
 IPv6 addresses assignment
-=========================
 
 In order to use IPv6 on a network, the first thing to do is assigning IPv6 addresses.
 
@@ -251,7 +250,6 @@ This might be changed in the future, so as to avoid issues with real-world
 integrated simulations.
 
 Explicit Congestion Notification (ECN) bits in IPv6
-===================================================
 
 - In IPv6, ECN bits are the last 2 bits of the Traffic class and occupy 10th and 11th bit
   in the header.
@@ -275,7 +273,6 @@ codepoint.
 
 
 Host and Router behaviour in IPv6 and |ns3|
-===========================================
 
 In IPv6 there is a clear distinction between *routers* and *hosts*. As one might expect,
 routers can forward packets from an interface to another interface, while hosts drop
@@ -328,7 +325,6 @@ as the Routing protocol will drop the packet before attempting to forward it.
 
 
 Helpers
-=======
 
 Typically the helpers used in IPv6 setup are:
 
@@ -373,7 +369,6 @@ particular routing algorithm and to print the routing tables.
 
 
 Attributes
-==========
 
 Many classes in the |ns3| IPv6 implementation contain attributes. The most
 useful ones are:
@@ -417,7 +412,6 @@ Mind that :cpp:class:`ns3::NdiscCache` could drop packets as well, and they are 
 in a trace source (yet). This might generate some confusion in the sent/received packets counters.
 
 Advanced Usage
-==============
 
 IPv6 maximum transmission unit (MTU) and fragmentation
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -447,7 +441,6 @@ Note that 1) this is consistent with the RFC specification and 2) L4 protocols a
 responsible for retransmitting the packets.
 
 Examples
-========
 
 The examples for IPv6 are in the directory ``examples/ipv6``. These examples focus on
 the most interesting IPv6 peculiarities, such as fragmentation, redirect and so on.
@@ -456,7 +449,6 @@ Moreover, most TCP and UDP examples located in ``examples/udp``, ``examples/tcp`
 have a command-line option to use IPv6 instead of IPv4.
 
 Troubleshooting
-===============
 
 There are just a few pitfalls to avoid while using |ns3| IPv6.
 

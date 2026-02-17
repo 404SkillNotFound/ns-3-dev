@@ -1,7 +1,6 @@
 .. include:: replace.txt
 
 Applications
-============
 
 3GPP HTTP applications
 ----------------------

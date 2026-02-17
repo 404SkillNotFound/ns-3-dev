@@ -63,7 +63,6 @@ A way to view the timeline of packet transmit and receive events
    :width: 500px
 
 Methodology
-===========
 The class ns3::AnimationInterface is responsible for the creation the trace XML file.
 AnimationInterface uses the tracing infrastructure to track packet flows between nodes.
 AnimationInterface registers itself as a trace hook for tx and rx events before the simulation
@@ -74,7 +73,6 @@ will be discussed in a later section. It is important to note that AnimationInte
 packet only if the rx trace hooks are called. Every tx event must be matched by an rx event.
 
 Downloading NetAnim
-===================
 If NetAnim is not already available in the |ns3| package you downloaded, you can do the following:
 
 The latest version of NetAnim can be downloaded using git with the following command:
@@ -84,7 +82,6 @@ The latest version of NetAnim can be downloaded using git with the following com
   $ git clone https://gitlab.com/nsnam/netanim.git
 
 Building NetAnim
-================
 Prerequisites
 ~~~~~~~~~~~~~
 Qt5 (5.4 and over) and CMake are required to build NetAnim. The ns-3 Installation Guide

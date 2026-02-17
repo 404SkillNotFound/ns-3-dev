@@ -673,7 +673,6 @@ main(int argc, char** argv)
     test.m_beta = 0.637;
     for (uint32_t i = 0; i < test.m_loadProfiles.size(); i++)
     {
-        NS_LOG_DEBUG("========");
         NS_LOG_DEBUG("Variable load profile C" << i + 1);
         if (test.VariableLoadTest(test.m_loadProfiles[i].loads,
                                   test.m_loadProfiles[i].timeStamps,
@@ -690,7 +689,6 @@ main(int argc, char** argv)
     test.m_beta = 0.276;
     for (uint32_t i = 0; i < test.m_loadProfiles.size(); i++)
     {
-        NS_LOG_DEBUG("========");
         NS_LOG_DEBUG("Variable load profile C" << i + 1);
         if (test.VariableLoadTest(test.m_loadProfiles[i].loads,
                                   test.m_loadProfiles[i].timeStamps,

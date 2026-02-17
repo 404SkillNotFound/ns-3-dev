@@ -69,7 +69,6 @@ queue disc.
 
 
 Possible next steps
-===================
 
 * what to do if ECT(1) and either/both ECT(0) and NotECT are in the same flow queue (hash collisions or tunnels)-- our L4S traffic flows will avoid this situation by supporting AccECN and ECN++ (and if it happens in practice, the CoDel logic will just apply two separate thresholds)
 * adding a ramp marking response instead of step threshold
@@ -78,7 +77,6 @@ Possible next steps
 
 
 References
-==========
 
 .. [Hoe16] T. Hoeiland-Joergensen, P. McKenney, D. Taht, J. Gettys and E. Dumazet, The FlowQueue-CoDel Packet Scheduler and Active Queue Management Algorithm, IETF draft.  Available online at `<https://tools.ietf.org/html/draft-ietf-aqm-fq-codel>`_
 
@@ -86,7 +84,6 @@ References
 
 
 Attributes
-==========
 
 The key attributes that the FqCoDelQueue class holds include the following:
 
@@ -113,7 +110,6 @@ device (at initialisation time). The ``FqCoDelQueueDisc::SetQuantum ()`` method
 can be used (at any time) to configure a different value.
 
 Examples
-========
 
 A typical usage pattern is to create a traffic control helper and to configure type
 and attributes of queue disc and filters from the helper. For example, FqCodel

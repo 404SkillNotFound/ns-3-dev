@@ -18,10 +18,8 @@ using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE("PropagationLossModelsTest");
 
-// ===========================================================================
 // This is a simple test to validate propagation loss models of ns-3 wifi.
 // See the chapter in the ns-3 testing and validation guide for more detail
-// ===========================================================================
 
 /**
  * @ingroup propagation

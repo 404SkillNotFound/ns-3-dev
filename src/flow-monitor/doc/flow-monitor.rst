@@ -1,11 +1,9 @@
 Flow Monitor
-============
 
 .. include:: replace.txt
 .. highlight:: cpp
 
 .. heading hierarchy:
-   ============= Chapter
    ------------- Section (#.#)
    ~~~~~~~~~~~~~ Subsection (#.#.#)
 

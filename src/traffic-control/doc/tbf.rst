@@ -77,7 +77,6 @@ class.
     * Else, an event to ``QueueDisc::Run()`` is scheduled after a time period when enough tokens will be present for the dequeue operation.
 
 References
-==========
 
 .. [Ref1] A. Kuznetsov and D. Torokhov; Linux Cross Reference Source Code; Available online at `<https://raw.githubusercontent.com/torvalds/linux/8efd0d9c316af470377894a6a0f9ff63ce18c177/net/sched/sch_tbf.c>`_.
 
@@ -86,7 +85,6 @@ References
 .. [Ref3] Practical IP Network QoS: TBF queuing discipline; Available online at `<https://web.archive.org/web/20200516025221/http://web.opalsoft.net/qos/default.php>`_.
 
 Attributes
-==========
 
 The key attributes that the TbfQueueDisc class holds include the following:
 
@@ -97,7 +95,6 @@ The key attributes that the TbfQueueDisc class holds include the following:
 * ``PeakRate:`` Rate at which tokens enter the second bucket. The default value is 0KB/s, which means that there is no second bucket.
 
 TraceSources
-============
 
 The TbfQueueDisc class provides the following trace sources:
 
@@ -105,7 +102,6 @@ The TbfQueueDisc class provides the following trace sources:
 * ``TokensInSecondBucket:`` Number of Second Bucket Tokens in bytes
 
 Examples
-========
 
 The example for TBF is `tbf-example.cc` located in ``examples/traffic-control/``.  The command to run the file (the invocation below shows the available command-line options) is:
 

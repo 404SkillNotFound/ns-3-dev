@@ -30,14 +30,12 @@ implemented by Jonathan Morton
 The Model Description is similar to the FqCoDel documentation mentioned above.
 
 References
-==========
 
 .. [Pal19] J. Palmei, S. Gupta, P. Imputato, J. Morton, M. Tahiliani, S. Avallone, and D. Taht, Design and Evaluation of COBALT Queue Discipline, 2019 IEEE International Symposium on Local and Metropolitan Area Networks (LANMAN), Paris, France, 2019.
 
 .. [Hoe18] T. Hoiland-Jørgensen, D. Taht and J. Morton, "Piece of CAKE: A Comprehensive Queue Management Solution for Home Gateways," 2018 IEEE International Symposium on Local and Metropolitan Area Networks (LANMAN), Washington, DC, USA, 2018.
 
 Attributes
-==========
 
 Most of the key attributes are similar to the FqCoDel implementation mentioned above.  One difference is the absence of the ``MinBytes`` parameter.
 
@@ -52,7 +50,6 @@ Note that if the user wants to disable Blue Enhancement then the user can set
 it to a large value; for example, to `Time::Max ()`.
 
 Examples
-========
 
 A typical usage pattern is to create a traffic control helper and to configure
 the type

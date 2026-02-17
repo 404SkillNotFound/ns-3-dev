@@ -8,7 +8,6 @@ within each release of the ns-3 LTE module.
 
 
 Milestone 6 (M6) release of the LENA project (April 30, 2013)
-================================================================
 
  - PHY support for UE measurements (RSRP and RSRQ)
  - RRC support for UE measurements (configuration, execution, reporting)
@@ -16,7 +15,6 @@ Milestone 6 (M6) release of the LENA project (April 30, 2013)
 
 
 Milestone 5 (M5) release of the LENA project (January 23, 2013)
-================================================================
 
  - MIMO model
  - HARQ model integrated with error model
@@ -34,7 +32,6 @@ Milestone 5 (M5) release of the LENA project (January 23, 2013)
 
 
 GSoC 2012 release (merged into ns-3-dev on December 2012)
-=========================================================
 
  - Maximum Throughput (MT) Scheduler
  - Throughput to Average (TTA) Scheduler
@@ -44,7 +41,6 @@ GSoC 2012 release (merged into ns-3-dev on December 2012)
 
 
 Milestone 4 (M4) release of the LENA project (December 15, 2011)
-================================================================
 
 + LTE Radio Protocols:
   - RLC/UM
@@ -62,7 +58,6 @@ Milestone 4 (M4) release of the LENA project (December 15, 2011)
 
 
 Milestone 1 (M1) release of the LENA project (June 17, 2011)
-============================================================
 
 Here is a summary of the new features available in the LTE module with
 this release:
@@ -100,7 +95,6 @@ this release:
 
 
 First Public release of the LENA project (March 10, 2011)
-=========================================================
 
 The LENA code is based on the GSoC 2010 project code by Giuseppe Piro,
 which was merged into ns-3-dev on December 2010. With respect to the GSoC
@@ -129,7 +123,6 @@ code, the main modifications that have been performed are:
 
 
 GSoC 2010 release (merged into ns-3-dev on December 2010)
-=========================================================
 
 Here are
 In summary, the most important features provided by the

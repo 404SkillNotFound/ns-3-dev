@@ -4,7 +4,6 @@ Queues
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 This section documents the queue object, which is typically used by NetDevices
@@ -87,7 +86,6 @@ Usage
 *****
 
 Helpers
-=======
 
 A typical usage pattern is to create a device helper and to configure
 the queue type and attributes from the helper, such as this example:
@@ -140,7 +138,6 @@ Users are, of course, free to define and hook their own trace sinks to
 these trace sources.
 
 Examples
-========
 
 The drop-tail queue is used in several examples, such as
 ``examples/udp/udp-echo.cc``.

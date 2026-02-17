@@ -92,7 +92,6 @@ namespace ns3
  *
  *
  * File Format
- * ===========
  *
  * This parser implements \RFC{4180}, but with several restrictions removed;
  * see below for differences.  All the formatting features described next

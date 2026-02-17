@@ -4,7 +4,6 @@ Queue limits
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 This section documents the queue limits model, which is used by the traffic control
@@ -80,7 +79,6 @@ Usage
 *****
 
 Helpers
-=======
 
 A typical usage pattern is to create a traffic control helper and configure
 the queue limits type and attributes from the helper, such as this example:

@@ -2,10 +2,8 @@
 .. _Mobility:
 
 Mobility
-========
 
 .. heading hierarchy:
-   ============= Chapter
    ------------- Section (#.#)
    ~~~~~~~~~~~~~ Subsection (#.#.#)
    ^^^^^^^^^^^^^ Paragraph (no number)

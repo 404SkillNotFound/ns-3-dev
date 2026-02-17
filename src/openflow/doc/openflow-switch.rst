@@ -107,7 +107,6 @@ is assigned, and nothing more. It also must support a SendFrom function so that
 the OpenFlowSwitch can forward across that port.
 
 Scope and Limitations
-=====================
 
 All MPLS capabilities are implemented on the OFSID side in the OpenFlowSwitchNetDevice,
 but ns-3-mpls hasn't been integrated, so ns-3 has no way to pass in
@@ -116,11 +115,9 @@ BufferFromPacket pick up the MplsLabelStack or whatever the MPLS header
 is called on the Packet, and build the MPLS header into the ofpbuf.
 
 Future Work
-===========
 
 
 References
-==========
 
 .. [1] McKeown, N.; Anderson, T.; Balakrishan, H.; Parulkar, G.; Peterson, L.; Rexford, J.; Shenker, S.; Turner, J.; OpenFlow: enabling innovation in campus networks, ACM SIGCOMM Computer Communication Review, Vol. 38, Issue 2, April 2008.
 
@@ -130,7 +127,6 @@ Usage
 The OFSID requires libxml2 (for MPLS FIB xml file parsing), and libdl (for address fault checking).
 
 Building OFSID
-==============
 
 In order to use the OpenFlowSwitch module, you must create and link the
 OFSID (OpenFlow Software Implementation Distribution) to ns-3.
@@ -169,7 +165,6 @@ To do this:
 to build ns-3 and activate the OpenFlowSwitch module in ns-3.
 
 Examples
-========
 For an example demonstrating its use in a simple learning controller/switch,
 run::
 
@@ -181,10 +176,8 @@ To see it in detailed logging, run::
 
 
 Helpers
-=======
 
 Attributes
-==========
 
 The SwitchNetDevice provides following Attributes:
 
@@ -204,21 +197,18 @@ The SwitchNetDevice provides following Attributes:
     TODO
 
 Tracing
-=======
 
 .. note::
 
     TODO
 
 Logging
-=======
 
 .. note::
 
     TODO
 
 Caveats
-=======
 
 .. note::
 

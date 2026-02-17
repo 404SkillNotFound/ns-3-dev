@@ -5,11 +5,9 @@
 // Network topology
 //
 //                     Lan1
-//                 ===========
 //                 |    |    |
 //       n0   n1   n2   n3   n4
 //       |    |    |
-//       ===========
 //           Lan0
 //
 // - Multicast source is at node n0;

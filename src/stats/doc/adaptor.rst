@@ -2,7 +2,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
    ~~~~~~~~~~~~~ Sub-paragraph (no number)
 
@@ -19,7 +18,6 @@ Note:  the term 'adaptor' may also be spelled 'adapter'; we chose
 the spelling aligned with the C++ standard.
 
 Adaptor Overview
-================
 
 An Adaptor is used to make connections between different types of DCF
 objects.
@@ -29,7 +27,6 @@ To date, one Adaptor has been implemented:
 - TimeSeriesAdaptor
 
 Time Series Adaptor
-===================
 
 The TimeSeriesAdaptor lets Probes connect directly to Aggregators
 without needing any Collector in between.

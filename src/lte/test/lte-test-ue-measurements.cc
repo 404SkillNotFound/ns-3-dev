@@ -44,7 +44,6 @@ NS_LOG_COMPONENT_DEFINE("LteUeMeasurementsTest");
 
 const Time UE_MEASUREMENT_REPORT_DELAY = MicroSeconds(1);
 
-// ===== LTE-UE-MEASUREMENTS TEST SUITE ==================================== //
 
 void
 ReportUeMeasurementsCallback(LteUeMeasurementsTestCase* testcase,
@@ -414,7 +413,6 @@ LteUeMeasurementsTestCase::RecvMeasurementReport(uint64_t imsi,
     }
 }
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-1 TEST SUITE ======================== //
 
 /*
  * Overloaded operators, for the convenience of defining test cases
@@ -937,7 +935,6 @@ LteUeMeasurementsPiecewiseTestCase1::TeleportVeryFar()
     m_ueMobility->SetPosition(Vector(1000.0, 0.0, 0.0));
 }
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-2 TEST SUITE ======================== //
 
 /*
  * Test Suite
@@ -1674,7 +1671,6 @@ LteUeMeasurementsPiecewiseTestCase2::TeleportVeryFar()
     m_ueMobility->SetPosition(Vector(550.0, 0.0, 0.0));
 }
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-3 TEST SUITE ======================== //
 
 /*
  * Test Suite
@@ -1937,7 +1933,6 @@ LteUeMeasurementsPiecewiseTestCase3::TeleportEnbNear()
     m_enbMobility->SetPosition(Vector(700.0, 0.0, 0.0));
 }
 
-// ===== LTE-UE-MEASUREMENTS-HANDOVER TEST SUITE =========================== //
 
 /*
  * Test Suite

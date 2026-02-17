@@ -54,7 +54,6 @@ for the user to either attach custom topologies or install ns-3 applications dir
 
 
 References
-==========
 
 .. [1] Alberto Medina, Anukool Lakhina, Ibrahim Matta, and John Byers. BRITE: An Approach to Universal Topology Generation. In Proceedings of the International Workshop on Modeling, Analysis and Simulation of Computer and Telecommunications Systems- MASCOTS '01, Cincinnati, Ohio, August 2001.
 
@@ -83,7 +82,6 @@ can be found in the BRITE user manual.
 
 
 Building BRITE Integration
-==========================
 
 The first step is to download and build the ns-3 specific BRITE repository::
 
@@ -109,7 +107,6 @@ Next, build ns-3::
   $ ./ns3
 
 Examples
-========
 For an example demonstrating BRITE integration
 run::
 

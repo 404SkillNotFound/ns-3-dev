@@ -3,7 +3,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
    ~~~~~~~~~~~~~ Sub-paragraph (no number)
 
@@ -19,7 +18,6 @@ some statements involving |ns3| trace sources do not have Python
 bindings, due to limitations in the bindings.
 
 Data Collection Helpers Overview
-================================
 
 In this section, we provide an overview of some helper classes that
 have been created to ease the configuration of the data collection
@@ -44,7 +42,6 @@ To date, two Data Collection helpers have been implemented:
 - FileHelper
 
 GnuplotHelper
-=============
 
 The GnuplotHelper is a helper class for producing output files used to
 make gnuplots.  The overall goal is to provide the ability for users
@@ -186,7 +183,6 @@ It has the following arguments:
 
   +--------------------------------+------------------------------+
   | Argument                       | Description                  |
-  +================================+==============================+
   | outputFileNameWithoutExtension | Name of gnuplot related files|
   |                                | to write with no extension.  |
   +--------------------------------+------------------------------+
@@ -243,7 +239,6 @@ It has the following arguments:
 
   +------------------+------------------------------+
   | Argument         | Description                  |
-  +==================+==============================+
   | typeId           | The type ID for the probe    |
   |                  | created by this helper.      |
   +------------------+------------------------------+
@@ -341,7 +336,6 @@ see if there were wildcards in the path.
                        GnuplotAggregator::KEY_INSIDE);
 
 FileHelper
-==========
 
 The FileHelper is a helper class used to put data values into a file.
 The overall goal is to provide the ability for users
@@ -453,7 +447,6 @@ It has the following arguments:
 
   +--------------------------------+------------------------------+
   | Argument                       | Description                  |
-  +================================+==============================+
   | outputFileNameWithoutExtension | Name of output file to write |
   |                                | with no extension.           |
   +--------------------------------+------------------------------+
@@ -495,7 +488,6 @@ It has the following arguments:
 
   +------------------+------------------------------+
   | Argument         | Description                  |
-  +==================+==============================+
   | typeId           | The type ID for the probe    |
   |                  | to be created.               |
   +------------------+------------------------------+
@@ -595,7 +587,6 @@ you would see if there were wildcards in the path.
                         "Output");
 
 Scope and Limitations
-=====================
 
 Currently, only these Probes have been implemented and connected
 to the GnuplotHelper and to the FileHelper:

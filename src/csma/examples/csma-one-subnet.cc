@@ -6,7 +6,6 @@
 //
 //       n0    n1   n2   n3
 //       |     |    |    |
-//       =================
 //              LAN
 //
 // - CBR/UDP flows from n0 to n1 and from n3 to n0

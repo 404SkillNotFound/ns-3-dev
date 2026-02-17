@@ -6,7 +6,6 @@ File Descriptor NetDevice
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 The ``src/fd-net-device`` module provides the ``FdNetDevice`` class,
@@ -101,7 +100,6 @@ file descriptor.
 
 
 Scope and Limitations
-=====================
 
 Users of this device are cautioned that there is no flow control
 across the file descriptor boundary, when using in emulation mode.
@@ -205,7 +203,6 @@ of type SCM_RIGHTS.
 
 
 Helpers
-=======
 
 EmuFdNetDeviceHelper
 ####################
@@ -343,7 +340,6 @@ The model in TapBridge (in another module) is as follows:
     | ------ |                    | -------- |
     |  stack |                    |    IP    |     +----------+
     | ------ |                    |   stack  |     |   node   |
-    |  TAP   |                    |==========|     | -------- |
     | device | <----- IPC ------> |   tap    |     |    IP    |
     +--------+                    |  bridge  |     |   stack  |
                                   | -------- |     | -------- |
@@ -375,7 +371,6 @@ on the device, and the PI header if needed.  For example:
 
 
 Attributes
-==========
 
 The ``FdNetDevice`` provides a number of attributes:
 
@@ -420,7 +415,6 @@ The standard set of Mac-level NetDevice trace sources is provided.
 * ``PromiscSniffer``:  Promiscuous packet sniffer (for tcpdump-like traces)
 
 Examples
-========
 
 Several examples are provided:
 

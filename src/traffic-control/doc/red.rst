@@ -27,7 +27,6 @@ is created. Otherwise, the capacity of the queue disc is determined by
 the capacity of the internal queue provided by the user.
 
 Adaptive Random Early Detection (ARED)
-======================================
 ARED is a variant of RED with two main features: (i) automatically sets Queue
 weight, MinTh and MaxTh and (ii) adapts maximum drop probability. The model
 in ns-3 contains implementation of both the features, and is a port of Sally
@@ -35,19 +34,16 @@ Floyd's ns-2 ARED model. Note that the user is allowed to choose and explicitly
 configure the simulation by selecting feature (i) or feature (ii), or both.
 
 Feng's Adaptive RED
-===================
 Feng's Adaptive RED is a variant of RED that adapts the maximum drop
 probability. The model in ns-3 contains implementation of this feature, and is a
 port of ns-2 Feng's Adaptive RED model.
 
 Nonlinear Random Early Detection (NLRED)
-========================================
 NLRED is a variant of RED in which the linear packet dropping function of
 RED is replaced by a nonlinear quadratic function. This approach makes packet
 dropping gentler for light traffic load and aggressive for heavy traffic load.
 
 Explicit Congestion Notification (ECN)
-======================================
 This RED model supports an ECN mode of operation to notify endpoints of
 congestion that may be developing in a bottleneck queue, without resorting
 to packet drops. Such a mode is enabled by setting the UseEcn attribute to
@@ -66,7 +62,6 @@ use RED queues for other non-IP QueueDiscItems that may or may not support
 the ``Mark ()`` method.
 
 References
-==========
 
 The RED queue disc aims to be close to the results cited in:
 S.Floyd, K.Fall http://icir.org/floyd/papers/redsims.ps
@@ -85,7 +80,6 @@ The addition of explicit congestion notification (ECN) to IP:
 K. K. Ramakrishnan et al, https://tools.ietf.org/html/rfc3168
 
 Attributes
-==========
 
 The RED queue contains a number of attributes that control the RED
 policies:
@@ -131,7 +125,6 @@ The following attribute should be turned on to simulate NLRED queue disc:
 Consult the ns-3 documentation for explanation of these attributes.
 
 Simulating ARED
-===============
 
 To switch on ARED algorithm, the attribute ARED must be set to true,
 as done in ``src/traffic-control/examples/adaptive-red-tests.cc``:
@@ -163,7 +156,6 @@ To configure (ii); AdaptMaxP must be set to true, as done in
   Config::SetDefault("ns3::RedQueueDisc::AdaptMaxP", BooleanValue(true));
 
 Simulating Feng's Adaptive RED
-==============================
 
 To switch on Feng's Adaptive RED algorithm, the attribute FengAdaptive must be
 set to true, as done in ``examples/traffic-control/red-vs-fengadaptive.cc``:
@@ -173,7 +165,6 @@ set to true, as done in ``examples/traffic-control/red-vs-fengadaptive.cc``:
   Config::SetDefault("ns3::RedQueueDisc::FengAdaptive", BooleanValue(true));
 
 Simulating NLRED
-================
 
 To switch on NLRED algorithm, the attribute NLRED must be set to true,
 as shown below:
@@ -183,7 +174,6 @@ as shown below:
   Config::SetDefault("ns3::RedQueueDisc::NLRED", BooleanValue(true));
 
 Examples
-========
 
 The RED queue example is found at ``src/traffic-control/examples/red-tests.cc``.
 

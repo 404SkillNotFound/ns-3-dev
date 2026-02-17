@@ -3,7 +3,6 @@
 .. heading hierarchy:
    ------------- Document Title
    ************* Chapter (#)
-   ============= Section (#.#)
    ############# Subsection (#.#.#)
    ~~~~~~~~~~~~~ Paragraph (no number)
 
@@ -11,7 +10,6 @@ Design Documentation
 ********************
 
 Overview
-========
 
 The |ns3| `mesh` module extends the |ns3| `wifi` module to provide mesh
 networking capabilities according to the IEEE 802.11s standard [ieee80211s]_.
@@ -144,7 +142,6 @@ delay for the forwarding of management frames.
 Users may substitute other random variable configurations as desired.
 
 Scope and Limitations
-=====================
 
 Supported features
 ##################

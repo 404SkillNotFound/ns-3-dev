@@ -348,7 +348,6 @@ SendOnePacketTestCase::DoRun()
 
     /**
      * Data Packet
-     * ===========
      * Preamble Duration = 48 us
      * Symbol Duration = 12.8 + 0.8 (Guard Interval) = 13.6 us
      * Tx Duration of a packet requiring 1 symbol  = (1 * 13.6) + 48 = 61.6 us
@@ -373,7 +372,6 @@ SendOnePacketTestCase::DoRun()
 
     /**
      * Acknowledgement Packet
-     * ======================
      * Preamble Duration = 20 us
      * Symbol Duration = 4 us
      * Number of symbols = 2

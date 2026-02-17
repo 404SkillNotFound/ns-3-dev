@@ -328,7 +328,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
     dB_u tol{10e-2};
     double prec = 10; // in decimals
 
-    // ============================================================================================
     // 11p 5MHz
     NS_LOG_FUNCTION("Check slopes for 11p 5MHz");
     maskSlopes = {
@@ -360,7 +359,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11p 10MHz
     NS_LOG_FUNCTION("Check slopes for 11p 10MHz");
     maskSlopes = {
@@ -392,7 +390,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11a
     NS_LOG_FUNCTION("Check slopes for 11a");
     maskSlopes = {
@@ -424,7 +421,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11g
     NS_LOG_FUNCTION("Check slopes for 11g");
     // same slopes as 11a
@@ -438,7 +434,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11n 20MHz @ 2.4GHz
     NS_LOG_FUNCTION("Check slopes for 11n 20MHz @ 2.4GHz");
     maskSlopes = {
@@ -470,7 +465,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11n 20MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11n 20MHz @ 5GHz");
     maskSlopes = {
@@ -502,7 +496,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11n 40MHz @ 2.4GHz
     NS_LOG_FUNCTION("Check slopes for 11n 40MHz @ 2.4GHz");
     maskSlopes = {
@@ -534,7 +527,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11n 20MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11n 40MHz @ 5GHz");
     maskSlopes = {
@@ -566,7 +558,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ac 20MHz
     NS_LOG_FUNCTION("Check slopes for 11ac 20MHz");
     maskSlopes = {
@@ -598,7 +589,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ac 20MHz
     NS_LOG_FUNCTION("Check slopes for 11ac 40MHz");
     maskSlopes = {
@@ -630,7 +620,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ac 80MHz
     NS_LOG_FUNCTION("Check slopes for 11ac 80MHz");
     maskSlopes = {
@@ -662,7 +651,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ac 20MHz
     NS_LOG_FUNCTION("Check slopes for 11ac 160MHz");
     maskSlopes = {
@@ -694,7 +682,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ac 80+80MHz
     NS_LOG_FUNCTION("Check slopes for 11ac 80+80MHz");
     maskSlopes = {
@@ -754,7 +741,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 20MHz @ 2.4GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 20MHz @ 2.4GHz");
     maskSlopes = {
@@ -792,7 +778,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 20MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 20MHz @ 5GHz");
     maskSlopes = {
@@ -830,7 +815,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 40MHz @ 2.4GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 40MHz @ 2.4GHz");
     maskSlopes = {
@@ -868,7 +852,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 40MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 40MHz @ 5GHz");
     maskSlopes = {
@@ -906,7 +889,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 80MHz @ 5GHz");
     maskSlopes = {
@@ -944,7 +926,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 160MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 160MHz @ 5GHz");
     maskSlopes = {
@@ -990,7 +971,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80+80MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 80+80MHz @ 5GHz");
     maskSlopes = {
@@ -1062,7 +1042,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80+80MHz @ 5GHz
     NS_LOG_FUNCTION("Check slopes for 11ax 80+80MHz @ 5GHz with larger frequency separation "
                     "between the two PSDs");
@@ -1135,7 +1114,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80MHz @ 5GHz - first 20 MHz subchannel punctured
     NS_LOG_FUNCTION("Check slopes for 11ax 80MHz @ 5GHz with first 20 MHz subchannel punctured");
     maskSlopes = {
@@ -1176,7 +1154,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                {true, false, false, false}),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80MHz @ 5GHz - second 20 MHz subchannel punctured
     NS_LOG_FUNCTION("Check slopes for 11ax 80MHz @ 5GHz with second 20 MHz subchannel punctured");
     maskSlopes = {
@@ -1221,7 +1198,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                {false, true, false, false}),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80MHz @ 5GHz - third 20 MHz subchannel punctured
     NS_LOG_FUNCTION("Check slopes for 11ax 80MHz @ 5GHz with third 20 MHz subchannel punctured");
     maskSlopes = {
@@ -1266,7 +1242,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                {false, false, true, false}),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 80MHz @ 5GHz - last 20 MHz subchannel punctured
     NS_LOG_FUNCTION("Check slopes for 11ax 80MHz @ 5GHz with last 20 MHz subchannel punctured");
     maskSlopes = {
@@ -1307,7 +1282,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                {false, false, false, true}),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 160MHz @ 5GHz - first two 20 MHz subchannels punctured
     NS_LOG_FUNCTION(
         "Check slopes for 11ax 160MHz @ 5GHz with two first 20 MHz subchannels punctured");
@@ -1356,7 +1330,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                        {true, true, false, false, false, false, false, false}),
         TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 160MHz @ 5GHz - third and fourth 20 MHz subchannels punctured
     NS_LOG_FUNCTION(
         "Check slopes for 11ax 160MHz @ 5GHz with third and fourth 20 MHz subchannels punctured");
@@ -1407,7 +1380,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                        {false, false, true, true, false, false, false, false}),
         TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 160MHz @ 5GHz - fifth and sixth 20 MHz subchannels punctured
     NS_LOG_FUNCTION(
         "Check slopes for 11ax 160MHz @ 5GHz with fifth and sixth 20 MHz subchannels punctured");
@@ -1458,7 +1430,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                        {false, false, false, false, true, true, false, false}),
         TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11ax 160MHz @ 5GHz - last two 20 MHz subchannels punctured
     NS_LOG_FUNCTION(
         "Check slopes for 11ax 160MHz @ 5GHz with two last 20 MHz subchannels punctured");
@@ -1507,7 +1478,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                        {false, false, false, false, false, false, true, true}),
         TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 20MHz @ 6GHz
     NS_LOG_FUNCTION("Check slopes for 11be 20MHz @ 6GHz");
     maskSlopes = {
@@ -1545,7 +1515,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 40MHz @ 6GHz
     NS_LOG_FUNCTION("Check slopes for 11be 40MHz @ 6GHz");
     maskSlopes = {
@@ -1583,7 +1552,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 80MHz @ 6GHz
     NS_LOG_FUNCTION("Check slopes for 11be 80MHz @ 6GHz");
     maskSlopes = {
@@ -1621,7 +1589,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 160MHz @ 6GHz
     NS_LOG_FUNCTION("Check slopes for 11be 160MHz @ 6GHz");
     maskSlopes = {
@@ -1667,7 +1634,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 320MHz @ 6GHz
     NS_LOG_FUNCTION("Check slopes for 11be 320MHz @ 6GHz");
     maskSlopes = {
@@ -1729,7 +1695,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                prec),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 320MHz @ 6GHz - first 20 MHz subchannel punctured
     std::vector<bool> puncturedSubchannels(16, false);
     NS_LOG_FUNCTION("Check slopes for 11be 320MHz @ 6GHz with first 20 MHz subchannel punctured");
@@ -1796,7 +1761,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                puncturedSubchannels),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 320MHz @ 6GHz - second 40 MHz subchannel punctured
     puncturedSubchannels = std::vector<bool>(16, false);
     NS_LOG_FUNCTION("Check slopes for 11be 320MHz @ 6GHz with second 40 MHz subchannel punctured");
@@ -1864,7 +1828,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                puncturedSubchannels),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 320MHz @ 6GHz - second 80 MHz subchannel punctured
     puncturedSubchannels = std::vector<bool>(16, false);
     NS_LOG_FUNCTION("Check slopes for 11be 320MHz @ 6GHz with second 80 MHz subchannel punctured");
@@ -1928,7 +1891,6 @@ WifiTransmitMaskTestSuite::WifiTransmitMaskTestSuite()
                                                puncturedSubchannels),
                 TestCase::Duration::QUICK);
 
-    // ============================================================================================
     // 11be 320MHz @ 6GHz - last 120 MHz (40 MHz + 80 MHz) subchannel punctured
     puncturedSubchannels = std::vector<bool>(16, false);
     NS_LOG_FUNCTION("Check slopes for 11be 320MHz @ 6GHz with last 120 MHz subchannel punctured");
