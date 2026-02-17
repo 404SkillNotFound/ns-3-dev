@@ -4,7 +4,6 @@
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 
@@ -34,7 +33,6 @@ IPv4 global addresses can be:
 |ns3| can use both methods, and it's quite important to understand the implications of both.
 
 Manually assigned IPv4 addresses
-================================
 
 This is probably the easiest and most used method. As an example:
 
@@ -81,7 +79,6 @@ Alternatively, it is possible to assign a specific address to a node:
 
 
 DHCP assigned IPv4 addresses
-============================
 
 DHCP is available in the internet-apps module. In order to use DHCP you have to have a
 :cpp:class:`DhcpServer` application in a node (the DHC server node) and a :cpp:class:`DhcpClient` application in
@@ -103,7 +100,6 @@ custom trace code, or you can use our helper functions in some cases to
 arrange for tracing to be enabled.
 
 Tracing in ARP
-==============
 
 ARP provides two trace hooks, one in the cache, and one in the layer three
 protocol.  The trace accessor in the cache is given the name "Drop."  When
@@ -130,7 +126,6 @@ be called for a  number of reasons.
   queue is exceeded, the outbound packet is dropped and this trace is fired.
 
 Tracing in IPv4
-===============
 
 The IPv4 layer three protocol provides three trace hooks.  These are the
 "Tx" (ns3::Ipv4L3Protocol::m_txTrace), "Rx" (ns3::Ipv4L3Protocol::m_rxTrace)

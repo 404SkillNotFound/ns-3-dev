@@ -156,7 +156,6 @@ LrWpanErrorDistanceTestCase::DoRun()
     Simulator::Destroy();
 }
 
-// ==============================================================================
 LrWpanErrorModelTestCase::LrWpanErrorModelTestCase()
     : TestCase("Test the 802.15.4 error model")
 {

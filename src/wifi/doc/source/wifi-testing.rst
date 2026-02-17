@@ -102,7 +102,6 @@ programs described below, and during the course of a (separate) LTE/Wi-Fi
 coexistence study not documented herein.
 
 Saturation performance
-======================
 
 The program ``examples/wireless/wifi-spectrum-saturation-example.cc``
 allows user to select either the `SpectrumWifiPhy` or `YansWifiPhy` for
@@ -157,7 +156,6 @@ This is to be expected since YansWifiPhy and SpectrumWifiPhy use the
 same error rate model in this case.
 
 Packet error rate performance
-=============================
 
 The program ``examples/wireless/wifi-spectrum-per-example.cc`` allows users
 to select either `SpectrumWifiPhy` or `YansWifiPhy`, as above, and select
@@ -186,7 +184,6 @@ As in the above saturation example, running this program with YansWifiPhy
 will yield identical output.
 
 Interference performance
-========================
 
 The program ``examples/wireless/wifi-spectrum-per-interference.cc`` is based
 on the previous packet error rate example, but copies over the

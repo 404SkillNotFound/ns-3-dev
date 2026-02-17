@@ -18,9 +18,7 @@ using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE("pcap-file-test-suite");
 
-// ===========================================================================
 // Some utility functions for the tests.
-// ===========================================================================
 
 static uint16_t
 Swap(uint16_t val)
@@ -314,10 +312,8 @@ ReadModeCreateTestCase::DoRun()
 }
 
 #if 0
-// ===========================================================================
 // Test case to make sure that the Pcap File Object can open an existing pcap
 // file for appending.
-// ===========================================================================
 class AppendModeCreateTestCase : public TestCase
 {
 public:

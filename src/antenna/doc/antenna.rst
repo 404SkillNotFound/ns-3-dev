@@ -3,7 +3,6 @@
 .. highlight:: bash
 
 Antenna
-=======
 
 The Antenna module provides:
 

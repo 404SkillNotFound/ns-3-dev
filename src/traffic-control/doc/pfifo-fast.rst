@@ -15,9 +15,7 @@ as FIFO droptail queues) based on their priority (users can read
 The four least significant bits of the priority are used to determine
 the selected band according to the following table:
 
-==============  ======
 Priority & 0xf  Band
-==============  ======
     0            1
     1            2
     2            2
@@ -34,7 +32,6 @@ Priority & 0xf  Band
    13            1
    14            1
    15            1
-==============  ======
 
 The system behaves similar to three ns3::DropTail queues operating
 together, in which packets from higher priority bands are always
@@ -50,14 +47,12 @@ than MaxSize. No packet filter can be added to a PfifoFastQueueDisc.
 
 
 Attributes
-==========
 
 The PfifoFastQueueDisc class holds a single attribute:
 
 * ``MaxSize:`` The maximum number of packets accepted by the queue disc. The default value is 1000.
 
 Examples
-========
 
 Various examples located in ``src/traffic-control/examples`` (e.g., codel-vs-pfifo-asymmetric.cc)
 shows how to configure and install a PfifoFastQueueDisc on internet nodes.

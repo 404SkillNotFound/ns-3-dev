@@ -7,7 +7,6 @@
 //    (sender)         (receiver)
 //       n0    n1   n2   n3
 //       |     |    |    |
-//     =====================
 //
 // Node n0 sends data to node n3 over a raw IP socket.  The protocol
 // number used is 2.

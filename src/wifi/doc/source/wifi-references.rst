@@ -3,7 +3,6 @@
 .. only:: html
 
 References
-==========
 
 .. [ieee80211] IEEE Std 802.11-2012, *Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications*
 

@@ -4,10 +4,8 @@
 .. _Propagation:
 
 Propagation
-===========
 
 .. heading hierarchy:
-   ============= Chapter
    ------------- Section (#.#)
    ~~~~~~~~~~~~~ Subsection (#.#.#)
    ^^^^^^^^^^^^^ Paragraph (no number)

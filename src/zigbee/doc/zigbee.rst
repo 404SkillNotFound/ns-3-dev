@@ -5,7 +5,6 @@ Zigbee
 .. highlight:: cpp
 
 .. heading hierarchy:
-   ============= Chapter
    ------------- Section (#.#)
    ~~~~~~~~~~~~~ Subsection (#.#.#)
 

@@ -2494,16 +2494,13 @@ can be selected, which are briefly described in the table below:
 
 .. table:: List of supported event-based triggering criteria
 
-   ======== ======================================================
    Name     Description
-   ======== ======================================================
    Event A1 Serving cell becomes better than `threshold`
    Event A2 Serving cell becomes worse than `threshold`
    Event A3 Neighbour becomes `offset` dB better than serving cell
    Event A4 Neighbour becomes better than `threshold`
    Event A5 Serving becomes worse than `threshold1`
             *AND* neighbour becomes better than `threshold2`
-   ======== ======================================================
 
 Two main conditions to be checked in an event-based trigger are the *entering
 condition* and the *leaving condition*. More details on these two can be found
@@ -2877,7 +2874,6 @@ the procedure.
    +------------+----------+------------+-------------+----------+------------+
    | Name       | Location | Timer      | Timer       | Default  | When timer |
    |            |          | starts     | stops       | duration | expired    |
-   +============+==========+============+=============+==========+============+
    | Connection | eNodeB   | New UE     | Receive RRC | 15 ms    | Remove UE  |
    | request    | RRC      | context    | CONNECTION  | (Max)    | context    |
    | timeout    |          | added      | REQUEST     |          |            |
@@ -2913,7 +2909,6 @@ the same cell again.
    +------------------+----------+------------------+-----------+---------+------------------------------+---------------------+
    | Name             | Location | Msg              | Monitored | Default | Limit not reached            | Limit reached       |
    |                  |          |                  | by        | value   |                              |                     |
-   +==================+==========+==================+===========+=========+==============================+=====================+
    | ConnEstFailCount | eNB MAC  | RachConfigCommon | UE RRC    | 1       | Increment the local counter. | Reset the local     |
    |                  |          | in SIB2, HO REQ  |           |         | Invalided the prev SIB2 msg, | counter and perform |
    |                  |          | and HO Ack       |           |         | and try random access        | cell selection.     |

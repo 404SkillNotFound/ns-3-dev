@@ -7,7 +7,6 @@ Internet Applications Module Documentation
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 The goal of this module is to hold all the Internet-specific applications,
@@ -32,7 +31,6 @@ The ``Ping`` application supports both IPv4 and IPv6 and replaces earlier
 address family dependent.  ``Ping`` was introduced in the ns-3.38 release cycle.
 
 Model Description
-=================
 
 This application behaves similarly to the Unix ``ping`` application, although
 with fewer options supported.  ``Ping`` sends ICMP Echo Request messages to
@@ -236,7 +234,6 @@ Finally, the program has some code that can be enabled to selectively
 force packet drops to check such behavior.
 
 Validation
-==========
 
 The following test cases have been added for regression testing:
 
@@ -275,7 +272,6 @@ following 6 files:
 * dhcp-header.cc
 
 Helpers
-=======
 
 The following two files have been added to ``src/internet-apps/helper`` for DHCP:
 
@@ -287,12 +283,10 @@ Tests
 The tests for DHCP can be found at ``src/internet-apps/test/dhcp-test.cc``
 
 Examples
-========
 The examples for DHCP can be found at ``src/internet-apps/examples/dhcp-example.cc``
 
 
 Scope and Limitations
-=====================
 
 The server should be provided with a network address, mask and a range of address
 for the pool. One client application can be installed on only one netdevice in a
@@ -337,7 +331,6 @@ The |ns3| implementation of Dynamic Host Configuration Protocol for IPv6 (DHCPv6
 follows the specifications of :rfc:`8415`.
 
 Model Description
-=================
 
 The aim of the DHCPv6 application is to provide a method for dynamically assigning IPv6 addresses to nodes.
 This application functions similarly to the ``dhcpd`` daemon in Linux, although it supports fewer options.
@@ -495,7 +488,6 @@ The following example has been written in ``src/internet-apps/test/``:
 * ``dhcp6-test.cc``: Tests the working of DHCPv6 with a single server and 2 client nodes that have 1 CSMA interface and 1 Wifi interface each.
 
 Scope and Limitations
-=====================
 * Limited options have been included in the DHCPv6 implementation, namely:
 
   * Server Identifier
@@ -511,7 +503,6 @@ Scope and Limitations
 * The client application does not retransmit lost messages. Its use in wireless scenarios might lead to inconsistencies.
 
 Future Work
-===========
 * The Rapid Commit option may be implemented to allow a Solicit / Reply message exchange between the client and server.
 * Addition of DHCPv6 relays to allow the client and server to be in different subnets.
 * Implementation of stateless DHCPv6 to allow the client to request only configuration information from the server.
@@ -521,6 +512,5 @@ Future Work
 * Include the ``Preference Option`` in the Advertise message sent by the server. This option allows the client to identify and choose a single server based on the preference value, instead of obtaining leases from each server that responds to the Solicit message
 
 References
-==========
 * :rfc:`8415` - Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
 * Infoblox Blog <https://blogs.infoblox.com/ipv6-coe/slaac-to-basics-part-2-of-2-configuring-slaac/ > to understand how SLAAC and DHCPv6 operate at the same time.

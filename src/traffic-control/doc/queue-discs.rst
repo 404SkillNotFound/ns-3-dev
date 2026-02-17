@@ -5,7 +5,6 @@ Queue disciplines
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 Model Description
@@ -86,7 +85,6 @@ requeued.
 
 
 Design
-==========
 
 A C++ abstract base class, class QueueDisc, is subclassed to implement a specific
 queue disc. A subclass is required to implement the following methods:
@@ -202,7 +200,6 @@ device, regardless or not of whether the device's internal queue can accept it,
 and the traffic control layer's TcDrop trace will not be called.
 
 Helpers
-=======
 
 A typical usage pattern is to create a traffic control helper and to configure type
 and attributes of queue discs, queues, classes and filters from the helper, For example,
@@ -328,7 +325,6 @@ interface). In particular:
   triggers calls to the ``CheckConfig`` and ``InitializeParams`` methods of the queue disc.
 
 Requeue
-========
 In Linux, a packet dequeued from a queue disc can be requeued (i.e., stored somewhere
 and sent to the device at a later time) in some circumstances. Firstly, the function
 used to dequeue a packet (dequeue_skb) actually dequeues a packet only if the device

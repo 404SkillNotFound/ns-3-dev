@@ -2,7 +2,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 Scope/Limitations

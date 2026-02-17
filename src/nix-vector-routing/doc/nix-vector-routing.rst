@@ -7,7 +7,6 @@ Nix-Vector Routing Documentation
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 
@@ -68,7 +67,6 @@ the Epoch is globally updated, and any outdated NixVector is rebuilt.
 |ns3| supports IPv4 as well as IPv6 Nix-Vector routing.
 
 Scope and Limitations
-=====================
 
 Currently, the |ns3| model of nix-vector routing supports IPv4 and IPv6
 p2p links, CSMA links and multiple WiFi networks with the same channel object.
@@ -130,7 +128,6 @@ use IPv4 or IPv6 Nix-Vector routing.
    ``ns3/nix-vector-routing-module.h`` contains the header files for both the classes.
 
 Examples
-========
 
 The examples for the NixVectorRouting module lives in
 the directory ``src/nix-vector-routing/examples``.

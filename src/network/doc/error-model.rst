@@ -5,7 +5,6 @@ Error Model
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 This section documents a few error model objects, typically associated with
@@ -60,7 +59,6 @@ NetDevice models so that artificial losses (mimicking channel losses)
 can be induced.
 
 Scope and Limitations
-=====================
 
 No known limitations.  There are no existing models that try to modify
 the packet contents (e.g. apply bit or byte errors to the byte buffers).
@@ -72,7 +70,6 @@ and do not typically use these packet error models, although some (e.g.,
 Wi-Fi) support the addition of ``ErrorModel`` as an optional model.
 
 References
-==========
 
 The initial |ns3| error models were ported from ns-2 (queue/errmodel.{cc,h})
 
@@ -104,12 +101,10 @@ with a pointer available to hold this type of error model:
 However, the ``ErrorModel`` could be used anywhere where packets are used
 
 Helpers
-=======
 
 This model is typically not used with helpers.
 
 Examples
-========
 
 Error models are used in the tutorial ``fifth`` and ``sixth`` programs.
 
@@ -117,7 +112,6 @@ The directory ``examples/error-model/`` contains an example
 ``simple-error-model.cc`` that exercises the Rate and List error models.
 
 Troubleshooting
-===============
 
 No known issues.
 

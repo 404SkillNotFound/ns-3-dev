@@ -30,7 +30,6 @@ class MobilityModel;
 
 using namespace ns3;
 
-// ===== LTE-UE-MEASUREMENTS TEST SUITE ==================================== //
 
 /**
  * @ingroup lte-test
@@ -111,7 +110,6 @@ class LteUeMeasurementsTestCase : public TestCase
     double m_rsrqDbUeNeighborCell;  ///< RSRQ in dBm UE 2
 };
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-1 TEST SUITE ======================== //
 
 /**
  * @ingroup lte-test
@@ -247,7 +245,6 @@ class LteUeMeasurementsPiecewiseTestCase1 : public TestCase
     // end of class LteUeMeasurementsPiecewiseTestCase1
 };
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-2 TEST SUITE ======================== //
 
 /**
  * @ingroup lte-test
@@ -383,7 +380,6 @@ class LteUeMeasurementsPiecewiseTestCase2 : public TestCase
     // end of class LteUeMeasurementsPiecewiseTestCase2
 };
 
-// ===== LTE-UE-MEASUREMENTS-PIECEWISE-3 TEST SUITE ======================== //
 
 /**
  * @ingroup lte-test
@@ -517,7 +513,6 @@ class LteUeMeasurementsPiecewiseTestCase3 : public TestCase
     // end of class LteUeMeasurementsPiecewiseTestCase3
 };
 
-// ===== LTE-UE-MEASUREMENTS-HANDOVER TEST SUITE =========================== //
 
 /**
  * @ingroup lte-test

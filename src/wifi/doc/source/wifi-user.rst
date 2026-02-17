@@ -92,7 +92,6 @@ common channel.  The rest of this section describes how additional
 configuration may be performed.
 
 YansWifiChannelHelper
-=====================
 
 The YansWifiChannelHelper has an unusual name. Readers may wonder why it is
 named this way. The reference is to the `yans simulator
@@ -128,7 +127,6 @@ The following two methods are useful when configuring YansWifiChannelHelper:
 * ``YansWifiChannelHelper::SetPropagationDelay`` sets a PropagationDelayModel (not chainable)
 
 YansWifiPhyHelper
-=================
 
 Physical devices (base class ``ns3::WifiPhy``) connect to ``ns3::YansWifiChannel`` models in
 |ns3|.  We need to create WifiPhy objects appropriate for the YansWifiChannel; here
@@ -246,7 +244,6 @@ For example, this code configures a node with 3 antennas that supports 2 spatial
 .. _Channel-settings:
 
 Channel, frequency, channel width, and band configuration
-=========================================================
 
 There is a unique ``ns3::WifiPhy`` attribute, named ``ChannelSettings``, that
 enables to set channel number, channel width, frequency band and primary20 index
@@ -609,7 +606,6 @@ This is done by setting the ``ns3::WifiMac::SkipCandidateAPsWithLargerChannelWid
 
 
 SpectrumWifiPhyHelper
-=====================
 
 The API for this helper closely tracks the API of the YansWifiPhyHelper,
 with the exception that a channel of type ``ns3::SpectrumChannel`` instead
@@ -629,7 +625,6 @@ where FrequencyRange is a structure that contains the start and stop frequencies
 expressed in MHz which corresponds to the spectrum portion that is covered by the channel.
 
 WifiMacHelper
-=============
 
 The next step is to configure the MAC model. We use WifiMacHelper to accomplish this.
 WifiMacHelper takes care of both the MAC low model and MAC high model, and configures an object factory to create instances of a ``ns3::WifiMac``.
@@ -758,9 +753,7 @@ method sets the user priority (UP) of an MSDU to the three most significant
 bits of the DS field. The Access Category is then determined based on the user priority
 according to the following table:
 
-===  ===============
 UP   Access Category
-===  ===============
  7     AC_VO
  6     AC_VO
  5     AC_VI
@@ -769,14 +762,11 @@ UP   Access Category
  0     AC_BE
  2     AC_BK
  1     AC_BK
-===  ===============
 
 ToS and DSCP values map onto user priorities and access categories according
 to the following table.
 
-============  ============  ==  ===============
 DiffServ PHB  ToS (binary)  UP  Access Category
-============  ============  ==  ===============
 EF            101110xx      5   AC_VI
 AF11          001010xx      1   AC_BK
 AF21          010010xx      2   AC_BK
@@ -798,7 +788,6 @@ CS4           100000xx      4   AC_VI
 CS5           101000xx      5   AC_VI
 CS6           110000xx      6   AC_VO
 CS7           111000xx      7   AC_VO
-============  ============  ==  ===============
 
 So, for example, a ToS equal to 0xc0 (binary 11000000)
 will map to CS6, User Priority 6, and Access Category AC_VO.
@@ -816,7 +805,6 @@ PfifoFastQueueDisc) that classifies packets based on their priority will
 use the user priority instead of the socket priority.
 
 WifiHelper
-==========
 
 We're now ready to create WifiNetDevices. First, let's create
 a WifiHelper with default settings:
@@ -898,7 +886,6 @@ deviate from the default behavior; the example scripts show how to do some of
 this reconfiguration.
 
 WifiPhyRxTraceHelper
-====================
 The ``WifiPhyRxTraceHelper`` can be used to collect statistics and records of Wi-Fi
 reception events at the physical layer, such as whether a PPDU was received or was dropped for
 some reason, and whether a PPDU overlapped in time (collided) with one or more other PPDUs on the
@@ -1132,7 +1119,6 @@ the ``GetStatistics()`` methods, but when the raw PPDU records are retrieved, al
 received are available and the user is responsible for further filtering as they see fit.
 
 WifiTxStatsHelper
-=================
 
 The ``WifiTxStatsHelper`` is complementary to the ``WifiPhyRxTraceHelper``.  Where the latter
 is used to collect statistics of Wi-Fi reception events at the physical layer, the former
@@ -1286,7 +1272,6 @@ The example program ``src/wifi/examples/wifi-bianchi.cc`` provides an example us
 helper, by setting the program option ``--useTxHelper`` to true.
 
 WifiCoTraceHelper
-=================
 
 The ``WifiCoTraceHelper`` (channel occupancy trace helper) can be used to collect statistics of Wi-Fi channel occupancy, as observed from the perspective of the WifiPhy state of devices or links (in the case of multi-link devices).  The ``WifiPhyStateHelper`` tracks the state of the WifiPhy corresponding to whether it is in idle, transmitting, receiving, or some other state.  This helper object can be added to ns-3 Wi-Fi simulations to track the duration and percentage of time spent in each state.
 
@@ -1342,7 +1327,6 @@ You can export statistics from this helper for use cases such as printing in you
 You can refer an example program in ``src/wifi/examples/wifi-co-trace-example.cc`` on how to use these APIs.
 
 WifiStaticSetupHelper
-=====================
 
 Wi-Fi devices normally exchange management frames over the air to perform association or setup
 various features. In many simulations, users are not interested in the actual exchange of such
@@ -1402,7 +1386,6 @@ For an example usage of these static helpers, you can refer to the
 ``/examples/wireless/wifi-{ht,vht,he,eht}-network.cc`` example programs.
 
 HT configuration
-================
 
 HT is an acronym for High Throughput, a term synonymous with the IEEE 802.11n
 standard.  Once the ``ns3::WifiHelper::Install`` has been called and the
@@ -1428,7 +1411,6 @@ The following line of code enables the support of a short guard interval for all
  Config::Set("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/HtConfiguration/ShortGuardIntervalSupported", BooleanValue(true));
 
 VHT configuration
-=================
 
 IEEE 802.11ac devices are also known as supporting Very High Throughput (VHT).  Once the ``ns3::WifiHelper::Install`` has been called and either the 802.11ac
 or 802.11ax 5 GHz standards are configured, a VHT configuration object will be
@@ -1438,7 +1420,6 @@ As of ns-3.29, however, there are no VHT-specific configuration items to
 manage; therefore, this object is a placeholder for future growth.
 
 HE configuration
-================
 
 IEEE 802.11ax is also known as High Efficiency (HE).  Once the ``ns3::WifiHelper::Install`` has been called and IEEE 802.11ax configured as the standard, an
 HE configuration object will automatically be created to manage HE-specific
@@ -1476,7 +1457,6 @@ decoded properly. TB PPDUs arriving after more than ``MaxTbPpduDelay`` since the
 first TB PPDU are discarded and considered as interference.
 
 Mobility configuration
-======================
 
 Finally, a mobility model must be configured on each node with Wi-Fi device.
 Mobility model is used for calculating propagation loss and propagation delay.
@@ -1484,7 +1464,6 @@ Two examples are provided in the next section.
 Users are referred to the chapter on :ref:`Mobility` module for detailed information.
 
 Example configuration
-=====================
 
 We provide two typical examples of how a user might configure a Wi-Fi network --
 one example with an ad-hoc network and one example with an infrastructure network.

@@ -6,7 +6,6 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 How to use buildings in a simulation
-====================================
 
 In this section we explain the basic usage of the buildings model within a
 simulation program.
@@ -214,7 +213,6 @@ More information can be found in the :ref:`documentation
 of the propagation module <sec-3gpp-v2v-ch-cond>`.
 
 Main configurable attributes
-============================
 
 The ``Building`` class has the following configurable parameters:
 

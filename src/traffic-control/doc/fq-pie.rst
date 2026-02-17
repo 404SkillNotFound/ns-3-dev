@@ -31,14 +31,12 @@ of the current largest queue.  This ns-3 model does not implement the
 SFQ-PIE variant described by CableLabs.
 
 References
-==========
 
 .. [Ram19] G. Ramakrishnan, M. Bhasi, V. Saicharan, L. Monis, S. D. Patil and M. P. Tahiliani, "FQ-PIE Queue Discipline in the Linux Kernel: Design, Implementation and Challenges," 2019 IEEE 44th LCN Symposium on Emerging Topics in Networking (LCN Symposium), Osnabrueck, Germany, 2019, pp. 117-124,
 
 .. [CableLabs14] G. White, Active Queue Management in DOCSIS 3.X Cable Modems, CableLabs white paper, May 2014.
 
 Attributes
-==========
 
 The key attributes that the FqPieQueue class holds include the following.
 First, there are PIE-specific attributes that are copied into the individual
@@ -68,7 +66,6 @@ Second, there are QueueDisc level, or FQ-specific attributes::
 * ``SetWays:`` Size of a set of queues in set associative hash
 
 Examples
-========
 
 A typical usage pattern is to create a traffic control helper and to configure
 the type and attributes of queue disc and filters from the helper. For example, FqPIE

@@ -93,7 +93,6 @@ recently seen packets. The cache length (by default 10) can be changed through t
 attribute.
 
 Scope and Limitations
-=====================
 
 Context-based compression
 #########################
@@ -145,7 +144,6 @@ demultiplexing at MAC layer and the protocol carried by L2 frames must be known
 in advance.
 
 References
-==========
 
 .. [Shelby] Z. Shelby and C. Bormann, 6LoWPAN: The Wireless Embedded Internet. Wiley, 2011. [Online]. Available: https://books.google.it/books?id=3Nm7ZCxscMQC
 
@@ -153,7 +151,6 @@ Usage
 *****
 
 Enabling sixlowpan
-==================
 
 Add ``sixlowpan`` to the list of modules built with |ns3|.
 
@@ -163,7 +160,6 @@ Helper
 The helper is patterned after other device helpers.
 
 Examples
-========
 
 The following example can be found in ``src/sixlowpan/examples/``:
 

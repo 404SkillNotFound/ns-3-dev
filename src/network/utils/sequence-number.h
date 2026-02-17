@@ -240,7 +240,6 @@ class SequenceNumber
             if (diff < halfMaxValue)
             {
                 //      |------------|------------|
-                //          ========
                 //          ^      ^
                 //     m_value   other.m_value
                 return -(static_cast<SIGNED_TYPE>(diff));

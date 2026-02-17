@@ -57,7 +57,6 @@ we have tried to align with a Posix sockets API.  However, note that:
   on this also below).
 
 Basic operation and calls
-=========================
 
 .. _sockets-overview:
 
@@ -66,7 +65,6 @@ Basic operation and calls
    Implementation overview of native sockets API
 
 Creating sockets
-================
 
 An application that wants to use sockets must first create one.
 On real systems using a C-based API, this is accomplished by calling :c:func:`socket()` ::
@@ -102,7 +100,6 @@ performs the socket creation, and the application holds the socket
 pointer.
 
 Using sockets
-=============
 
 Below is a typical sequence of socket calls for a TCP client in a
 real implementation::
@@ -218,7 +215,6 @@ Socket options
 .. _Type-of-service:
 
 ToS (Type of Service)
-======================
 
 The native sockets API for ns-3 provides two public methods
 (of the Socket base class)::
@@ -273,7 +269,6 @@ For IPv4 packets, the ToS field is set to the ToS value associated with the
 socket.
 
 Priority
-=========
 
 The native sockets API for ns-3 provides two public methods
 (of the Socket base class)::
@@ -293,14 +288,11 @@ is implemented after the Linux rt_tos2priority function, which takes
 an 8-bit value as input and returns a value which is a function of bits 3-6
 (where bit 0 is the most significant bit) of the input value:
 
-=========  ====================
 Bits 3-6   Priority
-=========  ====================
  0 to 3    0 (Best Effort)
  4 to 7    2 (Bulk)
  8 to 11   6 (Interactive)
  12 to 15  4 (Interactive Bulk)
-=========  ====================
 
 The rationale is that bits 3-6 of the Type of Service field were interpreted
 as the TOS subfield by (the obsolete) RFC 1349. Readers can refer to the

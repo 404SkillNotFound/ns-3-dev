@@ -2,7 +2,6 @@
 
 .. heading hierarchy:
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
    ~~~~~~~~~~~~~ Sub-paragraph (no number)
 

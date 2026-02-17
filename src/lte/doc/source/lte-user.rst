@@ -2156,9 +2156,7 @@ assumptions.
 
 .. table:: ``lena-dual-stripe`` parameter configuration for handover campaign
 
-   ================== ========== ===============================================
    Parameter name     Value      Description
-   ================== ========== ===============================================
    simTime            50         50 seconds simulation duration
    nBlocks            0          Disabling apartment buildings and femtocells
    nMacroEnbSites     7          Number of macrocell sites (each site has 3
@@ -2178,7 +2176,6 @@ assumptions.
    macroEnbBandwidth  25         5 MHz DL and UL bandwidth
    generateRem        1          (Optional) For plotting the Radio Environment
                                  Map
-   ================== ========== ===============================================
 
 Some of the required assumptions are not available as parameters of
 ``lena-dual-stripe``. In this case, we override the default attributes, as
@@ -2188,9 +2185,7 @@ shown in Table :ref:`tab-handover-campaign-default-values` below.
 
 .. table:: Overriding default attributes for handover campaign
 
-   ==================================================== ================================== ==============================================
    Default value name                                   Value                              Description
-   ==================================================== ================================== ==============================================
    ns3::LteHelper::HandoverAlgorithm                    `ns3::NoOpHandoverAlgorithm`,      Choice of handover algorithm
                                                         `ns3::A3RsrpHandoverAlgorithm`, or
                                                         `ns3::A2A4RsrqHandoverAlgorithm`
@@ -2200,7 +2195,6 @@ shown in Table :ref:`tab-handover-campaign-default-values` below.
    ns3::RadioBearerStatsCalculator::UlRlcOutputFilename `<run>`-UlRlcStats.txt             File name for UL RLC trace output
    ns3::PhyStatsCalculator::DlRsrpSinrFilename          `<run>`-DlRsrpSinrStats.txt        File name for DL PHY RSRP/SINR trace output
    ns3::PhyStatsCalculator::UlSinrFilename              `<run>`-UlSinrStats.txt            File name for UL PHY SINR trace output
-   ==================================================== ================================== ==============================================
 
 |ns3| provides many ways for passing configuration values into a simulation. In
 this example, we will use the command line arguments. It is basically done by
@@ -2314,50 +2308,38 @@ and 4.
 
 .. table:: Results of handover campaign
 
-   ===================================== ========== =========== ==============
    Statistics                            No-op      A2-A4-RSRQ  Strongest cell
-   ===================================== ========== =========== ==============
    Average DL system throughput          6 615 kbps 20 509 kbps 19 709 kbps
    Average UL system throughput          4 095 kbps 5 705 kbps  6 627 kbps
    Average DL SINR                       -0.10 dB   5.19 dB     5.24 dB
    Average UL SINR                       9.54 dB    81.57 dB    79.65 dB
    Number of handovers per UE per second 0          0.05694     0.04771
-   ===================================== ========== =========== ==============
 
 .. Below are the detailed datasheets from the campaign, for informational
    purpose, but hidden from the published document.
 
-.. ======================= ========== ========== ========== ========== =======
    NoOp                    RngRun = 1 RngRun = 2 RngRun = 3 RngRun = 4 Average
-   ======================= ========== ========== ========== ========== =======
    DlAverageThroughputKbps 8 476      4 478      6 913      6 593      6 615
    UlAverageThroughputKbps 4 923      2 962      4 715      3 779      4 095
    DlAverageSinrDb         0.40       -0.99      0.84       -0.64      -0.10
    UlAverageSinrDb         7.93       8.06       12.52      9.65       9.54
    NumHandoverPerUePerSec  0          0          0          0          0
-   ======================= ========== ========== ========== ========== =======
 
-.. ======================= ========== ========== ========== ========== =======
    A2A4Rsrq                RngRun = 1 RngRun = 2 RngRun = 3 RngRun = 4 Average
-   ======================= ========== ========== ========== ========== =======
    DlAverageThroughputKbps 21 575     18 500     n/a        21 451     20 509
    UlAverageThroughputKbps 6 039      5 320      n/a        5 757      5 705
    DlAverageSinrDb         5.31       5.16       n/a        5.09       5.19
    UlAverageSinrDb         84.17      79.18      n/a        81.37      81.57
    NumHandoverPerUePerSec  0.05458    0.06000    n/a        0.05625    0.05694
-   ======================= ========== ========== ========== ========== =======
    RngRun = 3 simulation got a segmentation fault as around +15.2s. The cause is
    unknown at the moment.
 
-.. ======================= ========== ========== ========== ========== =======
    A3Rsrp                  RngRun = 1 RngRun = 2 RngRun = 3 RngRun = 4 Average
-   ======================= ========== ========== ========== ========== =======
    DlAverageThroughputKbps 20 349     17 781     20 229     20 478     19 709
    UlAverageThroughputKbps 6 491      6 397      7 555      6 064      6 627
    DlAverageSinrDb         5.24       5.08       5.63       5.01       5.24
    UlAverageSinrDb         83.62      81.94      78.84      74.19      79.65
    NumHandoverPerUePerSec  0.04625    0.04917    0.04958    0.04583    0.04771
-   ======================= ========== ========== ========== ========== =======
 
 The results show that having a handover algorithm in a mobility simulation
 improves both user throughput and SINR significantly. There is little difference

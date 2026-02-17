@@ -10,7 +10,6 @@ Spectrum Module
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 
@@ -223,7 +222,6 @@ of the available implementations:
 
 
 References
-==========
 
 .. [Baldo2009Spectrum] N. Baldo and M. Miozzo, "Spectrum-aware Channel and PHY layer modeling for ns3",
    Proceedings of ICST NSTools 2009, Pisa, Italy
@@ -306,7 +304,6 @@ Here are some notes on how the spectrum module is expected to be used.
 
 
 Helpers
-=======
 
 
 The helpers provided in ``src/spectrum/helpers`` are mainly intended
@@ -318,7 +315,6 @@ helpers.
 
 
 Attributes
-==========
 
 
  * Both ``SingleModelSpectrumChannel`` and
@@ -371,7 +367,6 @@ Output
 
 
 Examples
-========
 
 
 The example programs in ``src/spectrum/examples/`` allow to see the
@@ -379,7 +374,6 @@ example implementations described in :ref:`sec-example-model-implementations` in
 
 
 Troubleshooting
-===============
 
  * **Disclaimer on inter-technology interference**: the spectrum model
    makes it very easy to implement an inter-technology interference
@@ -404,7 +398,6 @@ In this section we describe the test suites that are provided within
 the spectrum module.
 
 SpectrumValue test
-==================
 
 The test suite ``spectrum-value`` verifies the correct functionality of the arithmetic
 operators implemented by the ``SpectrumValue`` class. Each test case
@@ -416,7 +409,6 @@ numerical errors.
 
 
 SpectrumConverter test
-======================
 
 The test suite ``spectrum-converter`` verifies the correct
 functionality of the ``SpectrumConverter`` class. Different test cases
@@ -436,7 +428,6 @@ references to outside published work may help here.
 
 
 Interference test
-=================
 
 The test suite ``spectrum-interference`` verifies the correct
 functionality of the ``SpectrumInterference`` and
@@ -450,7 +441,6 @@ the achievable rate using Shannon's formula.
 
 
 IdealPhy test
-=============
 
 The test verifies that ``AlohaNoackNetDevice`` and
 ``HalfDuplexIdealPhy`` work properly when installed in a node. The
@@ -478,7 +468,6 @@ Additional Models
 *****************
 
 TV Transmitter Model
-====================
 
 A TV Transmitter model is implemented by the ``TvSpectrumTransmitter`` class.
 This model enables transmission of realistic TV signals to be simulated and can
@@ -624,7 +613,6 @@ maximum distance radius from the origin point.
 .. _3gpp-fast-fading-model:
 
 3GPP TR 38.901 fast fading model
-================================
 The framework described by TR 38.901 [TR38901]_ is a 3D statistical Spatial
 Channel Model supporting different propagation environments (e.g., urban,
 rural, indoor), multi-antenna operations and the modeling of wireless channels
@@ -984,7 +972,6 @@ signaling or traffic), otherwise updates may be skipped.
 +--------------+-------------+------------------------+---------------------------------------------+
 | Speed (km/h) | Speed (m/s) | Max ``UpdatePeriod``   | Recommended channel-evaluation / signaling  |
 |              |             | (ms)                   | period (ms)                                 |
-+==============+=============+========================+=============================================+
 | 3            | 0.833       | 1200                   | <= 1200                                     |
 +--------------+-------------+------------------------+---------------------------------------------+
 | 30           | 8.33        | 120                    | <= 120                                      |
@@ -1181,7 +1168,6 @@ References
 
 
 Two-Ray fading model
-====================
 The model aims to provide a performance-oriented alternative to the 3GPP TR 38.901
 framework [TR38901]_ which is implemented in the ``ThreeGppSpectrumPropagationLossModel`` and
 ``ThreeGppChannelModel`` classes and whose implementation is described in [Zugno2020]_.
@@ -1395,7 +1381,6 @@ References
 
 
 3GPP TR 38.811 Non-Terrestrial Networks
-=======================================
 3GPP with [3GPPTR38811]_ has extended the channel model presented in [3GPPTR38901]_ to support the so called Non-Terrestrial Networks
 (NTN), i.e. communication scenarios where the propagation of the signal travels through the atmosphere.
 The channel spectrum estimation procedure is the same as the one described in [3GPPTR38901]_, with a new set of parameters.
@@ -1433,7 +1418,6 @@ References
 
 
 Wraparound Models
-=================
 The wrap around mechanism is a simulation technique used in cellular network modeling to eliminate
 edge effects and create a more realistic interference environment. The most common setup used by 3GPP
 is the hexagonal deployment wraparound, which transforms a finite hexagonal cellular cluster into what

@@ -1,8 +1,6 @@
 .. include:: replace.txt
 
-=================================
 References
-=================================
 
 .. [TS29274] 3GPP TS 29.274 "GPRS Tunnelling Protocol for Control plane (GTPv2-C)"
 

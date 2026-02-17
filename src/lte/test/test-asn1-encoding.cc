@@ -331,7 +331,6 @@ void
 RrcConnectionRequestTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionRequestTestCase ===========");
 
     LteRrcSap::RrcConnectionRequest msg;
     msg.ueIdentity = 0x83fecafecaULL;
@@ -383,7 +382,6 @@ void
 RrcConnectionSetupTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionSetupTestCase ===========");
 
     LteRrcSap::RrcConnectionSetup msg;
     msg.rrcTransactionIdentifier = 3;
@@ -440,7 +438,6 @@ void
 RrcConnectionSetupCompleteTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionSetupCompleteTestCase ===========");
 
     LteRrcSap::RrcConnectionSetupCompleted msg;
     msg.rrcTransactionIdentifier = 3;
@@ -493,7 +490,6 @@ void
 RrcConnectionReconfigurationCompleteTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionReconfigurationCompleteTestCase ===========");
 
     LteRrcSap::RrcConnectionReconfigurationCompleted msg;
     msg.rrcTransactionIdentifier = 2;
@@ -547,7 +543,6 @@ void
 RrcConnectionReconfigurationTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionReconfigurationTestCase ===========");
 
     LteRrcSap::RrcConnectionReconfiguration msg{};
     msg.rrcTransactionIdentifier = 2;
@@ -785,7 +780,6 @@ void
 HandoverPreparationInfoTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= HandoverPreparationInfoTestCase ===========");
 
     LteRrcSap::HandoverPreparationInfo msg;
     msg.asConfig.sourceDlCarrierFreq = 3;
@@ -894,7 +888,6 @@ void
 RrcConnectionReestablishmentRequestTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionReestablishmentRequestTestCase ===========");
 
     LteRrcSap::RrcConnectionReestablishmentRequest msg;
     msg.ueIdentity.cRnti = 12;
@@ -953,7 +946,6 @@ void
 RrcConnectionReestablishmentTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionReestablishmentTestCase ===========");
 
     LteRrcSap::RrcConnectionReestablishment msg;
     msg.rrcTransactionIdentifier = 2;
@@ -1009,7 +1001,6 @@ void
 RrcConnectionReestablishmentCompleteTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionReestablishmentCompleteTestCase ===========");
 
     LteRrcSap::RrcConnectionReestablishmentComplete msg;
     msg.rrcTransactionIdentifier = 3;
@@ -1063,7 +1054,6 @@ void
 RrcConnectionRejectTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= RrcConnectionRejectTestCase ===========");
 
     LteRrcSap::RrcConnectionReject msg;
     msg.waitTime = 2;
@@ -1116,7 +1106,6 @@ void
 MeasurementReportTestCase::DoRun()
 {
     packet = Create<Packet>();
-    NS_LOG_DEBUG("============= MeasurementReportTestCase ===========");
 
     LteRrcSap::MeasurementReport msg;
     msg.measResults.measId = 5;

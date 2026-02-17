@@ -6,7 +6,6 @@ Netmap NetDevice
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 The ``fd-net-device`` module provides the ``NetmapNetDevice`` class, a class derived
@@ -98,7 +97,6 @@ the netmap transmission ring and transferred to the NIC since the previous
 notification.
 
 Scope and Limitations
-=====================
 The main scope of ``NetmapNetDevice`` is to support the flow-control between
 the physical device and the upper layer and using at best the computational
 resources to process packets.  However, the (Linux) system and network
@@ -131,14 +129,12 @@ option to ``./ns3 configure``, or else run the simulations with root
 privileges.
 
 Helpers
-=======
 
 |ns3| netmap support uses a ``NetMapNetDeviceHelper`` helper object to
 install the ``NetmapNetDevice``.  In other respects, the API and use is similar
 to that of the ``EmuFdNetDeviceHelper``.
 
 Attributes
-==========
 
 There is one attribute specialized to ``NetmapNetDevice``, named
 ``SyncAndNotifyQueuePeriod``.  This value takes an integer number of
@@ -157,7 +153,6 @@ supports the ``FdNetDevice`` output and traces (such as a promiscuous sniffer
 trace).
 
 Examples
-========
 
 Several examples are provided:
 

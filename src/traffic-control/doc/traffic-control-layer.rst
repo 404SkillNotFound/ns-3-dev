@@ -4,7 +4,6 @@ Traffic Control Layer
 .. heading hierarchy:
    ------------- Chapter
    ************* Section (#.#)
-   ============= Subsection (#.#.#)
    ############# Paragraph (no number)
 
 The Traffic Control layer aims at introducing an equivalent of the Linux Traffic
@@ -27,7 +26,6 @@ outgoing and incoming packets and, more in general, about how the packets traver
 network stack.
 
 Transmitting packets
-====================
 
 The IPv{4,6} interfaces uses the aggregated object TrafficControlLayer to send
 down packets, instead of calling NetDevice::Send() directly. After the analysis
@@ -35,7 +33,6 @@ and the process of the packet, when the backpressure mechanism allows it,
 TrafficControlLayer will call the Send() method on the right NetDevice.
 
 Receiving packets
-=================
 
 The callback chain that (in the past) involved IPv{4,6}L3Protocol and NetDevices,
 through ReceiveCallback, is extended to involve TrafficControlLayer. When an
@@ -57,7 +54,6 @@ packets derives from the interaction of two helper:
 * L3 Helper (usually from Internet module)
 
 L2 Helper main operations
-=========================
 
 Any good L2 Helper will do the following operations:
 
@@ -86,7 +82,6 @@ Who is responsible to set ProtocolHandler ? We will analyze that in the next
 section.
 
 L3 Helper
-=========
 
 We have only internet which provides network protocol (IP). That module splits
 the operations between two helpers: InternetStackHelper and Ipv{4,6}AddressHelper.
@@ -108,7 +103,6 @@ address is set. Otherwise, the method Ipv4L3Protocol::AddInterface is called,
 before adding the address.
 
 IP interfaces
-=============
 
 In Ipv4L3Protocol::AddInterface (src/internet/model/ipv4-l3-protocol.cc:300)
 two protocol handlers are installed: one that react to ipv4 protocol number,

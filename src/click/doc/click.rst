@@ -59,14 +59,12 @@ There are four kinds of packet hand-offs that can occur between ns-3 and Click.
 To overcome this, we implement Ipv4L3ClickProtocol, a stripped down version of Ipv4L3Protocol. Ipv4L3ClickProtocol passes packets to and from Ipv4ClickRouting appropriately to perform routing.
 
 Scope and Limitations
-=====================
 
 * In its current state, the NS-3 Click Integration is limited to use only with L3, leaving NS-3 to handle L2. We are currently working on adding Click MAC support as well. See the usage section to make sure that you design your Click graphs accordingly.
 * Furthermore, ns-3-click will work only with userlevel elements. The complete list of elements are available at https://web.archive.org/web/20171003052722/http://read.cs.ucla.edu/click/elements. Elements that have 'all', 'userlevel' or 'ns' mentioned beside them may be used.
 * As of now, the ns-3 interface to Click is Ipv4 only. We will be adding Ipv6 support in the future.
 
 References
-==========
 
 * Eddie Kohler, Robert Morris, Benjie Chen, John Jannotti, and M. Frans Kaashoek. The click modular router. ACM Transactions on Computer Systems 18(3), August 2000, pages 263-297.
 * Lalith Suresh P., and Ruben Merz. Ns-3-click: click modular router integration for ns-3. In Proc. of 3rd International ICST Workshop on NS-3 (WNS3), Barcelona, Spain. March, 2011.
@@ -76,7 +74,6 @@ Usage
 *****
 
 Building Click
-==============
 
 The first step is to clone Click from the github repository and build it::
 
@@ -108,7 +105,6 @@ Next, try running one of the examples::
 You may then view the resulting .pcap traces, which are named nsclick-simple-lan-0-0.pcap and nsclick-simple-lan-0-1.pcap.
 
 Click Graph Instructions
-========================
 
 The following should be kept in mind when making your Click graph:
 
@@ -120,7 +116,6 @@ The following should be kept in mind when making your Click graph:
 * The current implementation leaves Click with mainly L3 functionality, with ns-3 handling L2. We will soon begin working to support the use of MAC protocols on Click as well. This means that as of now, Click's Wifi specific elements cannot be used with ns-3.
 
 Debugging Packet Flows from Click
-=================================
 
 From any point within a Click graph, you may use the Print (https://web.archive.org/web/20171003052722/http://read.cs.ucla.edu/click/elements/print) element and its variants for pretty printing of packet contents. Furthermore, you may generate pcap traces of packets flowing through a Click graph by using the ToDump (https://web.archive.org/web/20171003052722/http://read.cs.ucla.edu/click/elements/todump) element as well. For instance:
 
@@ -150,7 +145,6 @@ The example scripts inside ``src/click/examples/`` demonstrate the use of Click 
 in different scenarios. The helper source can be found inside ``src/click/helper/click-internet-stack-helper.{h,cc}``
 
 Examples
-========
 
 The following examples have been written, which can be found in ``src/click/examples/``:
 

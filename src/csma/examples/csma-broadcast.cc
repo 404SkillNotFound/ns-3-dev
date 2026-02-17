@@ -6,11 +6,9 @@
 // Example of the sending of a datagram to a broadcast address
 //
 // Network topology
-//     ==============
 //       |          |
 //       n0    n1   n2
 //       |     |
-//     ==========
 //
 //   n0 originates UDP broadcast to 255.255.255.255/discard port, which
 //   is replicated and received on both n1 and n2

@@ -73,7 +73,6 @@ as the number of links.
    *WifiNetDevice architecture*
 
 MAC high models
-===============
 
 There are presently three variants of parent class ``ns3::WifiMac``:
 Access Point (AP) (``ns3::ApWifiMac``),
@@ -100,7 +99,6 @@ MAC low layer.  These are all implemented as subclasses of
 provided in a separate section.
 
 MAC low layer
-==============
 
 The lower MAC is split into three main components:
 
@@ -116,7 +114,6 @@ The lower MAC is split into three main components:
    ``ns3::QosTxop`` is used by QoS-enabled high MACs.
 
 PHY layer models
-================
 
 In short, the physical layer models are mainly responsible for modeling
 the reception of packets and for tracking energy consumption.  There
@@ -253,7 +250,6 @@ configured for e.g. channels 5 and 6, the packets do not cause
 adjacent channel interference (even if their channel numbers overlap).
 
 WifiPhy and related models
-==========================
 
 The ``ns3::WifiPhy`` is an abstract base class representing the 802.11
 physical layer functions.  Packets passed to this object (via a
@@ -830,7 +826,6 @@ sure they do not interfere with each others. Interference with other signals, in
 MU-MIMO transmissions, is still supported by the model.
 
 The MAC model
-=============
 
 Infrastructure association
 ##########################

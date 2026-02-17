@@ -454,7 +454,6 @@ GlobalRoutingLSA<T>::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
     os << std::endl;
-    os << "========== Global Routing LSA ==========" << std::endl;
     os << "m_lsType = " << m_lsType;
     if (m_lsType == GlobalRoutingLSA::RouterLSA)
     {
@@ -540,7 +539,6 @@ GlobalRoutingLSA<T>::Print(std::ostream& os) const
     {
         NS_ASSERT_MSG(0, "Illegal LSA LSType: " << m_lsType);
     }
-    os << "========== End Global Routing LSA ==========" << std::endl;
 }
 
 template <typename T>
@@ -779,7 +777,6 @@ GlobalRouter<T>::DiscoverLSAs()
         }
     }
 
-    NS_LOG_LOGIC("========== LSA for node " << node->GetId() << " ==========");
     NS_LOG_LOGIC(*pLSA);
     m_LSAs.push_back(pLSA);
     pLSA = nullptr;
@@ -1603,7 +1600,6 @@ GlobalRouter<T>::BuildNetworkLSAs(NetDeviceContainer c)
             }
         }
         m_LSAs.push_back(pLSA);
-        NS_LOG_LOGIC("========== LSA for node " << node->GetId() << " ==========");
         NS_LOG_LOGIC(*pLSA);
         pLSA = nullptr;
     }

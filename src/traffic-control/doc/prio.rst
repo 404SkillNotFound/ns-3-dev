@@ -27,14 +27,12 @@ be noted that PrioQueueDisc needs at least two child queue discs.
 
 
 Attributes
-==========
 
 The PrioQueueDisc class holds the following attribute:
 
 * ``Priomap:`` The priority to band mapping. The default value is the same mapping as the (fixed) one used by PfifoFastQueueDisc.
 
 Examples
-========
 
 An example of how to configure PrioQueueDisc with custom child queue discs and priomap
 is provided by `queue-discs-benchmark.cc` located in ``examples/traffic-control``::

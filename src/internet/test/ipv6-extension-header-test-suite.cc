@@ -10,7 +10,6 @@
 
 using namespace ns3;
 
-// ===========================================================================
 // An empty option field must be filled with pad1 or padN header so theshape
 // extension header's size is a multiple of 8.
 //
@@ -20,7 +19,6 @@ using namespace ns3;
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+          PadN Header          +
 // |                                                               |
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-// ===========================================================================
 
 /**
  * @ingroup internet-test
@@ -51,7 +49,6 @@ class TestEmptyOptionField : public TestCase
     }
 };
 
-// ===========================================================================
 // An option without alignment requirement must not be padded
 //
 // 0                                                              31
@@ -60,7 +57,6 @@ class TestEmptyOptionField : public TestCase
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 // |..OptionWithoutAlignmentHeader |          PadN Header          |
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-// ===========================================================================
 
 /**
  * @ingroup internet-test
@@ -119,7 +115,6 @@ class TestOptionWithoutAlignment : public TestCase
     }
 };
 
-// ===========================================================================
 // An option with alignment requirement must be padded accordingly (padding to
 // a total size multiple of 8 is allowed)
 //
@@ -133,7 +128,6 @@ class TestOptionWithoutAlignment : public TestCase
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
 // |                   Ipv6OptionJumbogramHeader                   |
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-// ===========================================================================
 
 /**
  * @ingroup internet-test
@@ -204,7 +198,6 @@ class TestOptionWithAlignment : public TestCase
     }
 };
 
-// ===========================================================================
 // An option with an alignment that exactly matches the gap must not be padded
 // (padding to a total size multiple of 8 is allowed)
 //
@@ -218,7 +211,6 @@ class TestOptionWithAlignment : public TestCase
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 // |                           PadN Header                         |
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-// ===========================================================================
 
 /**
  * @ingroup internet-test

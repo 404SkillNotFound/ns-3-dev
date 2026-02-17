@@ -33,7 +33,6 @@ P. Tahiliani for the ns-3.32 release, with additional unit test cases contribute
   * ``PieQueueDisc::DoDequeue()``: This routine calculates queue delay using timestamps (by default) or, optionally with the `UseDequeRateEstimator` attribute enabled, calculates the average departure rate to estimate queue delay. A queue delay estimate required for updating the drop probability in ``PieQueueDisc::CalculateP()``. Starting with the ns-3.32 release, the default approach to calculate queue delay has been changed to use timestamps.
 
 References
-==========
 
 .. [Pan13] Pan, R., Natarajan, P., Piglione, C., Prabhu, M. S., Subramanian, V., Baker, F., & VerSteeg, B. (2013, July). PIE: A lightweight control scheme to address the bufferbloat problem. In High Performance Switching and Routing (HPSR), 2013 IEEE 14th International Conference on (pp. 148-155). IEEE.  Available online at `<https://www.ietf.org/mail-archive/web/iccrg/current/pdfB57AZSheOH.pdf>`_.
 
@@ -44,7 +43,6 @@ References
    [Buf14] Bufferbloat.net.  Available online at `<http://www.bufferbloat.net/>`_.
 
 Attributes
-==========
 
 The key attributes that the PieQueue class holds include the following:
 
@@ -65,7 +63,6 @@ The key attributes that the PieQueue class holds include the following:
 * ``ActiveThreshold:`` Threshold for activating PIE (disabled by default).
 
 Examples
-========
 
 The example for PIE is `pie-example.cc` located in ``src/traffic-control/examples``.  To run the file (the first invocation below shows the available
 command-line options):

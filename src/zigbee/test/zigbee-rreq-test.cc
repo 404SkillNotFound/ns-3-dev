@@ -192,7 +192,6 @@ ZigbeeRreqRetryTestCase::DoRun()
     // depending on the origin of the request (initial request or relayed request)
     //   Topology:
     //
-    //     ========= RREQ(x3) =====>    ======== RREQ(x2) ===>     ==== RREQ(x2) ====>
     //  ZC--------------------------ZR1-------------------------ZR2
     // (Node 0)                   (Node 1)                    (Node 2)
     //

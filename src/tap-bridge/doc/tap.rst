@@ -59,7 +59,6 @@ This is illustrated below: ::
     | ------ |                    | -------- |
     |  stack |                    |    IP    |     +----------+
     | ------ |                    |   stack  |     |   node   |
-    |  TAP   |                    |==========|     | -------- |
     | device | <----- IPC ------> |   tap    |     |    IP    |
     +--------+                    |  bridge  |     |   stack  |
                                   | -------- |     | -------- |
@@ -113,7 +112,6 @@ simulated networks for those devices.
     | ------ |                    | -------- |
     |  stack |                    |    IP    |     +----------+
     | ------ |                    |   stack  |     |   node   |
-    |  TAP   |                    |==========|     | -------- |
     | device | <----- IPC ------> |   tap    |     |    IP    |
     | MAC X  |                    |  bridge  |     |   stack  |
     +--------+                    | -------- |     | -------- |
@@ -180,7 +178,6 @@ This is illustrated below:
     | ------- |                             | -------- |
     |  stack  |                             |    IP    |     +----------+
     | ------- | +--------+                  |   stack  |     |   node   |
-    | Virtual | |  TAP   |                  |==========|     | -------- |
     | Device  | | Device | <---- IPC -----> |   tap    |     |    IP    |
     +---------+ +--------+                  |  bridge  |     |   stack  |
         ||          ||                      | -------- |     | -------- |

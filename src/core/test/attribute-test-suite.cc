@@ -638,9 +638,7 @@ AttributeTestCase<T>::CheckGetCodePaths(Ptr<Object> p,
     return ok1 && ok2 && ok3 && ok4;
 }
 
-// ===========================================================================
 // The actual Attribute type test cases are specialized for each Attribute type
-// ===========================================================================
 template <>
 void
 AttributeTestCase<BooleanValue>::DoRun()

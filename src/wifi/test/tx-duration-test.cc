@@ -2299,7 +2299,6 @@ PhyHeaderSectionsTest::DoRun()
     WifiTxVector txVector;
     WifiMode nonHtMode;
 
-    // ==================================================================================
     // 11b (HR/DSSS)
     phyEntity = std::make_shared<DsssPhy>();
     txVector.SetMode(DsssPhy::GetDsssRate1Mbps());
@@ -2330,7 +2329,6 @@ PhyHeaderSectionsTest::DoRun()
     };
     CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
 
-    // ==================================================================================
     // 11a (OFDM)
     txVector.SetPreambleType(WIFI_PREAMBLE_LONG);
 
@@ -2359,7 +2357,6 @@ PhyHeaderSectionsTest::DoRun()
         CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
     }
 
-    // ==================================================================================
     // 11g (ERP-OFDM)
     phyEntity = std::make_shared<ErpOfdmPhy>();
     txVector.SetChannelWidth(MHz_u{20});
@@ -2372,7 +2369,6 @@ PhyHeaderSectionsTest::DoRun()
     };
     CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
 
-    // ==================================================================================
     // 11n (HT)
     phyEntity = std::make_shared<HtPhy>(4);
     txVector.SetChannelWidth(MHz_u{20});
@@ -2407,7 +2403,6 @@ PhyHeaderSectionsTest::DoRun()
         htSigMode};
     CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
 
-    // ==================================================================================
     // 11ac (VHT)
     phyEntity = std::make_shared<VhtPhy>();
     txVector.SetChannelWidth(MHz_u{20});
@@ -2450,7 +2445,6 @@ PhyHeaderSectionsTest::DoRun()
     txVector.SetChannelWidth(MHz_u{80}); // shouldn't have any impact
     CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
 
-    // ==================================================================================
     // 11ax (HE)
     phyEntity = std::make_shared<HePhy>();
     txVector.SetChannelWidth(MHz_u{20});
@@ -2521,7 +2515,6 @@ PhyHeaderSectionsTest::DoRun()
 
     CheckPhyHeaderSections(phyEntity->GetPhyHeaderSections(txVector, ppduStart), sections);
 
-    // ==================================================================================
     // 11be (EHT)
     sections.erase(WIFI_PPDU_FIELD_SIG_A); // FIXME: do we keep using separate type for 11be?
     sections.erase(WIFI_PPDU_FIELD_SIG_B); // FIXME: do we keep using separate type for 11be?

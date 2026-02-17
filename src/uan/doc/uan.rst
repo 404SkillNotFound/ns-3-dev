@@ -297,7 +297,6 @@ Regarding Seagliders, the batteries used into the AUV are Electrochem 3B36 Lithi
     should I insert the li-ion model details here? I think it is better to put them into an Energy-related chapter..
 
 Scope and Limitations
-=====================
 
 The framework is designed to simulate AUV's behaviour. We have modeled the navigation and power consumption behaviour of REMUS class and Seaglider AUVs.
 The communications stack, associated with the AUV, can be modified depending on simulation needs. Usually, the default underwater stack is being used, composed of an half duplex acoustic modem, an Aloha MAC protocol and a generic physical layer.
@@ -308,7 +307,6 @@ Regarding the AUV energy consumption, the user should be aware that the level of
 * REMUS, medium level of accuracy, due to the lack of publicly available information on AUV's components. We have approximated the power consumption of the AUV's motor with a linear behaviour and, the energy source uses an ideal model (BasicEnergySource) with a power capacity equal to that specified in [4]_.
 
 Future Work
-===========
 
 Some ideas could be :
 
@@ -319,7 +317,6 @@ Some ideas could be :
 * introduce OFDM modulations
 
 References
-==========
 
 .. [1] BINGHAM, D.; DRAKE, T.; HILL, A.; LOTT, R.; The Application of Autonomous Underwater Vehicle (AUV) Technology in the Oil Industry – Vision and Experiences, URL: http://www.fig.net/pub/fig_2002/Ts4-4/TS4_4_bingham_etal.pdf
 .. [2] AUVfest2008: Underwater mines; URL: http://oceanexplorer.noaa.gov/explorations/08auvfest/background/mines/mines.html
@@ -353,7 +350,6 @@ The example folder ``src/uan/examples/`` contain some basic code that shows how 
 further examples can be found into the Unit tests in ``src/uan/test/...cc``
 
 Examples
-========
 
 Examples of the Framework's usage can be found into the examples folder. There are mobility related examples and UAN related ones.
 
@@ -405,7 +401,6 @@ UAN Examples
 
 
 Helpers
-=======
 
 In this section we give an overview of the available helpers and their behaviour.
 
@@ -472,28 +467,24 @@ The micro modem energy model is the MicroModemEnergyModel with default parameter
 
 
 Attributes
-==========
 
 .. note::
 
     TODO
 
 Tracing
-=======
 
 .. note::
 
     TODO
 
 Logging
-=======
 
 .. note::
 
     TODO
 
 Caveats
-=======
 
 .. note::
 
@@ -509,7 +500,6 @@ This model has been tested with three UNIT test:
 * li-ion-energy-source
 
 Auv Energy Model
-================
 
 Includes test cases for single packet energy consumption, energy depletion, Glider and REMUS energy consumption.
 The unit test can be found in ``src/uan/test/auv-energy-model-test.cc``.
@@ -541,7 +531,6 @@ The REMUS energy consumption test do the following:
 
 
 Auv Mobility
-============
 
 Includes test cases for glider and REMUS mobility models.
 The unit test can be found in ``src/uan/test/auv-mobility-test.cc``.
@@ -561,7 +550,6 @@ The REMUS mobility model test do the following:
 * make the vehicle to navigate to a specified point, using a velocity vector and, verify if at the end of the process the position is the one that is supposed to be
 
 Li-Ion Energy Source
-====================
 
 Includes test case for Li-Ion energy source.
 The unit test can be found in ``src/energy/test/li-ion-energy-source-test.cc``.
