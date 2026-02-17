@@ -235,7 +235,7 @@ operator<<(std::ostream& os, ArpHeader::HardwareType hardwareType)
     case ArpHeader::HardwareType::UNKNOWN:
         return (os << "Unknown Hardware Type");
     }
-    return os << "Unrecognized Hardware Type(" << static_cast<uint16_t>(hardwareType) << ")";
+    return os << "Unrecognized Hardware Type(" << +static_cast<uint16_t>(hardwareType) << ")";
 }
 
 } // namespace ns3
