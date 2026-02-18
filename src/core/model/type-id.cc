@@ -439,7 +439,7 @@ IidManager::AllocateUid(std::string name)
     information.hash = hash;
     information.parent = 0;
     information.groupName = "";
-    information.size = (std::size_t)(-1);
+    information.size = static_cast<std::size_t>(-1);
     information.hasConstructor = false;
     information.mustHideFromDocumentation = false;
     information.supportLevel = TypeId::SupportLevel::SUPPORTED;
