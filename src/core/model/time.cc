@@ -47,7 +47,8 @@ const int32_t UNIT_COEFF[Time::LAST] = {315360, 864, 36, 6, 1, 1, 1, 1, 1, 1};
 long double
 Scale(Time::Unit u)
 {
-    return UNIT_COEFF[u] * std::pow(10L, UNIT_POWER[u]);
+    return UNIT_COEFF[static_cast<int>(u)] *
+           std::pow(10.0L, static_cast<long double>(UNIT_POWER[static_cast<int>(u)]));
 }
 
 /**
@@ -218,34 +219,33 @@ Time::SetResolution(Unit unit, Resolution* resolution, const bool convert /* = t
 
     for (int i = 0; i < Time::LAST; i++)
     {
-        int shift = UNIT_POWER[i] - UNIT_POWER[(int)unit];
+        int shift = UNIT_POWER[i] - UNIT_POWER[static_cast<int>(unit)];
         int quotient = 1;
-        if (UNIT_COEFF[i] > UNIT_COEFF[(int)unit])
+        if (UNIT_COEFF[i] > UNIT_COEFF[static_cast<int>(unit)])
         {
-            quotient = UNIT_COEFF[i] / UNIT_COEFF[(int)unit];
-            NS_ASSERT(quotient * UNIT_COEFF[(int)unit] == UNIT_COEFF[i]);
+            quotient = UNIT_COEFF[i] / UNIT_COEFF[static_cast<int>(unit)];
+            NS_ASSERT(quotient * UNIT_COEFF[static_cast<int>(unit)] == UNIT_COEFF[i]);
         }
-        else if (UNIT_COEFF[i] < UNIT_COEFF[(int)unit])
+        else if (UNIT_COEFF[i] < UNIT_COEFF[static_cast<int>(unit)])
         {
-            quotient = UNIT_COEFF[(int)unit] / UNIT_COEFF[i];
-            NS_ASSERT(quotient * UNIT_COEFF[i] == UNIT_COEFF[(int)unit]);
+            quotient = UNIT_COEFF[static_cast<int>(unit)] / UNIT_COEFF[i];
+            NS_ASSERT(quotient * UNIT_COEFF[i] == UNIT_COEFF[static_cast<int>(unit)]);
         }
-        NS_LOG_DEBUG("SetResolution for unit " << (int)unit << " loop iteration " << i
-                                               << " has shift " << shift << " has quotient "
-                                               << quotient);
+        NS_LOG_DEBUG("SetResolution for unit " << +unit << " loop iteration " << i << " has shift "
+                                               << shift << " has quotient " << quotient);
 
         Information* info = &resolution->info[i];
         if ((std::pow(10, std::fabs(shift)) * quotient) >
             static_cast<double>(std::numeric_limits<int64_t>::max()))
         {
-            NS_LOG_DEBUG("SetResolution for unit " << (int)unit << " loop iteration " << i
+            NS_LOG_DEBUG("SetResolution for unit " << +unit << " loop iteration " << i
                                                    << " marked as INVALID");
             info->isValid = false;
             continue;
         }
         auto factor = static_cast<int64_t>(std::pow(10, std::fabs(shift)) * quotient);
-        double realFactor = std::pow(10, (double)shift) * static_cast<double>(UNIT_COEFF[i]) /
-                            UNIT_COEFF[(int)unit];
+        double realFactor = std::pow(10.0, static_cast<double>(shift)) *
+                            static_cast<double>(UNIT_COEFF[i]) / UNIT_COEFF[static_cast<int>(unit)];
         NS_LOG_DEBUG("SetResolution factor " << factor << " real factor " << realFactor);
         info->factor = factor;
         // here we could equivalently check for realFactor == 1.0 but it's better
