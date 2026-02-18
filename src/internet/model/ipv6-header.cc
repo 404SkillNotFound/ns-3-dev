@@ -180,7 +180,7 @@ Ipv6Header::Deserialize(Buffer::Iterator start)
         return 0;
     }
 
-    m_trafficClass = (uint8_t)((vTcFl >> 20) & 0x000000ff);
+    m_trafficClass = static_cast<uint8_t>((vTcFl >> 20) & 0x000000ff);
     m_flowLabel = vTcFl & 0xfffff;
     m_payloadLength = i.ReadNtohU16();
     m_nextHeader = i.ReadU8();
