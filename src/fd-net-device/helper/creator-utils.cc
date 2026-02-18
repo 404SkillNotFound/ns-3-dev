@@ -61,11 +61,11 @@ SendSocket(const char* path, int fd, const int magic_number)
     struct sockaddr_un clientAddr;
 
     LOG("Decode address " << path);
-    bool rc = ns3::StringToBuffer(path, (uint8_t*)&clientAddr, &clientAddrLen);
+    bool rc = ns3::StringToBuffer(path, reinterpret_cast<uint8_t*>(&clientAddr), &clientAddrLen);
     ABORT_IF(rc == false, "Unable to decode path", 0);
 
     LOG("Connect");
-    int status = connect(sock, (struct sockaddr*)&clientAddr, clientAddrLen);
+    int status = connect(sock, reinterpret_cast<struct sockaddr*>(&clientAddr), clientAddrLen);
     ABORT_IF(status == -1, "Unable to connect to emu device", 1);
 
     LOG("Connected");
@@ -151,7 +151,7 @@ SendSocket(const char* path, int fd, const int magic_number)
     // Finally, we get a pointer to the start of the ancillary data array and
     // put our file descriptor in.
     //
-    int* fdptr = (int*)(CMSG_DATA(cmsg));
+    int* fdptr = reinterpret_cast<int*>(CMSG_DATA(cmsg));
     *fdptr = fd; //
 
     //
