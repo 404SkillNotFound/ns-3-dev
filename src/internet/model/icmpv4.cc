@@ -405,7 +405,7 @@ Icmpv4DestinationUnreachable::Print(std::ostream& os) const
     os << " org data=";
     for (uint8_t i = 0; i < 8; i++)
     {
-        os << (uint32_t)m_data[i];
+        os << +m_data[i];
         if (i != 8)
         {
             os << " ";
@@ -521,7 +521,7 @@ Icmpv4TimeExceeded::Print(std::ostream& os) const
     os << " org data=";
     for (uint8_t i = 0; i < 8; i++)
     {
-        os << (uint32_t)m_data[i];
+        os << +m_data[i];
         if (i != 8)
         {
             os << " ";
