@@ -39,7 +39,7 @@ NS_LOG_COMPONENT_DEFINE("CoDelQueueDisc");
 static inline uint32_t
 ReciprocalDivide(uint32_t A, uint32_t R)
 {
-    return (uint32_t)(((uint64_t)A * R) >> 32);
+    return static_cast<uint32_t>(static_cast<uint64_t>(A) * R >> 32);
 }
 
 /* end kernel borrowings */
@@ -387,7 +387,7 @@ CoDelQueueDisc::DoDequeue()
                 m_recInvSqrt = ~0U >> REC_INV_SQRT_SHIFT;
             }
             m_lastCount = m_count;
-            NS_LOG_LOGIC("Running ControlLaw for input now: " << (double)now);
+            NS_LOG_LOGIC("Running ControlLaw for input now: " << static_cast<double>(now));
             m_dropNext = ControlLaw(now, Time2CoDel(m_interval), m_recInvSqrt);
             NS_LOG_LOGIC("Scheduled next drop at " << m_dropNext / 1000000.0 << " now "
                                                    << now / 1000000.0);
@@ -428,31 +428,25 @@ CoDelQueueDisc::GetDropNext()
 bool
 CoDelQueueDisc::CoDelTimeAfter(uint32_t a, uint32_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) > 0);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) > 0;
 }
 
 bool
 CoDelQueueDisc::CoDelTimeAfterEq(uint32_t a, uint32_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) >= 0);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) >= 0;
 }
 
 bool
 CoDelQueueDisc::CoDelTimeBefore(uint32_t a, uint32_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) < 0);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) < 0;
 }
 
 bool
 CoDelQueueDisc::CoDelTimeBeforeEq(uint32_t a, uint32_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) <= 0);
-}
-
-uint32_t
-CoDelQueueDisc::Time2CoDel(Time t)
-{
-    return static_cast<uint32_t>(t.GetNanoSeconds() >> CODEL_SHIFT);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) <= 0;
 }
 
 bool
