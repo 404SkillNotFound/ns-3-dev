@@ -177,14 +177,14 @@ operator<<(std::ostream& os, const Address& address)
     std::ios_base::fmtflags ff = os.flags();
     auto fill = os.fill('0');
     os.setf(std::ios::hex, std::ios::basefield);
-    os << std::setw(2) << (uint32_t)address.m_type << "-" << std::setw(2) << (uint32_t)address.m_len
-       << "-";
+    os << std::setw(2) << static_cast<uint32_t>(address.m_type) << "-" << std::setw(2)
+       << static_cast<uint32_t>(address.m_len) << "-";
     for (uint8_t i = 0; i < (address.m_len - 1); ++i)
     {
-        os << std::setw(2) << (uint32_t)address.m_data[i] << ":";
+        os << std::setw(2) << static_cast<uint32_t>(address.m_data[i]) << ":";
     }
     // Final byte not suffixed by ":"
-    os << std::setw(2) << (uint32_t)address.m_data[address.m_len - 1];
+    os << std::setw(2) << static_cast<uint32_t>(address.m_data[address.m_len - 1]);
     os.flags(ff); // Restore stream flags
     os.fill(fill);
     return os;

@@ -228,13 +228,18 @@ PcapFile::WriteFileHeader()
     // Watch out for memory alignment differences between machines, so write
     // them all individually.
     //
-    m_file.write((const char*)&headerOut->m_magicNumber, sizeof(headerOut->m_magicNumber));
-    m_file.write((const char*)&headerOut->m_versionMajor, sizeof(headerOut->m_versionMajor));
-    m_file.write((const char*)&headerOut->m_versionMinor, sizeof(headerOut->m_versionMinor));
-    m_file.write((const char*)&headerOut->m_zone, sizeof(headerOut->m_zone));
-    m_file.write((const char*)&headerOut->m_sigFigs, sizeof(headerOut->m_sigFigs));
-    m_file.write((const char*)&headerOut->m_snapLen, sizeof(headerOut->m_snapLen));
-    m_file.write((const char*)&headerOut->m_type, sizeof(headerOut->m_type));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_magicNumber),
+                 sizeof(headerOut->m_magicNumber));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_versionMajor),
+                 sizeof(headerOut->m_versionMajor));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_versionMinor),
+                 sizeof(headerOut->m_versionMinor));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_zone), sizeof(headerOut->m_zone));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_sigFigs),
+                 sizeof(headerOut->m_sigFigs));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_snapLen),
+                 sizeof(headerOut->m_snapLen));
+    m_file.write(reinterpret_cast<const char*>(&headerOut->m_type), sizeof(headerOut->m_type));
 }
 
 void
@@ -250,13 +255,16 @@ PcapFile::ReadAndVerifyFileHeader()
     // Watch out for memory alignment differences between machines, so read
     // them all individually.
     //
-    m_file.read((char*)&m_fileHeader.m_magicNumber, sizeof(m_fileHeader.m_magicNumber));
-    m_file.read((char*)&m_fileHeader.m_versionMajor, sizeof(m_fileHeader.m_versionMajor));
-    m_file.read((char*)&m_fileHeader.m_versionMinor, sizeof(m_fileHeader.m_versionMinor));
-    m_file.read((char*)&m_fileHeader.m_zone, sizeof(m_fileHeader.m_zone));
-    m_file.read((char*)&m_fileHeader.m_sigFigs, sizeof(m_fileHeader.m_sigFigs));
-    m_file.read((char*)&m_fileHeader.m_snapLen, sizeof(m_fileHeader.m_snapLen));
-    m_file.read((char*)&m_fileHeader.m_type, sizeof(m_fileHeader.m_type));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_magicNumber),
+                sizeof(m_fileHeader.m_magicNumber));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_versionMajor),
+                sizeof(m_fileHeader.m_versionMajor));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_versionMinor),
+                sizeof(m_fileHeader.m_versionMinor));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_zone), sizeof(m_fileHeader.m_zone));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_sigFigs), sizeof(m_fileHeader.m_sigFigs));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_snapLen), sizeof(m_fileHeader.m_snapLen));
+    m_file.read(reinterpret_cast<char*>(&m_fileHeader.m_type), sizeof(m_fileHeader.m_type));
 
     if (m_file.fail())
     {
@@ -421,10 +429,10 @@ PcapFile::WritePacketHeader(uint32_t tsSec, uint32_t tsUsec, uint32_t totalLen)
     // Watch out for memory alignment differences between machines, so write
     // them all individually.
     //
-    m_file.write((const char*)&header.m_tsSec, sizeof(header.m_tsSec));
-    m_file.write((const char*)&header.m_tsUsec, sizeof(header.m_tsUsec));
-    m_file.write((const char*)&header.m_inclLen, sizeof(header.m_inclLen));
-    m_file.write((const char*)&header.m_origLen, sizeof(header.m_origLen));
+    m_file.write(reinterpret_cast<const char*>(&header.m_tsSec), sizeof(header.m_tsSec));
+    m_file.write(reinterpret_cast<const char*>(&header.m_tsUsec), sizeof(header.m_tsUsec));
+    m_file.write(reinterpret_cast<const char*>(&header.m_inclLen), sizeof(header.m_inclLen));
+    m_file.write(reinterpret_cast<const char*>(&header.m_origLen), sizeof(header.m_origLen));
     NS_BUILD_DEBUG(m_file.flush());
     return inclLen;
 }
@@ -434,7 +442,7 @@ PcapFile::Write(uint32_t tsSec, uint32_t tsUsec, const uint8_t* const data, uint
 {
     NS_LOG_FUNCTION(this << tsSec << tsUsec << &data << totalLen);
     uint32_t inclLen = WritePacketHeader(tsSec, tsUsec, totalLen);
-    m_file.write((const char*)data, inclLen);
+    m_file.write(reinterpret_cast<const char*>(data), inclLen);
     NS_BUILD_DEBUG(m_file.flush());
 }
 
@@ -482,10 +490,10 @@ PcapFile::Read(uint8_t* const data,
     // Watch out for memory alignment differences between machines, so read
     // them all individually.
     //
-    m_file.read((char*)&header.m_tsSec, sizeof(header.m_tsSec));
-    m_file.read((char*)&header.m_tsUsec, sizeof(header.m_tsUsec));
-    m_file.read((char*)&header.m_inclLen, sizeof(header.m_inclLen));
-    m_file.read((char*)&header.m_origLen, sizeof(header.m_origLen));
+    m_file.read(reinterpret_cast<char*>(&header.m_tsSec), sizeof(header.m_tsSec));
+    m_file.read(reinterpret_cast<char*>(&header.m_tsUsec), sizeof(header.m_tsUsec));
+    m_file.read(reinterpret_cast<char*>(&header.m_inclLen), sizeof(header.m_inclLen));
+    m_file.read(reinterpret_cast<char*>(&header.m_origLen), sizeof(header.m_origLen));
 
     if (m_file.fail())
     {
@@ -510,7 +518,7 @@ PcapFile::Read(uint8_t* const data,
     // for example, to figure out what is going on.
     //
     readLen = maxBytes < header.m_inclLen ? maxBytes : header.m_inclLen;
-    m_file.read((char*)data, readLen);
+    m_file.read(reinterpret_cast<char*>(data), readLen);
 
     //
     // To keep the file pointer pointed in the right place, however, we always
