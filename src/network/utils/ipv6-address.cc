@@ -98,7 +98,7 @@ Ipv6Address
 Ipv6Address::Deserialize(const uint8_t buf[16])
 {
     NS_LOG_FUNCTION(&buf);
-    Ipv6Address ipv6((uint8_t*)buf);
+    Ipv6Address ipv6(const_cast<uint8_t*>(buf));
     return ipv6;
 }
 
@@ -433,7 +433,7 @@ Ipv6Address::CombinePrefix(const Ipv6Prefix& prefix) const
     unsigned int i = 0;
 
     std::copy(m_address.begin(), m_address.end(), addr);
-    ((Ipv6Prefix)prefix).GetBytes(pref);
+    static_cast<Ipv6Prefix>(prefix).GetBytes(pref);
 
     for (i = 0; i < 16; i++)
     {
@@ -804,14 +804,14 @@ Ipv6Prefix::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
 
-    os << "/" << (unsigned int)GetPrefixLength();
+    os << "/" << +GetPrefixLength();
 }
 
 Ipv6Prefix
 Ipv6Prefix::GetLoopback()
 {
     NS_LOG_FUNCTION_NOARGS();
-    static Ipv6Prefix prefix((uint8_t)128);
+    static Ipv6Prefix prefix(static_cast<uint8_t>(128));
     return prefix;
 }
 
@@ -819,7 +819,7 @@ Ipv6Prefix
 Ipv6Prefix::GetOnes()
 {
     NS_LOG_FUNCTION_NOARGS();
-    static Ipv6Prefix ones((uint8_t)128);
+    static Ipv6Prefix ones(static_cast<uint8_t>(128));
     return ones;
 }
 
@@ -827,7 +827,7 @@ Ipv6Prefix
 Ipv6Prefix::GetZero()
 {
     NS_LOG_FUNCTION_NOARGS();
-    static Ipv6Prefix prefix((uint8_t)0);
+    static Ipv6Prefix prefix(static_cast<uint8_t>(0));
     return prefix;
 }
 
