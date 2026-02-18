@@ -69,11 +69,11 @@ class WallClockSynchronizer : public Synchronizer
     ~WallClockSynchronizer() override;
 
     /** Conversion constant between &mu;s and ns. */
-    static const uint64_t US_PER_NS = (uint64_t)1000;
+    static const uint64_t US_PER_NS = static_cast<uint64_t>(1000);
     /** Conversion constant between &mu;s and seconds. */
-    static const uint64_t US_PER_SEC = (uint64_t)1000000;
+    static const uint64_t US_PER_SEC = static_cast<uint64_t>(1000000);
     /** Conversion constant between ns and s. */
-    static const uint64_t NS_PER_SEC = (uint64_t)1000000000;
+    static const uint64_t NS_PER_SEC = static_cast<uint64_t>(1000000000);
 
   protected:
     /**
