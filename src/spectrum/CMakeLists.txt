@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 set(source_files
     helper/adhoc-aloha-noack-ideal-phy-helper.cc
     helper/spectrum-analyzer-helper.cc
@@ -102,3 +103,5 @@ build_lib(
     test/two-ray-splm-test-suite.cc
     test/wraparound-model-test.cc
 )
+
+# Enforce modern C++ casting standards

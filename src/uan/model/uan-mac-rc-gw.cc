@@ -319,8 +319,8 @@ UanMacRcGw::StartCycle()
 
     double thCtlRate = m_totalRate * thAlpha;
 
-    double temprate = (thCtlRate - minRate) / ((double)m_rateStep) + 0.5;
-    m_currentRateNum = (uint32_t)temprate;
+    double temprate = (thCtlRate - minRate) / (static_cast<double>(m_rateStep)) + 0.5;
+    m_currentRateNum = static_cast<uint32_t>(temprate);
     if (m_currentRateNum >= m_numRates)
     {
         m_currentRateNum = m_numRates - 1;
@@ -339,7 +339,7 @@ UanMacRcGw::StartCycle()
     }
     else
     {
-        m_currentRetryRate = (uint16_t)((thX - m_minRetryRate) / m_retryStep + 0.5);
+        m_currentRetryRate = static_cast<uint16_t>((thX - m_minRetryRate) / m_retryStep + 0.5);
     }
 
     double actualX = m_currentRetryRate * m_retryStep + m_minRetryRate;
@@ -429,7 +429,7 @@ UanMacRcGw::StartCycle()
         cts->AddHeader(ctsh);
 
         NS_LOG_DEBUG(Now().As(Time::S)
-                     << " GW Scheduling reception for " << (uint32_t)req.numFrames << " frames at "
+                     << " GW Scheduling reception for " << +req.numFrames << " frames at "
                      << (Simulator::Now() + arrivalTime).As(Time::S) << "  (delaytiltx of "
                      << arrivalTime.As(Time::S) << ")  Total length is " << req.length
                      << " with txtime " << req.length * 8 / dataRate << " seconds");
@@ -617,7 +617,7 @@ UanMacRcGw::ComputeExpS(uint32_t a, uint32_t ld, std::vector<double> exppdk)
     uint32_t lh = ch.GetSerializedSize();
 
     uint32_t n = m_numNodes;
-    double expk = n * (1 - std::exp(-((double)a) / (double)n));
+    double expk = n * (1 - std::exp(-static_cast<double>(a) / static_cast<double>(n)));
     NS_LOG_DEBUG("expk = " << expk);
 
     // Compute expected data per cycle
@@ -657,15 +657,17 @@ UanMacRcGw::CompExpMinIndex(uint32_t n, uint32_t k)
         double p = (nChK > 0) ? (static_cast<double>(NchooseK(n - i, k - 1)) / nChK) : DBL_MAX;
         sum += p * i;
     }
-    return (uint32_t)(sum + 0.5);
+    return static_cast<uint32_t>(sum + 0.5);
 }
 
 double
 UanMacRcGw::ComputePiK(uint32_t a, uint32_t n, uint32_t k)
 {
-    auto nck = (double)NchooseK(n, k);
-    return nck * std::pow((std::exp((double)a / (double)n) - 1.0), (double)k) *
-           std::exp(-((double)a));
+    auto nck = static_cast<double>(NchooseK(n, k));
+    return nck *
+           std::pow((std::exp(static_cast<double>(a) / static_cast<double>(n)) - 1.0),
+                    static_cast<double>(k)) *
+           std::exp(-(static_cast<double>(a)));
 }
 
 double
@@ -705,7 +707,7 @@ UanMacRcGw::NchooseK(uint32_t n, uint32_t k)
         accum = accum * (n - k + i) / i;
     }
 
-    return (uint64_t)(accum + 0.5);
+    return static_cast<uint64_t>(accum + 0.5);
 }
 
 uint32_t

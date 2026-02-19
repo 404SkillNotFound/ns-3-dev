@@ -1171,8 +1171,8 @@ ThreeGppUmaPropagationLossModel::GetBpDistance(double hUt, double hBs, double di
     }
     else
     {
-        int random = m_uniformVar->GetInteger(12, std::max(12, (int)(hUt - 1.5)));
-        hE = (double)floor(random / 3.0) * 3.0;
+        int random = m_uniformVar->GetInteger(12, std::max(12, static_cast<int>(hUt - 1.5)));
+        hE = floor(random / 3.0) * 3.0;
     }
 
     // compute dBP' (see 3GPP TR 38.901, Table 7.4.1-1, Note 1)

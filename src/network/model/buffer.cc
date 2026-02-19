@@ -62,12 +62,12 @@ uint32_t Buffer::g_recommendedStart = 0;
  * before the constructors run so this ensures perfect handling of crazy
  * constructor orderings.
  */
-#define MAGIC_DESTROYED (~(long)0)
-#define IS_UNINITIALIZED(x) (x == (Buffer::FreeList*)0)
-#define IS_DESTROYED(x) (x == (Buffer::FreeList*)MAGIC_DESTROYED)
+#define MAGIC_DESTROYED (~static_cast<long>(0))
+#define IS_UNINITIALIZED(x) (x == nullptr)
+#define IS_DESTROYED(x) (x == reinterpret_cast<Buffer::FreeList*>(MAGIC_DESTROYED))
 #define IS_INITIALIZED(x) (!IS_UNINITIALIZED(x) && !IS_DESTROYED(x))
-#define DESTROYED ((Buffer::FreeList*)MAGIC_DESTROYED)
-#define UNINITIALIZED ((Buffer::FreeList*)0)
+#define DESTROYED reinterpret_cast<Buffer::FreeList*>(MAGIC_DESTROYED)
+#define UNINITIALIZED nullptr
 uint32_t Buffer::g_maxSize = 0;
 Buffer::FreeList* Buffer::g_freeList = nullptr;
 Buffer::LocalStaticDestructor Buffer::g_localStaticDestructor;
@@ -705,7 +705,7 @@ Buffer::CopyData(std::ostream* os, uint32_t size) const
     if (size > 0)
     {
         uint32_t tmpsize = std::min(m_zeroAreaStart - m_start, size);
-        os->write((const char*)(m_data->m_data + m_start), tmpsize);
+        os->write(reinterpret_cast<const char*>(m_data->m_data + m_start), tmpsize);
         if (size > tmpsize)
         {
             size -= m_zeroAreaStart - m_start;
@@ -721,7 +721,7 @@ Buffer::CopyData(std::ostream* os, uint32_t size) const
             {
                 size -= tmpsize;
                 tmpsize = std::min(m_end - m_zeroAreaEnd, size);
-                os->write((const char*)(m_data->m_data + m_zeroAreaStart), tmpsize);
+                os->write(reinterpret_cast<const char*>(m_data->m_data + m_zeroAreaStart), tmpsize);
             }
         }
     }
@@ -735,7 +735,7 @@ Buffer::CopyData(uint8_t* buffer, uint32_t size) const
     if (size > 0)
     {
         uint32_t tmpsize = std::min(m_zeroAreaStart - m_start, size);
-        memcpy(buffer, (const char*)(m_data->m_data + m_start), tmpsize);
+        memcpy(buffer, reinterpret_cast<const char*>(m_data->m_data + m_start), tmpsize);
         buffer += tmpsize;
         size -= tmpsize;
         if (size > 0)
@@ -753,7 +753,9 @@ Buffer::CopyData(uint8_t* buffer, uint32_t size) const
             if (size > 0)
             {
                 tmpsize = std::min(m_end - m_zeroAreaEnd, size);
-                memcpy(buffer, (const char*)(m_data->m_data + m_zeroAreaStart), tmpsize);
+                memcpy(buffer,
+                       reinterpret_cast<const char*>(m_data->m_data + m_zeroAreaStart),
+                       tmpsize);
                 size -= tmpsize;
             }
         }

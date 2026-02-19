@@ -119,9 +119,9 @@ void
 Ipv6PacketInfoTag::Print(std::ostream& os) const
 {
     os << "Ipv6 PKTINFO [DestAddr: " << m_addr;
-    os << ", RecvIf:" << (uint32_t)m_ifindex;
-    os << ", TTL:" << (uint32_t)m_hoplimit;
-    os << ", TClass:" << (uint32_t)m_tclass;
+    os << ", RecvIf:" << +m_ifindex;
+    os << ", TTL:" << +m_hoplimit;
+    os << ", TClass:" << +m_tclass;
     os << "] ";
 }
 } // namespace ns3

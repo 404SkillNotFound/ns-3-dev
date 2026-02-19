@@ -209,7 +209,7 @@ class MatrixBasedChannelModel : public Object
      */
     static uint64_t GetKey(uint32_t a, uint32_t b)
     {
-        return (uint64_t)std::min(a, b) << 32 | std::max(a, b);
+        return static_cast<uint64_t>(std::min(a, b)) << 32 | std::max(a, b);
     }
 
     static const uint8_t AOA_INDEX = 0; //!< index of the AOA value in the m_angle array

@@ -1553,8 +1553,8 @@ PbbMessage::Print(std::ostream& os, int level) const
 
     os << prefix << "PbbMessage {" << std::endl;
 
-    os << prefix << "\tmessage type = " << (int)GetType() << std::endl;
-    os << prefix << "\taddress size = " << GetAddressLength() << std::endl;
+    os << prefix << "\tmessage type = " << +GetType() << std::endl;
+    os << prefix << "\thop limit = " << +GetHopLimit() << std::endl;
 
     if (HasOriginatorAddress())
     {
@@ -1565,17 +1565,17 @@ PbbMessage::Print(std::ostream& os, int level) const
 
     if (HasHopLimit())
     {
-        os << prefix << "\thop limit = " << (int)GetHopLimit() << std::endl;
+        os << prefix << "\thop limit = " << +GetHopLimit() << std::endl;
     }
 
     if (HasHopCount())
     {
-        os << prefix << "\thop count = " << (int)GetHopCount() << std::endl;
+        os << prefix << "\thop count = " << +GetHopCount() << std::endl;
     }
 
     if (HasSequenceNumber())
     {
-        os << prefix << "\tseqnum = " << GetSequenceNumber() << std::endl;
+        os << prefix << "\tseqnum = " << +GetSequenceNumber() << std::endl;
     }
 
     m_tlvList.Print(os, level + 1);
@@ -2345,7 +2345,7 @@ PbbAddressBlock::Print(std::ostream& os, int level) const
     os << prefix << "\tprefixes = " << std::endl;
     for (auto iter = PrefixBegin(); iter != PrefixEnd(); iter++)
     {
-        os << prefix << "\t\t" << (int)(*iter) << std::endl;
+        os << prefix << "\t\t" << +(*iter) << std::endl;
     }
 
     m_addressTlvList.Print(os, level + 1);
@@ -2870,21 +2870,21 @@ PbbTlv::Print(std::ostream& os, int level) const
     }
 
     os << prefix << "PbbTlv {" << std::endl;
-    os << prefix << "\ttype = " << (int)GetType() << std::endl;
+    os << prefix << "\ttype = " << +GetType() << std::endl;
 
     if (HasTypeExt())
     {
-        os << prefix << "\ttypeext = " << (int)GetTypeExt() << std::endl;
+        os << prefix << "\ttypeext = " << +GetTypeExt() << std::endl;
     }
 
     if (HasIndexStart())
     {
-        os << prefix << "\tindexStart = " << (int)GetIndexStart() << std::endl;
+        os << prefix << "\tindexStart = " << +GetIndexStart() << std::endl;
     }
 
     if (HasIndexStop())
     {
-        os << prefix << "\tindexStop = " << (int)GetIndexStop() << std::endl;
+        os << prefix << "\tindexStop = " << +GetIndexStop() << std::endl;
     }
 
     os << prefix << "\tisMultivalue = " << IsMultivalue() << std::endl;

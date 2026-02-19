@@ -72,8 +72,8 @@ Ipv4QueueDiscItem::Print(std::ostream& os) const
     }
     os << GetPacket() << " "
        << "Dst addr " << GetAddress() << " "
-       << "proto " << (uint16_t)GetProtocol() << " "
-       << "txq " << (uint16_t)GetTxQueueIndex();
+       << "proto " << static_cast<uint16_t>(GetProtocol()) << " "
+       << "txq " << static_cast<uint16_t>(GetTxQueueIndex());
 }
 
 bool
@@ -152,7 +152,7 @@ Ipv4QueueDiscItem::Hash(uint32_t perturbation) const
 
     // Linux calculates jhash2 (jenkins hash), we calculate murmur3 because it is
     // already available in ns-3
-    uint32_t hash = Hash32((char*)buf, 17);
+    uint32_t hash = Hash32(reinterpret_cast<char*>(buf), 17);
 
     NS_LOG_DEBUG("Hash value " << hash);
 

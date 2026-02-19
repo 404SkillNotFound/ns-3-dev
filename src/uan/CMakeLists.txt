@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME uan
   SOURCE_FILES
@@ -53,3 +54,5 @@ build_lib(
   TEST_SOURCES test/uan-energy-model-test.cc
                test/uan-test.cc
 )
+
+# Enforce modern C++ casting standards
