@@ -886,8 +886,8 @@ Ipv4L3Protocol::BuildHeader(Ipv4Address source,
                             uint8_t tos,
                             bool mayFragment)
 {
-    NS_LOG_FUNCTION(this << source << destination << (uint16_t)protocol << payloadSize
-                         << (uint16_t)ttl << (uint16_t)tos << mayFragment);
+    NS_LOG_FUNCTION(this << source << destination << +protocol << payloadSize << +ttl << +tos
+                         << mayFragment);
     Ipv4Header ipHeader;
     ipHeader.SetSource(source);
     ipHeader.SetDestination(destination);
@@ -1757,7 +1757,7 @@ Ipv4L3Protocol::UpdateDuplicate(Ptr<const Packet> p, const Ipv4Header& header)
         }
 
         // concat hash onto ID
-        hash |= (uint64_t)Hash32(bytes);
+        hash |= static_cast<uint64_t>(Hash32(bytes));
     }
 
     // set cleanup job for new duplicate entries

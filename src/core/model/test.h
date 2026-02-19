@@ -67,7 +67,7 @@ namespace tests
     {                                                                                              \
         if (MustAssertOnFailure())                                                                 \
         {                                                                                          \
-            *(volatile int*)0 = 0;                                                                 \
+            *(reinterpret_cast<volatile int*>(0)) = 0;                                             \
         }                                                                                          \
     } while (false)
 

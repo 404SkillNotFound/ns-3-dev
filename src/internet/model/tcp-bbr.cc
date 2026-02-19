@@ -339,7 +339,7 @@ TcpBbr::EnterProbeBW()
     SetBbrState(BbrMode_t::BBR_PROBE_BW);
     m_pacingGain = 1;
     m_cWndGain = 2;
-    m_cycleIndex = GAIN_CYCLE_LENGTH - 1 - (int)m_uv->GetValue(0, 6);
+    m_cycleIndex = GAIN_CYCLE_LENGTH - 1 - static_cast<int>(m_uv->GetValue(0, 6));
     AdvanceCyclePhase();
 }
 
@@ -547,7 +547,8 @@ TcpBbr::ModulateCwndForRecovery(Ptr<TcpSocketState> tcb, const TcpRateOps::TcpRa
     if (rs.m_bytesLoss > 0)
     {
         tcb->m_cWnd =
-            std::max((int)tcb->m_cWnd.Get() - (int)rs.m_bytesLoss, (int)tcb->m_segmentSize);
+            std::max(static_cast<int>(tcb->m_cWnd.Get()) - static_cast<int>(rs.m_bytesLoss),
+                     static_cast<int>(tcb->m_segmentSize));
     }
 
     if (m_packetConservation)
@@ -590,7 +591,8 @@ TcpBbr::SetCwnd(Ptr<TcpSocketState> tcb, const TcpRateOps::TcpRateSample& rs)
 
     if (m_isPipeFilled)
     {
-        tcb->m_cWnd = std::min(tcb->m_cWnd.Get() + (uint32_t)rs.m_ackedSacked, m_targetCWnd);
+        tcb->m_cWnd =
+            std::min(tcb->m_cWnd.Get() + static_cast<uint32_t>(rs.m_ackedSacked), m_targetCWnd);
     }
     else if (tcb->m_cWnd < m_targetCWnd || m_delivered < tcb->m_initialCWnd * tcb->m_segmentSize)
     {

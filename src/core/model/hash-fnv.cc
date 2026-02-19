@@ -180,7 +180,7 @@ typedef uint32_t Fnv32_t;  //PDB
  * \note The FNV-1a initial basis is the same value as FNV-1 by definition.
  */
 // Use fully qualified type so this define works outside this scope //PDB
-#define FNV1_32_INIT ((Fnv1aImplementation::Fnv32_t)0x811c9dc5)
+#define FNV1_32_INIT (static_cast<Fnv1aImplementation::Fnv32_t>(0x811c9dc5))
 /** \copydoc FNV1_32_INIT */
 #define FNV1_32A_INIT FNV1_32_INIT
 
@@ -233,7 +233,7 @@ extern const Fnv64_t fnv0_64_init;
  * \note The FNV-1a initial basis is the same value as FNV-1 by definition.
  */
 #if defined(HAVE_64BIT_LONG_LONG)
-#define FNV1_64_INIT ((Fnv1aImplementation::Fnv64_t)0xcbf29ce484222325ULL)
+#define FNV1_64_INIT (static_cast<Fnv1aImplementation::Fnv64_t>(0xcbf29ce484222325ULL))
 /** \copydoc FNV1_64_INIT */
 #define FNV1A_64_INIT FNV1_64_INIT
 #else /* HAVE_64BIT_LONG_LONG */
@@ -373,7 +373,7 @@ enum fnv_type {
 Fnv32_t
 fnv_32a_buf(void *buf, size_t len, Fnv32_t hval)
 {
-    unsigned char *bp = (unsigned char *)buf;	/* start of buffer */
+    unsigned char* bp = static_cast<unsigned char*>(buf);	/* start of buffer */
     unsigned char *be = bp + len;		/* beyond end of buffer */
 
     /*
@@ -382,7 +382,7 @@ fnv_32a_buf(void *buf, size_t len, Fnv32_t hval)
     while (bp < be) {
 
 	/* xor the bottom with the current octet */
-	hval ^= (Fnv32_t)*bp++;
+	hval ^= static_cast<Fnv32_t>(*bp++);
 
 	/* multiply by the 32 bit FNV magic prime mod 2^32 */
 #if defined(NO_FNV_GCC_OPTIMIZATION)
@@ -412,7 +412,7 @@ fnv_32a_buf(void *buf, size_t len, Fnv32_t hval)
 Fnv32_t
 fnv_32a_str(char *str, Fnv32_t hval)
 {
-    unsigned char *s = (unsigned char *)str;	/* unsigned string */
+    unsigned char* s = reinterpret_cast<unsigned char*>(str);	/* unsigned string */
 
     /*
      * FNV-1a hash each octet in the buffer
@@ -420,7 +420,7 @@ fnv_32a_str(char *str, Fnv32_t hval)
     while (*s) {
 
 	/* xor the bottom with the current octet */
-	hval ^= (Fnv32_t)*s++;
+	hval ^= static_cast<Fnv32_t>(*s++);
 
 	/* multiply by the 32 bit FNV magic prime mod 2^32 */
 #if defined(NO_FNV_GCC_OPTIMIZATION)
@@ -536,7 +536,7 @@ const Fnv64_t fnv1a_64_init = { 0x84222325, 0xcbf29ce4 };
 Fnv64_t
 fnv_64a_buf(void *buf, size_t len, Fnv64_t hval)
 {
-    unsigned char *bp = (unsigned char *)buf;	/* start of buffer */
+    unsigned char *bp = reinterpret_cast<unsigned char *>(buf);	/* start of buffer */
     unsigned char *be = bp + len;		/* beyond end of buffer */
 
 #if defined(HAVE_64BIT_LONG_LONG)
@@ -546,7 +546,7 @@ fnv_64a_buf(void *buf, size_t len, Fnv64_t hval)
     while (bp < be) {
 
 	/* xor the bottom with the current octet */
-	hval ^= (Fnv64_t)*bp++;
+	hval ^= static_cast<Fnv64_t>(*bp++);
 
 	/* multiply by the 64 bit FNV magic prime mod 2^64 */
 #if defined(NO_FNV_GCC_OPTIMIZATION)
@@ -641,7 +641,7 @@ fnv_64a_buf(void *buf, size_t len, Fnv64_t hval)
 Fnv64_t
 fnv_64a_str(char *str, Fnv64_t hval)
 {
-    unsigned char *s = (unsigned char *)str;	/* unsigned string */
+    unsigned char *s = reinterpret_cast<unsigned char *>(str);	/* unsigned string */
 
 #if defined(HAVE_64BIT_LONG_LONG)
 
@@ -651,7 +651,7 @@ fnv_64a_str(char *str, Fnv64_t hval)
     while (*s) {
 
 	/* xor the bottom with the current octet */
-	hval ^= (Fnv64_t)*s++;
+	hval ^= static_cast<Fnv64_t>(*s++);
 
 	/* multiply by the 64 bit FNV magic prime mod 2^64 */
 #if defined(NO_FNV_GCC_OPTIMIZATION)
@@ -751,14 +751,14 @@ Fnv1a::Fnv1a()
 uint32_t
 Fnv1a::GetHash32(const char* buffer, const std::size_t size)
 {
-    m_hash32 = Fnv1aImplementation::fnv_32a_buf((void*)buffer, size, m_hash32);
+    m_hash32 = Fnv1aImplementation::fnv_32a_buf(const_cast<char*>(buffer), size, m_hash32);
     return m_hash32;
 }
 
 uint64_t
 Fnv1a::GetHash64(const char* buffer, const std::size_t size)
 {
-    m_hash64 = Fnv1aImplementation::fnv_64a_buf((void*)buffer, size, m_hash64);
+    m_hash64 = Fnv1aImplementation::fnv_64a_buf(const_cast<char*>(buffer), size, m_hash64);
     return m_hash64;
 }
 

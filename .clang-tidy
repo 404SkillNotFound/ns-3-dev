@@ -48,6 +48,7 @@ Checks: >
   readability-static-accessed-through-instance,
   readability-static-definition-in-anonymous-namespace,
   readability-string-compare,
+  cppcoreguidelines-pro-type-cstyle-cast,
 
 CheckOptions:
   - key: performance-unnecessary-copy-initialization.AllowedTypes
