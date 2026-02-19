@@ -276,7 +276,7 @@ PacketSocket::GetMinMtu(PacketSocketAddress ad) const
         for (uint32_t i = 0; i < m_node->GetNDevices(); i++)
         {
             Ptr<NetDevice> device = m_node->GetDevice(i);
-            minMtu = std::min(minMtu, (uint32_t)device->GetMtu());
+            minMtu = std::min(minMtu, static_cast<uint32_t>(device->GetMtu()));
         }
         return minMtu;
     }
@@ -585,7 +585,7 @@ PacketSocketTag::Serialize(TagBuffer i) const
 void
 PacketSocketTag::Deserialize(TagBuffer i)
 {
-    m_packetType = (NetDevice::PacketType)i.ReadU8();
+    m_packetType = static_cast<NetDevice::PacketType>(i.ReadU8());
     m_destAddr.Deserialize(i);
 }
 
@@ -648,10 +648,10 @@ void
 DeviceNameTag::Serialize(TagBuffer i) const
 {
     const char* n = m_deviceName.c_str();
-    auto l = (uint8_t)m_deviceName.size();
+    auto l = static_cast<uint8_t>(m_deviceName.size());
 
     i.WriteU8(l);
-    i.Write((uint8_t*)n, (uint32_t)l);
+    i.Write(reinterpret_cast<const uint8_t*>(n), static_cast<uint32_t>(l));
 }
 
 void
@@ -660,7 +660,7 @@ DeviceNameTag::Deserialize(TagBuffer i)
     uint8_t l = i.ReadU8();
     char buf[256];
 
-    i.Read((uint8_t*)buf, (uint32_t)l);
+    i.Read(reinterpret_cast<uint8_t*>(buf), static_cast<uint32_t>(l));
     m_deviceName = std::string(buf, l);
 }
 

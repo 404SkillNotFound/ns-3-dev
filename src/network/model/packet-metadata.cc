@@ -608,7 +608,7 @@ PacketMetadata::Allocate(uint32_t n)
     }
     size += n - PACKET_METADATA_DATA_M_DATA_SIZE;
     auto buf = new uint8_t[size];
-    auto data = (PacketMetadata::Data*)buf;
+    auto data = reinterpret_cast<PacketMetadata::Data*>(buf);
     data->m_size = n;
     data->m_count = 1;
     data->m_dirtyEnd = 0;
@@ -619,7 +619,7 @@ void
 PacketMetadata::Deallocate(PacketMetadata::Data* data)
 {
     NS_LOG_FUNCTION(data);
-    auto buf = (uint8_t*)data;
+    auto buf = reinterpret_cast<uint8_t*>(data);
     delete[] buf;
 }
 
@@ -1445,7 +1445,7 @@ PacketMetadata::ReadFromRawU64(uint64_t& data,
 {
     NS_LOG_FUNCTION(data << &start << &current << maxSize);
     // First check buffer underflow
-    if ((uint32_t)(current + sizeof(uint64_t) - start) > maxSize)
+    if (static_cast<uint32_t>(current + sizeof(uint64_t) - start) > maxSize)
     {
         return nullptr;
     }

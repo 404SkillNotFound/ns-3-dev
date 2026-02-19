@@ -301,14 +301,14 @@ UanPhyPerCommonModes::CalcPer(Ptr<Packet> pkt, double sinrDb, UanTxMode mode)
         // generic EbNo
         EbNo *= static_cast<double>(mode.GetBandwidthHz()) / mode.GetDataRateBps();
 
-        auto M = (double)mode.GetConstellationSize();
+        auto M = static_cast<double>(mode.GetConstellationSize());
 
         // standard squared quantized QAM, even number of bits per symbol supported
-        int log2sqrtM = (int)::std::log2(sqrt(M));
+        int log2sqrtM = static_cast<int>(::std::log2(sqrt(M)));
 
         double log2M = ::std::log2(M);
 
-        if ((int)log2M % 2)
+        if (static_cast<int>(log2M) % 2)
         {
             NS_FATAL_ERROR("constellation " << M << " not supported");
         }
@@ -323,9 +323,9 @@ UanPhyPerCommonModes::CalcPer(Ptr<Packet> pkt, double sinrDb, UanTxMode mode)
         // Eq (75)
         for (int k = 0; k < log2sqrtM; k++)
         {
-            int sum_items =
-                (int)((1.0 - ::std::pow(2.0, (-1.0) * (double)k)) * ::std::sqrt(M) - 1.0);
-            double pow2k = ::std::pow(2.0, (double)k - 1.0);
+            int sum_items = static_cast<int>(
+                (1.0 - ::std::pow(2.0, -1.0 * static_cast<double>(k))) * ::std::sqrt(M) - 1.0);
+            double pow2k = ::std::pow(2.0, static_cast<double>(k) - 1.0);
 
             NS_LOG_DEBUG("k=" << k << "; sum_items=" << sum_items << "; pow2k=" << pow2k);
 
@@ -334,9 +334,9 @@ UanPhyPerCommonModes::CalcPer(Ptr<Packet> pkt, double sinrDb, UanTxMode mode)
             // Eq (74)
             for (int j = 0; j < sum_items; ++j)
             {
-                PbK += ::std::pow(-1.0, ::std::floor((double)j * pow2k / sqrtM)) *
-                       (pow2k - ::std::floor((double)(j * pow2k / sqrtM) + 0.5)) *
-                       erfc((2.0 * (double)j + 1.0) *
+                PbK += ::std::pow(-1.0, ::std::floor(static_cast<double>(j) * pow2k / sqrtM)) *
+                       (pow2k - ::std::floor(static_cast<double>(j * pow2k / sqrtM) + 0.5)) *
+                       erfc((2.0 * static_cast<double>(j) + 1.0) *
                             ::std::sqrt(3.0 * (log2M * EbNo) / (2.0 * (M - 1.0))));
 
                 NS_LOG_DEBUG("j=" << j << "; PbK=" << PbK);
@@ -348,7 +348,7 @@ UanPhyPerCommonModes::CalcPer(Ptr<Packet> pkt, double sinrDb, UanTxMode mode)
             NS_LOG_DEBUG("k=" << k << "; PbK=" << PbK << "; BER=" << BER);
         }
 
-        BER *= 1.0 / (double)log2sqrtM;
+        BER *= 1.0 / static_cast<double>(log2sqrtM);
 
         break;
     }
@@ -371,7 +371,7 @@ UanPhyPerCommonModes::CalcPer(Ptr<Packet> pkt, double sinrDb, UanTxMode mode)
         break;
     }
 
-    PER = (1.0 - pow(1.0 - BER, (double)pkt->GetSize() * 8.0));
+    PER = (1.0 - pow(1.0 - BER, static_cast<double>(pkt->GetSize()) * 8.0));
 
     NS_LOG_DEBUG("BER=" << BER << "; PER=" << PER);
 
@@ -447,9 +447,9 @@ UanPhyPerUmodem::CalcPer(Ptr<Packet> pkt, double sinr, UanTxMode mode)
         double sumd = 0;
         for (uint32_t k = 0; k < d[r]; k++)
         {
-            sumd = sumd + NChooseK(d[r] - 1 + k, k) * std::pow(1 - perror, (double)k);
+            sumd = sumd + NChooseK(d[r] - 1 + k, k) * std::pow(1 - perror, static_cast<double>(k));
         }
-        P[r] = std::pow(perror, (double)d[r]) * sumd;
+        P[r] = std::pow(perror, static_cast<double>(d[r])) * sumd;
     }
 
     double Pb = 0;
@@ -463,7 +463,7 @@ UanPhyPerUmodem::CalcPer(Ptr<Packet> pkt, double sinr, UanTxMode mode)
 
     double Ppacket = 1;
     double temp = NChooseK(bits, 0);
-    temp *= std::pow((1 - Pb), (double)bits);
+    temp *= std::pow((1 - Pb), static_cast<double>(bits));
     Ppacket -= temp;
     temp = NChooseK(288, 1) * Pb * std::pow((1 - Pb), bits - 1.0);
     Ppacket -= temp;
@@ -719,7 +719,7 @@ UanPhyGen::TxEndEvent()
     }
 
     NS_ASSERT(m_state == TX);
-    if (GetInterferenceDb((Ptr<Packet>)nullptr) > m_ccaThreshDb)
+    if (GetInterferenceDb(Ptr<Packet>(nullptr)) > m_ccaThreshDb)
     {
         m_state = CCABUSY;
         NotifyListenersCcaStart();
@@ -814,7 +814,7 @@ UanPhyGen::StartRxPacket(Ptr<Packet> pkt, double rxPowerDb, UanTxMode txMode, Ua
         break;
     }
 
-    if (m_state == IDLE && GetInterferenceDb((Ptr<Packet>)nullptr) > m_ccaThreshDb)
+    if (m_state == IDLE && GetInterferenceDb(Ptr<Packet>(nullptr)) > m_ccaThreshDb)
     {
         m_state = CCABUSY;
         NotifyListenersCcaStart();
@@ -838,7 +838,7 @@ UanPhyGen::RxEndEvent(Ptr<Packet> pkt, double /* rxPowerDb */, UanTxMode txMode)
     }
 
     NotifyRxEnd(pkt); // traced source netanim
-    if (GetInterferenceDb((Ptr<Packet>)nullptr) > m_ccaThreshDb)
+    if (GetInterferenceDb(Ptr<Packet>(nullptr)) > m_ccaThreshDb)
     {
         m_state = CCABUSY;
         NotifyListenersCcaStart();
@@ -1012,7 +1012,7 @@ UanPhyGen::SetSleepMode(bool sleep)
     }
     else if (m_state == SLEEP)
     {
-        if (GetInterferenceDb((Ptr<Packet>)nullptr) > m_ccaThreshDb)
+        if (GetInterferenceDb(Ptr<Packet>(nullptr)) > m_ccaThreshDb)
         {
             m_state = CCABUSY;
             NotifyListenersCcaStart();
@@ -1065,7 +1065,7 @@ UanPhyGen::CalculateSinrDb(Ptr<Packet> pkt,
                            UanTxMode mode,
                            UanPdp pdp)
 {
-    double noiseDb = m_channel->GetNoiseDbHz((double)mode.GetCenterFreqHz() / 1000.0) +
+    double noiseDb = m_channel->GetNoiseDbHz(static_cast<double>(mode.GetCenterFreqHz()) / 1000.0) +
                      10 * std::log10(mode.GetBandwidthHz());
     return m_sinr
         ->CalcSinrDb(pkt, arrTime, rxPowerDb, noiseDb, mode, pdp, m_transducer->GetArrivalList());

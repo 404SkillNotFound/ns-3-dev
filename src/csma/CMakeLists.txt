@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME csma
   SOURCE_FILES
@@ -12,3 +13,5 @@ build_lib(
     model/csma-net-device.h
   LIBRARIES_TO_LINK ${libnetwork}
 )
+
+# Enforce modern C++ casting standards

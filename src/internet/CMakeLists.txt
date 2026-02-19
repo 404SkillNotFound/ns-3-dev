@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 set(source_files
     helper/internet-stack-helper.cc
     helper/internet-trace-helper.cc
@@ -349,3 +350,5 @@ build_lib(
   TEST_SOURCES ${test_sources}
   GENERATE_EXPORT_HEADER
 )
+
+# Enforce modern C++ casting standards

@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME buildings
   SOURCE_FILES
@@ -41,3 +42,5 @@ build_lib(
     test/outdoor-random-walk-test.cc
     test/three-gpp-v2v-channel-condition-model-test.cc
 )
+
+# Enforce modern C++ casting standards
