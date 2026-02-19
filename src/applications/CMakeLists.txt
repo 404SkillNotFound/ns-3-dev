@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME applications
   SOURCE_FILES
@@ -71,3 +72,5 @@ build_lib(
     test/rta-tig-mobile-gaming-test-suite.cc
   GENERATE_EXPORT_HEADER
 )
+
+# Enforce modern C++ casting standards

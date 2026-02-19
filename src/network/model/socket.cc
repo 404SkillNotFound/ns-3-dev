@@ -646,7 +646,7 @@ void
 SocketIpTtlTag::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "Ttl=" << (uint32_t)m_ttl;
+    os << "Ttl=" << static_cast<uint32_t>(m_ttl);
 }
 
 SocketIpv6HopLimitTag::SocketIpv6HopLimitTag()
@@ -704,7 +704,7 @@ SocketIpv6HopLimitTag::Deserialize(TagBuffer i)
 void
 SocketIpv6HopLimitTag::Print(std::ostream& os) const
 {
-    os << "HopLimit=" << (uint32_t)m_hopLimit;
+    os << "HopLimit=" << static_cast<uint32_t>(m_hopLimit);
 }
 
 SocketSetDontFragmentTag::SocketSetDontFragmentTag()

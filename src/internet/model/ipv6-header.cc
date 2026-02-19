@@ -135,12 +135,12 @@ void
 Ipv6Header::Print(std::ostream& os) const
 {
     os << "(Version 6 "
-       << "Traffic class 0x" << std::hex << m_trafficClass << std::dec << " "
+       << "Traffic class 0x" << std::hex << +m_trafficClass << std::dec << " "
        << "DSCP " << DscpTypeToString(GetDscp()) << " "
        << "Flow Label 0x" << std::hex << m_flowLabel << std::dec << " "
        << "Payload Length " << m_payloadLength << " "
-       << "Next Header " << std::dec << (uint32_t)m_nextHeader << " "
-       << "Hop Limit " << std::dec << (uint32_t)m_hopLimit << " )" << m_sourceAddress << " > "
+       << "Next Header " << std::dec << +m_nextHeader << " "
+       << "Hop Limit " << std::dec << +m_hopLimit << " )" << m_sourceAddress << " > "
        << m_destinationAddress;
 }
 
@@ -180,7 +180,7 @@ Ipv6Header::Deserialize(Buffer::Iterator start)
         return 0;
     }
 
-    m_trafficClass = (uint8_t)((vTcFl >> 20) & 0x000000ff);
+    m_trafficClass = static_cast<uint8_t>((vTcFl >> 20) & 0x000000ff);
     m_flowLabel = vTcFl & 0xfffff;
     m_payloadLength = i.ReadNtohU16();
     m_nextHeader = i.ReadU8();

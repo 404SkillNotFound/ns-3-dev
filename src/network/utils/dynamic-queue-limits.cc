@@ -109,7 +109,7 @@ DynamicQueueLimits::Completed(uint32_t count)
     ovlimit = Posdiff(numQueued - m_numCompleted, limit);
     inprogress = numQueued - completed;
     prevInprogress = m_prevNumQueued - m_numCompleted;
-    allPrevCompleted = ((int32_t)(completed - m_prevNumQueued)) >= 0;
+    allPrevCompleted = static_cast<int32_t>(completed - m_prevNumQueued) >= 0;
 
     if ((ovlimit && !inprogress) || (m_prevOvlimit && allPrevCompleted))
     {
@@ -180,7 +180,7 @@ DynamicQueueLimits::Completed(uint32_t count)
     }
 
     // Enforce bounds on limit
-    limit = std::min((uint32_t)std::max(limit, m_minLimit), m_maxLimit);
+    limit = std::min(static_cast<uint32_t>(std::max(limit, m_minLimit)), m_maxLimit);
 
     if (limit != m_limit)
     {

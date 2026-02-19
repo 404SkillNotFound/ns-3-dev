@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 set(sqlite_sources)
 set(sqlite_headers)
 set(private_sqlite_headers)
@@ -85,3 +86,5 @@ build_lib(
     test/double-probe-test-suite.cc
     test/histogram-test-suite.cc
 )
+
+# Enforce modern C++ casting standards

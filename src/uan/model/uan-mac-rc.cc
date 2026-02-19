@@ -64,7 +64,7 @@ Reservation::~Reservation()
 {
     for (auto it = m_pktList.begin(); it != m_pktList.end(); it++)
     {
-        it->first = Ptr<Packet>((Packet*)nullptr);
+        it->first = Ptr<Packet>(static_cast<Packet*>(nullptr));
     }
     m_pktList.clear();
     m_timestamp.clear();
@@ -559,7 +559,7 @@ UanMacRc::ProcessAck(Ptr<Packet> ack)
         for (; nit != nacks.end(); nit++)
         {
             NS_LOG_DEBUG(Now().As(Time::S) << " Node " << Mac8Address::ConvertFrom(GetAddress())
-                                           << " Received NACK for " << (uint32_t)*nit);
+                                           << " Received NACK for " << +*nit);
             while (pnum < *nit)
             {
                 pit++;

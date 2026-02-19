@@ -315,8 +315,8 @@ TcpL4Protocol::ReceiveIcmp(Ipv4Address icmpSource,
                            Ipv4Address payloadDestination,
                            const uint8_t payload[8])
 {
-    NS_LOG_FUNCTION(this << icmpSource << (uint16_t)icmpTtl << (uint16_t)icmpType
-                         << (uint16_t)icmpCode << icmpInfo << payloadSource << payloadDestination);
+    NS_LOG_FUNCTION(this << icmpSource << +icmpTtl << +icmpType << +icmpCode << icmpInfo
+                         << payloadSource << payloadDestination);
     uint16_t src;
     uint16_t dst;
     src = payload[0] << 8;
@@ -347,8 +347,8 @@ TcpL4Protocol::ReceiveIcmp(Ipv6Address icmpSource,
                            Ipv6Address payloadDestination,
                            const uint8_t payload[8])
 {
-    NS_LOG_FUNCTION(this << icmpSource << (uint16_t)icmpTtl << (uint16_t)icmpType
-                         << (uint16_t)icmpCode << icmpInfo << payloadSource << payloadDestination);
+    NS_LOG_FUNCTION(this << icmpSource << +icmpTtl << +icmpType << +icmpCode << icmpInfo
+                         << payloadSource << payloadDestination);
     uint16_t src;
     uint16_t dst;
     src = payload[0] << 8;
