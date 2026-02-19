@@ -212,13 +212,13 @@ SpectrumValue::ChangeSign()
 void
 SpectrumValue::ShiftLeft(int n)
 {
-    int i = 0;
-    while (i < (int)m_values.size() - n)
+    std::size_t i = 0;
+    while (i < m_values.size() - static_cast<std::size_t>(n))
     {
         m_values.at(i) = m_values.at(i + n);
         i++;
     }
-    while (i < (int)m_values.size())
+    while (i < m_values.size())
     {
         m_values.at(i) = 0;
         i++;

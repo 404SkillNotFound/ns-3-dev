@@ -62,7 +62,9 @@ TcpHybla::RecalcParam(const Ptr<TcpSocketState>& tcb)
 {
     NS_LOG_FUNCTION(this);
 
-    m_rho = std::max((double)tcb->m_minRtt.GetMilliSeconds() / m_rRtt.GetMilliSeconds(), 1.0);
+    m_rho =
+        std::max(static_cast<double>(tcb->m_minRtt.GetMilliSeconds()) / m_rRtt.GetMilliSeconds(),
+                 1.0);
 
     NS_ASSERT(m_rho > 0.0);
     NS_LOG_DEBUG("Calculated rho=" << m_rho);

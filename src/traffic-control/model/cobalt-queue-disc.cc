@@ -118,7 +118,7 @@ CobaltQueueDisc::GetTypeId()
 static inline uint32_t
 ReciprocalDivide(uint32_t A, uint32_t R)
 {
-    return (uint32_t)(((uint64_t)A * R) >> 32);
+    return static_cast<uint32_t>((static_cast<uint64_t>(A) * R) >> 32);
 }
 
 /**
@@ -178,13 +178,13 @@ CobaltQueueDisc::InitializeParams()
 bool
 CobaltQueueDisc::CoDelTimeAfter(int64_t a, int64_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) > 0);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) > 0;
 }
 
 bool
 CobaltQueueDisc::CoDelTimeAfterEq(int64_t a, int64_t b)
 {
-    return ((int64_t)(a) - (int64_t)(b) >= 0);
+    return static_cast<int64_t>(a) - static_cast<int64_t>(b) >= 0;
 }
 
 int64_t
@@ -215,9 +215,9 @@ void
 CobaltQueueDisc::NewtonStep()
 {
     NS_LOG_FUNCTION(this);
-    uint32_t invsqrt = ((uint32_t)m_recInvSqrt);
-    uint32_t invsqrt2 = ((uint64_t)invsqrt * invsqrt) >> 32;
-    uint64_t val = (3LL << 32) - ((uint64_t)m_count * invsqrt2);
+    auto invsqrt = static_cast<uint32_t>(m_recInvSqrt);
+    uint32_t invsqrt2 = (static_cast<uint64_t>(invsqrt) * invsqrt) >> 32;
+    uint64_t val = (3LL << 32) - (static_cast<uint64_t>(m_count) * invsqrt2);
 
     val >>= 2; /* avoid overflow */
     val = (val * invsqrt) >> (32 - 2 + 1);
@@ -230,7 +230,7 @@ CobaltQueueDisc::CacheInit()
     m_recInvSqrt = ~0U;
     m_recInvSqrtCache[0] = m_recInvSqrt;
 
-    for (m_count = 1; m_count < (uint32_t)(REC_INV_SQRT_CACHE); m_count++)
+    for (m_count = 1; m_count < static_cast<uint32_t>(REC_INV_SQRT_CACHE); m_count++)
     {
         NewtonStep();
         NewtonStep();
@@ -243,7 +243,7 @@ CobaltQueueDisc::CacheInit()
 void
 CobaltQueueDisc::InvSqrt()
 {
-    if (m_count < (uint32_t)REC_INV_SQRT_CACHE)
+    if (m_count < static_cast<uint32_t>(REC_INV_SQRT_CACHE))
     {
         m_recInvSqrt = m_recInvSqrtCache[m_count];
     }

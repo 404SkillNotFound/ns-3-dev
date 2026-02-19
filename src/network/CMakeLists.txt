@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 set(source_files
     helper/application-container.cc
     helper/application-helper.cc
@@ -173,3 +174,5 @@ build_lib(
     test/sequence-number-test-suite.cc
     test/test-data-rate.cc
 )
+
+# Enforce modern C++ casting standards

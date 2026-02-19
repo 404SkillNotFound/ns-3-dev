@@ -659,7 +659,7 @@ RedQueueDisc::DropEarly(Ptr<QueueDiscItem> item, uint32_t qSize)
         double pkts = m_ptc * 0.05;
         double fraction = std::pow((1 - m_qW), pkts);
 
-        if ((double)qSize < fraction * m_qAvg)
+        if (static_cast<double>(qSize) < fraction * m_qAvg)
         {
             // Queue could have been empty for 0.05 seconds
             return false;
@@ -752,11 +752,11 @@ double
 RedQueueDisc::ModifyP(double p, uint32_t size)
 {
     NS_LOG_FUNCTION(this << p << size);
-    auto count1 = (double)m_count;
+    auto count1 = static_cast<double>(m_count);
 
     if (GetMaxSize().GetUnit() == QueueSizeUnit::BYTES)
     {
-        count1 = (double)(m_countBytes / m_meanPktSize);
+        count1 = static_cast<double>(m_countBytes) / m_meanPktSize;
     }
 
     if (m_isWait)

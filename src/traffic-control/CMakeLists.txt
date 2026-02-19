@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME traffic-control
   SOURCE_FILES
@@ -49,3 +50,5 @@ build_lib(
     test/tbf-queue-disc-test-suite.cc
     test/tc-flow-control-test-suite.cc
 )
+
+# Enforce modern C++ casting standards

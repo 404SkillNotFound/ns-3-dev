@@ -560,7 +560,7 @@ Ipv6ExtensionFragment::GetFragments(Ptr<Packet> packet,
     uint32_t currentFragmentablePartSize = 0;
 
     bool moreFragment = true;
-    auto identification = (uint32_t)m_uvar->GetValue(0, (uint32_t)-1);
+    auto identification = static_cast<uint32_t>(m_uvar->GetValue(0, static_cast<uint32_t>(-1)));
     uint16_t offset = 0;
 
     do
@@ -929,7 +929,7 @@ Ipv6ExtensionRouting::Process(Ptr<Packet>& packet,
                                          offset,
                                          ipv6Header,
                                          dst,
-                                         (uint8_t*)nullptr,
+                                         static_cast<uint8_t*>(nullptr),
                                          stopProcessing,
                                          isDropped,
                                          dropReason);

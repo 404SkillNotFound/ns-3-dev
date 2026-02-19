@@ -1,3 +1,4 @@
+add_compile_options(-Wold-style-cast)
 build_lib(
   LIBNAME propagation
   SOURCE_FILES
@@ -42,3 +43,5 @@ build_lib(
     test/three-gpp-propagation-loss-model-test-suite.cc
     test/three-gpp-ntn-propagation-loss-model-test-suite.cc
 )
+
+# Enforce modern C++ casting standards
