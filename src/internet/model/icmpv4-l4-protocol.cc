@@ -169,7 +169,7 @@ Icmpv4L4Protocol::SendDestUnreach(Ipv4Header header,
                                   uint8_t code,
                                   uint16_t nextHopMtu)
 {
-    NS_LOG_FUNCTION(this << header << *orgData << (uint32_t)code << nextHopMtu);
+    NS_LOG_FUNCTION(this << header << *orgData << +code << nextHopMtu);
     Ptr<Packet> p = Create<Packet>();
     Icmpv4DestinationUnreachable unreach;
     unreach.SetNextHopMtu(nextHopMtu);

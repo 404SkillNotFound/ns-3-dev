@@ -107,7 +107,7 @@ void
 TagBuffer::WriteDouble(double v)
 {
     NS_LOG_FUNCTION(this << v);
-    auto buf = (uint8_t*)&v;
+    auto buf = reinterpret_cast<uint8_t*>(&v);
     for (uint32_t i = 0; i < sizeof(double); ++i, ++buf)
     {
         WriteU8(*buf);
@@ -160,7 +160,7 @@ TagBuffer::ReadDouble()
 {
     NS_LOG_FUNCTION(this);
     double v;
-    auto buf = (uint8_t*)&v;
+    auto buf = reinterpret_cast<uint8_t*>(&v);
     for (uint32_t i = 0; i < sizeof(double); ++i, ++buf)
     {
         *buf = ReadU8();
@@ -199,7 +199,7 @@ TagBuffer::CopyFrom(TagBuffer o)
     NS_ASSERT(o.m_end >= o.m_current);
     NS_ASSERT(m_end >= m_current);
     uintptr_t size = o.m_end - o.m_current;
-    NS_ASSERT(size <= (uintptr_t)(m_end - m_current));
+    NS_ASSERT(size <= static_cast<uintptr_t>(m_end - m_current));
     std::memcpy(m_current, o.m_current, size);
     m_current += size;
 }

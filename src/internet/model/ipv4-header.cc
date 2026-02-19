@@ -73,7 +73,7 @@ Ipv4Header::SetIdentification(uint16_t identification)
 void
 Ipv4Header::SetTos(uint8_t tos)
 {
-    NS_LOG_FUNCTION(this << static_cast<uint32_t>(tos));
+    NS_LOG_FUNCTION(this << +tos);
     m_tos = tos;
 }
 
@@ -255,7 +255,7 @@ Ipv4Header::GetFragmentOffset() const
 void
 Ipv4Header::SetTtl(uint8_t ttl)
 {
-    NS_LOG_FUNCTION(this << static_cast<uint32_t>(ttl));
+    NS_LOG_FUNCTION(this << +ttl);
     m_ttl = ttl;
 }
 
@@ -276,7 +276,7 @@ Ipv4Header::GetProtocol() const
 void
 Ipv4Header::SetProtocol(uint8_t protocol)
 {
-    NS_LOG_FUNCTION(this << static_cast<uint32_t>(protocol));
+    NS_LOG_FUNCTION(this << +protocol);
     m_protocol = protocol;
 }
 
@@ -358,12 +358,12 @@ Ipv4Header::Print(std::ostream& os) const
     {
         flags = "XX";
     }
-    os << "tos 0x" << std::hex << m_tos << std::dec << " "
+    os << "tos 0x" << std::hex << +m_tos << std::dec << " "
        << "DSCP " << DscpTypeToString(GetDscp()) << " "
        << "ECN " << EcnTypeToString(GetEcn()) << " "
-       << "ttl " << m_ttl << " "
+       << "ttl " << +m_ttl << " "
        << "id " << m_identification << " "
-       << "protocol " << m_protocol << " "
+       << "protocol " << +m_protocol << " "
        << "offset (bytes) " << m_fragmentOffset << " "
        << "flags [" << flags << "] "
        << "length: " << (m_payloadSize + 5 * 4) << " " << m_source << " > " << m_destination;
