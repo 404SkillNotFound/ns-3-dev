@@ -98,8 +98,7 @@ void
 Icmpv6Header::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)m_type << " code = " << (uint32_t)m_code
-       << " checksum = " << (uint32_t)m_checksum << ")";
+    os << "( type = " << +m_type << " code = " << +m_code << " checksum = " << +m_checksum << ")";
 }
 
 uint32_t
@@ -257,8 +256,8 @@ void
 Icmpv6NS::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (NS) code = " << (uint32_t)GetCode()
-       << " target = " << m_target << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (NS) code = " << +GetCode() << " target = " << m_target
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -420,8 +419,8 @@ void
 Icmpv6NA::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (NA) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (NA) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -446,17 +445,17 @@ Icmpv6NA::Serialize(Buffer::Iterator start) const
 
     if (m_flagR)
     {
-        reserved |= (uint32_t)(1 << 31);
+        reserved |= static_cast<uint32_t>(1) << 31;
     }
 
     if (m_flagS)
     {
-        reserved |= (uint32_t)(1 << 30);
+        reserved |= static_cast<uint32_t>(1 << 30);
     }
 
     if (m_flagO)
     {
-        reserved |= (uint32_t)(1 << 29);
+        reserved |= static_cast<uint32_t>(1 << 29);
     }
 
     i.WriteHtonU32(reserved);
@@ -650,8 +649,8 @@ void
 Icmpv6RA::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (RA) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (RA) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -676,17 +675,17 @@ Icmpv6RA::Serialize(Buffer::Iterator start) const
 
     if (m_flagM)
     {
-        flags |= (uint8_t)(1 << 7);
+        flags |= static_cast<uint8_t>(1 << 7);
     }
 
     if (m_flagO)
     {
-        flags |= (uint8_t)(1 << 6);
+        flags |= static_cast<uint8_t>(1 << 6);
     }
 
     if (m_flagH)
     {
-        flags |= (uint8_t)(1 << 5);
+        flags |= static_cast<uint8_t>(1 << 5);
     }
     i.WriteU8(flags);
     i.WriteHtonU16(GetLifeTime());
@@ -787,8 +786,8 @@ void
 Icmpv6RS::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (RS) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (RS) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -917,8 +916,8 @@ void
 Icmpv6Redirection::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (Redirection) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << " target = " << m_target
+    os << "( type = " << +GetType() << " (Redirection) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << " target = " << m_target
        << " destination = " << m_destination << ")";
 }
 
@@ -1057,8 +1056,8 @@ Icmpv6Echo::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
     os << "( type = " << (GetType() == 128 ? "128 (Request)" : "129 (Reply)")
-       << " Id = " << (uint32_t)GetId() << " SeqNo = " << (uint32_t)GetSeq()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+       << " Id = " << +GetId() << " SeqNo = " << +GetSeq() << " checksum = " << +GetChecksum()
+       << ")";
 }
 
 uint32_t
@@ -1150,9 +1149,8 @@ void
 Icmpv6DestinationUnreachable::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType()
-       << " (Destination Unreachable) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (Destination Unreachable) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -1267,8 +1265,8 @@ void
 Icmpv6TooBig::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " (Too Big) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << " mtu = " << (uint32_t)GetMtu() << ")";
+    os << "( type = " << +GetType() << " (Too Big) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << " mtu = " << +GetMtu() << ")";
 }
 
 uint32_t
@@ -1368,9 +1366,8 @@ void
 Icmpv6TimeExceeded::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType()
-       << " (Destination Unreachable) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << ")";
+    os << "( type = " << +GetType() << " (Destination Unreachable) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << ")";
 }
 
 uint32_t
@@ -1485,9 +1482,8 @@ void
 Icmpv6ParameterError::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType()
-       << " (Destination Unreachable) code = " << (uint32_t)GetCode()
-       << " checksum = " << (uint32_t)GetChecksum() << " ptr = " << (uint32_t)GetPtr() << ")";
+    os << "( type = " << +GetType() << " (Destination Unreachable) code = " << +GetCode()
+       << " checksum = " << +GetChecksum() << " ptr = " << +GetPtr() << ")";
 }
 
 uint32_t
@@ -1608,7 +1604,7 @@ void
 Icmpv6OptionHeader::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength() << ")";
+    os << "( type = " << +GetType() << " length = " << +GetLength() << ")";
 }
 
 uint32_t
@@ -1704,8 +1700,7 @@ void
 Icmpv6OptionMtu::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength()
-       << " MTU = " << m_mtu << ")";
+    os << "( type = " << +GetType() << " length = " << +GetLength() << " MTU = " << m_mtu << ")";
 }
 
 uint32_t
@@ -1877,8 +1872,8 @@ void
 Icmpv6OptionPrefixInformation::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength() << " prefix "
-       << m_prefix << ")";
+    os << "( type = " << +GetType() << " length = " << +GetLength() << " prefix " << m_prefix
+       << ")";
 }
 
 uint32_t
@@ -1969,7 +1964,7 @@ Icmpv6OptionLinkLayerAddress::Icmpv6OptionLinkLayerAddress(bool source, Address 
                    : Icmpv6Header::ICMPV6_OPT_LINK_LAYER_TARGET);
     SetAddress(addr);
 
-    uint8_t len = (2 + m_addr.GetLength()) / 8;
+    auto len = static_cast<uint8_t>((2 + m_addr.GetLength()) / 8);
     if ((2 + m_addr.GetLength()) % 8)
     {
         len++;
@@ -2000,15 +1995,15 @@ void
 Icmpv6OptionLinkLayerAddress::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength()
-       << " L2 Address = " << m_addr << ")";
+    os << "( type = " << +GetType() << " length = " << +GetLength() << " L2 Address = " << m_addr
+       << ")";
 }
 
 uint32_t
 Icmpv6OptionLinkLayerAddress::GetSerializedSize() const
 {
     NS_LOG_FUNCTION(this);
-    uint8_t nb = GetLength() * 8;
+    auto nb = static_cast<uint8_t>(GetLength() * 8);
     return nb;
 }
 
@@ -2024,7 +2019,7 @@ Icmpv6OptionLinkLayerAddress::Serialize(Buffer::Iterator start) const
     m_addr.CopyTo(mac);
     i.Write(mac, m_addr.GetLength());
 
-    uint8_t len = GetLength() * 8 - (2 + m_addr.GetLength());
+    auto len = static_cast<uint8_t>(GetLength() * 8 - (2 + m_addr.GetLength()));
     for (uint8_t nb = 0; nb < len; nb++)
     {
         i.WriteU8(0);
@@ -2095,7 +2090,7 @@ void
 Icmpv6OptionRedirected::Print(std::ostream& os) const
 {
     NS_LOG_FUNCTION(this << &os);
-    os << "( type = " << (uint32_t)GetType() << " length = " << (uint32_t)GetLength() << ")";
+    os << "( type = " << +GetType() << " length = " << +GetLength() << ")";
 }
 
 uint32_t
@@ -2136,7 +2131,7 @@ Icmpv6OptionRedirected::Deserialize(Buffer::Iterator start)
     i.ReadU16();
     i.ReadU32();
 
-    uint32_t len2 = (GetLength() - 1) * 8;
+    uint32_t len2 = static_cast<uint32_t>(GetLength() - 1) * 8;
     auto buff = new uint8_t[len2];
     i.Read(buff, len2);
     m_packet = Create<Packet>(buff, len2);

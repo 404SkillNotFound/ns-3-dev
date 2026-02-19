@@ -35,72 +35,72 @@ DataRate::DoParse(const std::string s, uint64_t* v)
         if (trailer == "bps" || trailer == "b/s")
         {
             // bit/s
-            *v = (uint64_t)r;
+            *v = static_cast<uint64_t>(r);
         }
         else if (trailer == "Bps" || trailer == "B/s")
         {
             // byte/s
-            *v = (uint64_t)(r * 8);
+            *v = static_cast<uint64_t>(r * 8);
         }
         else if (trailer == "kbps" || trailer == "kb/s" || trailer == "Kbps" || trailer == "Kb/s")
         {
             // kilobits/s
-            *v = (uint64_t)(r * 1000);
+            *v = static_cast<uint64_t>(r * 1000);
         }
         else if (trailer == "kBps" || trailer == "kB/s" || trailer == "KBps" || trailer == "KB/s")
         {
             // KiloByte/s
-            *v = (uint64_t)(r * 8000);
+            *v = static_cast<uint64_t>(r * 8000);
         }
         else if (trailer == "Kib/s")
         {
             // kibibit/s
-            *v = (uint64_t)(r * 1024);
+            *v = static_cast<uint64_t>(r * 1024);
         }
         else if (trailer == "KiB/s")
         {
             // kibibyte/s
-            *v = (uint64_t)(r * 8192);
+            *v = static_cast<uint64_t>(r * 8192);
         }
         else if (trailer == "Mbps" || trailer == "Mb/s")
         {
             // MegaBits/s
-            *v = (uint64_t)(r * 1000000);
+            *v = static_cast<uint64_t>(r * 1000000);
         }
         else if (trailer == "MBps" || trailer == "MB/s")
         {
             // MegaBytes/s
-            *v = (uint64_t)(r * 8000000);
+            *v = static_cast<uint64_t>(r * 8000000);
         }
         else if (trailer == "Mib/s")
         {
             // MebiBits/s
-            *v = (uint64_t)(r * 1048576);
+            *v = static_cast<uint64_t>(r * 1048576);
         }
         else if (trailer == "MiB/s")
         {
             // MebiByte/s
-            *v = (uint64_t)(r * 1048576 * 8);
+            *v = static_cast<uint64_t>(r * 1048576 * 8);
         }
         else if (trailer == "Gbps" || trailer == "Gb/s")
         {
             // GigaBit/s
-            *v = (uint64_t)(r * 1000000000);
+            *v = static_cast<uint64_t>(r * 1000000000);
         }
         else if (trailer == "GBps" || trailer == "GB/s")
         {
             // GigaByte/s
-            *v = (uint64_t)(r * 8 * 1000000000);
+            *v = static_cast<uint64_t>(r * 8 * 1000000000);
         }
         else if (trailer == "Gib/s")
         {
             // GibiBits/s
-            *v = (uint64_t)(r * 1048576 * 1024);
+            *v = static_cast<uint64_t>(r * 1048576 * 1024);
         }
         else if (trailer == "GiB/s")
         {
             // GibiByte/s
-            *v = (uint64_t)(r * 1048576 * 1024 * 8);
+            *v = static_cast<uint64_t>(r * 1048576 * 1024 * 8);
         }
         else
         {
@@ -157,7 +157,7 @@ DataRate::operator-=(DataRate rhs)
 DataRate
 DataRate::operator*(double rhs) const
 {
-    return DataRate((uint64_t)(m_bps * rhs));
+    return DataRate(static_cast<uint64_t>(m_bps * rhs));
 }
 
 DataRate&
