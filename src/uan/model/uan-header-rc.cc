@@ -83,7 +83,7 @@ void
 UanHeaderRcData::Serialize(Buffer::Iterator start) const
 {
     start.WriteU8(m_frameNo);
-    start.WriteU16((uint16_t)m_propDelay.RoundTo(Time::MS).GetMilliSeconds());
+    start.WriteU16(static_cast<uint16_t>(m_propDelay.RoundTo(Time::MS).GetMilliSeconds()));
 }
 
 uint32_t
@@ -92,7 +92,7 @@ UanHeaderRcData::Deserialize(Buffer::Iterator start)
     Buffer::Iterator rbuf = start;
 
     m_frameNo = start.ReadU8();
-    m_propDelay = Seconds(((double)start.ReadU16()) / 1000.0);
+    m_propDelay = Seconds((static_cast<double>(start.ReadU16())) / 1000.0);
 
     return rbuf.GetDistanceFrom(start);
 }
@@ -100,7 +100,7 @@ UanHeaderRcData::Deserialize(Buffer::Iterator start)
 void
 UanHeaderRcData::Print(std::ostream& os, Time::Unit unit) const
 {
-    os << "Frame No=" << (uint32_t)m_frameNo << " Prop Delay=" << m_propDelay.As(unit);
+    os << "Frame No=" << +m_frameNo << " Prop Delay=" << m_propDelay.As(unit);
 }
 
 void
@@ -226,7 +226,7 @@ UanHeaderRcRts::Serialize(Buffer::Iterator start) const
     start.WriteU8(m_retryNo);
     start.WriteU8(m_noFrames);
     start.WriteU16(m_length);
-    start.WriteU32((uint32_t)(m_timeStamp.RoundTo(Time::MS).GetMilliSeconds()));
+    start.WriteU32(static_cast<uint32_t>(m_timeStamp.RoundTo(Time::MS).GetMilliSeconds()));
 }
 
 uint32_t
@@ -237,7 +237,7 @@ UanHeaderRcRts::Deserialize(Buffer::Iterator start)
     m_retryNo = rbuf.ReadU8();
     m_noFrames = rbuf.ReadU8();
     m_length = rbuf.ReadU16();
-    m_timeStamp = Seconds(((double)rbuf.ReadU32()) / 1000.0);
+    m_timeStamp = Seconds((static_cast<double>(rbuf.ReadU32())) / 1000.0);
     // m_timeStamp = Seconds ( rbuf.ReadU16 ()/1000 );
     return rbuf.GetDistanceFrom(start);
 }
@@ -245,9 +245,8 @@ UanHeaderRcRts::Deserialize(Buffer::Iterator start)
 void
 UanHeaderRcRts::Print(std::ostream& os, Time::Unit unit) const
 {
-    os << "Frame #=" << (uint32_t)m_frameNo << " Retry #=" << (uint32_t)m_retryNo
-       << " Num Frames=" << (uint32_t)m_noFrames << "Length=" << m_length
-       << " Time Stamp=" << m_timeStamp.As(unit);
+    os << "Frame #=" << +m_frameNo << " Retry #=" << +m_retryNo << " Num Frames=" << +m_noFrames
+       << "Length=" << m_length << " Time Stamp=" << m_timeStamp.As(unit);
 }
 
 void
@@ -351,8 +350,8 @@ UanHeaderRcCtsGlobal::Serialize(Buffer::Iterator start) const
 {
     start.WriteU16(m_rateNum);
     start.WriteU16(m_retryRate);
-    start.WriteU32((uint32_t)(m_timeStampTx.RoundTo(Time::MS).GetMilliSeconds()));
-    start.WriteU32((uint32_t)(m_winTime.RoundTo(Time::MS).GetMilliSeconds()));
+    start.WriteU32(static_cast<uint32_t>(m_timeStampTx.RoundTo(Time::MS).GetMilliSeconds()));
+    start.WriteU32(static_cast<uint32_t>(m_winTime.RoundTo(Time::MS).GetMilliSeconds()));
 }
 
 uint32_t
@@ -361,8 +360,8 @@ UanHeaderRcCtsGlobal::Deserialize(Buffer::Iterator start)
     Buffer::Iterator rbuf = start;
     m_rateNum = rbuf.ReadU16();
     m_retryRate = rbuf.ReadU16();
-    m_timeStampTx = Seconds(((double)rbuf.ReadU32()) / 1000.0);
-    m_winTime = Seconds(((double)rbuf.ReadU32()) / 1000.0);
+    m_timeStampTx = Seconds((static_cast<double>(rbuf.ReadU32())) / 1000.0);
+    m_winTime = Seconds((static_cast<double>(rbuf.ReadU32())) / 1000.0);
     return rbuf.GetDistanceFrom(start);
 }
 
@@ -498,8 +497,8 @@ UanHeaderRcCts::Serialize(Buffer::Iterator start) const
     start.WriteU8(address);
     start.WriteU8(m_frameNo);
     start.WriteU8(m_retryNo);
-    start.WriteU32((uint32_t)(m_timeStampRts.RoundTo(Time::MS).GetMilliSeconds()));
-    start.WriteU32((uint32_t)(m_delay.RoundTo(Time::MS).GetMilliSeconds()));
+    start.WriteU32(static_cast<uint32_t>(m_timeStampRts.RoundTo(Time::MS).GetMilliSeconds()));
+    start.WriteU32(static_cast<uint32_t>(m_delay.RoundTo(Time::MS).GetMilliSeconds()));
 }
 
 uint32_t
@@ -509,8 +508,8 @@ UanHeaderRcCts::Deserialize(Buffer::Iterator start)
     m_address = Mac8Address(rbuf.ReadU8());
     m_frameNo = rbuf.ReadU8();
     m_retryNo = rbuf.ReadU8();
-    m_timeStampRts = Seconds(((double)rbuf.ReadU32()) / 1000.0);
-    m_delay = Seconds(((double)rbuf.ReadU32()) / 1000.0);
+    m_timeStampRts = Seconds(static_cast<double>(rbuf.ReadU32()) / 1000.0);
+    m_delay = Seconds(static_cast<double>(rbuf.ReadU32()) / 1000.0);
 
     return rbuf.GetDistanceFrom(start);
 }
@@ -518,9 +517,9 @@ UanHeaderRcCts::Deserialize(Buffer::Iterator start)
 void
 UanHeaderRcCts::Print(std::ostream& os, Time::Unit unit) const
 {
-    os << "CTS (Addr=" << m_address << " Frame #=" << (uint32_t)m_frameNo
-       << " Retry #=" << (uint32_t)m_retryNo << " RTS Rx Timestamp=" << m_timeStampRts.As(unit)
-       << " Delay until TX=" << m_delay.As(unit) << ")";
+    os << "CTS (Addr=" << m_address << " Frame #=" << +m_frameNo << " Retry #=" << +m_retryNo
+       << " RTS Rx Timestamp=" << m_timeStampRts.As(unit) << " Delay until TX=" << m_delay.As(unit)
+       << ")";
 }
 
 void
@@ -620,16 +619,16 @@ UanHeaderRcAck::Deserialize(Buffer::Iterator start)
 void
 UanHeaderRcAck::Print(std::ostream& os) const
 {
-    os << "# Frames=" << (uint32_t)m_frameNo << " # nacked=" << (uint32_t)GetNoNacks()
+    os << "# Frames=" << +m_frameNo << " # nacked=" << static_cast<uint32_t>(GetNoNacks())
        << " Nacked: ";
     if (GetNoNacks() > 0)
     {
         auto it = m_nackedFrames.begin();
-        os << (uint32_t)*it;
+        os << static_cast<uint32_t>(*it);
         it++;
         for (; it != m_nackedFrames.end(); it++)
         {
-            os << ", " << (uint32_t)*it;
+            os << ", " << static_cast<uint32_t>(*it);
         }
     }
 }

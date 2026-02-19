@@ -54,8 +54,8 @@ ItuR1238PropagationLossModel::GetLoss(Ptr<MobilityModel> a1, Ptr<MobilityModel> 
                   "ITU-R 1238 applies only to nodes that are in the same building");
     double N = 0.0;
     int n = std::abs(a->GetFloorNumber() - b->GetFloorNumber());
-    NS_LOG_LOGIC(this << " A floor " << (uint16_t)a->GetFloorNumber() << " B floor "
-                      << (uint16_t)b->GetFloorNumber() << " n " << n);
+    NS_LOG_LOGIC(this << " A floor " << +a->GetFloorNumber() << " B floor " << +b->GetFloorNumber()
+                      << " n " << n);
     double Lf = 0.0;
     Ptr<Building> aBuilding = a->GetBuilding();
     if (aBuilding->GetBuildingType() == Building::Residential)

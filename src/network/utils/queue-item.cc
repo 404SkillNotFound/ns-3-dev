@@ -101,7 +101,7 @@ QueueDiscItem::GetTxQueueIndex() const
 void
 QueueDiscItem::SetTxQueueIndex(uint8_t txq)
 {
-    NS_LOG_FUNCTION(this << (uint16_t)txq);
+    NS_LOG_FUNCTION(this << +txq);
     m_txq = txq;
 }
 

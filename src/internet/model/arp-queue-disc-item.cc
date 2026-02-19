@@ -71,8 +71,8 @@ ArpQueueDiscItem::Print(std::ostream& os) const
     }
     os << GetPacket() << " "
        << "Dst addr " << GetAddress() << " "
-       << "proto " << (uint16_t)GetProtocol() << " "
-       << "txq " << (uint8_t)GetTxQueueIndex();
+       << "proto " << +GetProtocol() << " "
+       << "txq " << +GetTxQueueIndex();
 }
 
 bool
@@ -109,7 +109,7 @@ ArpQueueDiscItem::Hash(uint32_t perturbation) const
     // Linux calculates jhash2 (jenkins hash), we calculate murmur3 because it is
     // already available in ns-3
 
-    uint32_t hash = Hash32((char*)buf.data(), tmp + 5);
+    uint32_t hash = Hash32(reinterpret_cast<char*>(buf.data()), tmp + 5);
 
     NS_LOG_DEBUG("Hash value " << hash);
 

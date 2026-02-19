@@ -72,8 +72,11 @@ UanPhyCalcSinrDual::CalcSinrDb(Ptr<Packet> pkt,
     for (; it != arrivalList.end(); it++)
     {
         // Only count interference if there is overlap in incoming frequency
-        if (std::abs((double)it->GetTxMode().GetCenterFreqHz() - (double)mode.GetCenterFreqHz()) <
-            (double)(it->GetTxMode().GetBandwidthHz() / 2 + mode.GetBandwidthHz() / 2) - 0.5)
+        if (std::abs(static_cast<double>(it->GetTxMode().GetCenterFreqHz()) -
+                     static_cast<double>(mode.GetCenterFreqHz())) <
+            static_cast<double>(it->GetTxMode().GetBandwidthHz() / 2 +
+                                static_cast<double>(mode.GetBandwidthHz()) / 2.0) -
+                0.5)
         {
             UanHeaderCommon ch;
             UanHeaderCommon ch2;
@@ -87,16 +90,17 @@ UanPhyCalcSinrDual::CalcSinrDb(Ptr<Packet> pkt,
             {
                 if (ch.GetType() == UanMacRc::TYPE_DATA)
                 {
-                    NS_LOG_DEBUG("Adding interferer from "
-                                 << ch2.GetSrc() << " against " << ch.GetSrc()
-                                 << ": PktRxMode: " << mode.GetName()
-                                 << " Int mode: " << it->GetTxMode().GetName() << " Separation: "
-                                 << std::abs((double)it->GetTxMode().GetCenterFreqHz() -
-                                             (double)mode.GetCenterFreqHz())
-                                 << " Combined bandwidths: "
-                                 << (double)(it->GetTxMode().GetBandwidthHz() / 2 +
-                                             mode.GetBandwidthHz() / 2) -
-                                        0.5);
+                    NS_LOG_DEBUG(
+                        "Adding interferer from "
+                        << ch2.GetSrc() << " against " << ch.GetSrc()
+                        << ": PktRxMode: " << mode.GetName()
+                        << " Int mode: " << it->GetTxMode().GetName() << " Separation: "
+                        << std::abs(static_cast<double>(it->GetTxMode().GetCenterFreqHz()) -
+                                    static_cast<double>(mode.GetCenterFreqHz()))
+                        << " Combined bandwidths: "
+                        << static_cast<double>(it->GetTxMode().GetBandwidthHz() / 2 +
+                                               mode.GetBandwidthHz() / 2) -
+                               0.5);
                 }
             }
             intKp += DbToKp(it->GetRxPowerDb());

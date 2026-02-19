@@ -313,7 +313,7 @@ QueueDisc::QueueDisc(QueueDiscSizePolicy policy)
       m_sizePolicy(policy),
       m_prohibitChangeMode(false)
 {
-    NS_LOG_FUNCTION(this << (uint16_t)policy);
+    NS_LOG_FUNCTION(this << +policy);
 
     // These lambdas call the DropBeforeEnqueue or DropAfterDequeue methods of this
     // QueueDisc object. Given that a callback to the operator() of these lambdas

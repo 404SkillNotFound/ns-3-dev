@@ -396,7 +396,7 @@ TvSpectrumTransmitterHelper::GenerateRegionalTransmitterIndices(const double sta
     // find indices on startFrequencies[] containing each start frequency that is
     // selected to be transmitted and add to list
     std::list<int> transmitterIndicesToCreate;
-    for (int i = 0; i < (int)transmitterStartFreqsToCreate.size(); i++)
+    for (std::size_t i = 0; i < transmitterStartFreqsToCreate.size(); i++)
     {
         for (int channelNumberIndex = 0; channelNumberIndex < startFrequenciesLength;
              channelNumberIndex++)
@@ -437,8 +437,8 @@ TvSpectrumTransmitterHelper::InstallRandomRegionalTransmitters(
     std::list<int> transmitterIndicesToCreate,
     std::list<Vector> transmitterLocations)
 {
-    int numTransmitters = (int)transmitterIndicesToCreate.size();
-    for (int transNum = 0; transNum < numTransmitters; transNum++)
+    std::size_t numTransmitters = transmitterIndicesToCreate.size();
+    for (std::size_t transNum = 0; transNum < numTransmitters; transNum++)
     {
         Ptr<ListPositionAllocator> nodePosition = CreateObject<ListPositionAllocator>();
         // add generated coordinate point to node position
@@ -450,7 +450,7 @@ TvSpectrumTransmitterHelper::InstallRandomRegionalTransmitters(
         tvNode.Create(1);
         mobility.Install(tvNode);
         // set channel number for this transmitter
-        auto channelNumber = (uint16_t)transmitterIndicesToCreate.front();
+        auto channelNumber = static_cast<uint16_t>(transmitterIndicesToCreate.front());
         Install(tvNode, region, channelNumber); // install tv transmitter
         transmitterLocations.pop_front();       // remove created transmitter location
         transmitterIndicesToCreate.pop_front(); // remove created transmitter index
