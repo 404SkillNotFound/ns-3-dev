@@ -218,7 +218,6 @@ macro(process_options)
       endif()
     else()
       add_compile_options(-Wall) # -Wextra
-      add_compile_options(-Wold-style-cast)
       if(${GCC_WORKING_PEDANTIC_SEMICOLON})
         add_compile_options(-Wpedantic)
       endif()
