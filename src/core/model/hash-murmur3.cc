@@ -193,7 +193,7 @@ void MurmurHash3_x86_32 ( const void * key, std::size_t len,
 void MurmurHash3_x86_32_incr ( const void * key, std::size_t len,
                                uint32_t seed, void * out )
 {
-  const uint8_t * data = static_cast<const uint8_t*>(key);
+  const uint8_t * data = static_cast<const uint8_t*>(key); //PDB cast
   const std::size_t nblocks = len / 4;  //PDB: was const int nblocks
 
   uint32_t h1 = seed;
@@ -205,7 +205,7 @@ void MurmurHash3_x86_32_incr ( const void * key, std::size_t len,
   // body
 
   //PDB: const uint32_t * blocks = (const uint32_t *)(data + nblocks*4);
-  const uint32_t * blocks = reinterpret_cast<const uint32_t*>(data);
+  const uint32_t * blocks = reinterpret_cast<const uint32_t*>(data); //PDB cast
 
   //PDB: for(int i = -nblocks; i; i++)
   for(std::size_t i = 0; i < nblocks; i++)
@@ -224,7 +224,7 @@ void MurmurHash3_x86_32_incr ( const void * key, std::size_t len,
   //----------
   // tail
 
-  const uint8_t * tail = static_cast<const uint8_t*>(data + nblocks*4);
+  const uint8_t * tail = static_cast<const uint8_t*>(data + nblocks*4); //PDB cast
 
   uint32_t k1 = 0;
 
@@ -236,7 +236,7 @@ void MurmurHash3_x86_32_incr ( const void * key, std::size_t len,
           k1 *= c1; k1 = rotl32(k1,15); k1 *= c2; h1 ^= k1;
   };
 
-  *static_cast<uint32_t*>(out) = h1;
+  *static_cast<uint32_t*>(out) = h1; //PDB cast
 }
 
 //PDB - incremental hashing - finalization
@@ -252,7 +252,7 @@ void MurmurHash3_x86_32_fin ( std::size_t len,
 
   h1 = fmix(h1);
 
-  *static_cast<uint32_t*>(out) = h1;
+  *static_cast<uint32_t*>(out) = h1; //PDB cast
 }
 
 //-----------------------------------------------------------------------------
@@ -300,7 +300,7 @@ void MurmurHash3_x86_128 ( const void * key, const std::size_t len,
 void MurmurHash3_x86_128_incr ( const void * key, const std::size_t len,
                                 uint32_t * seeds, void * out )
 {
-  const uint8_t* data = static_cast<const uint8_t*>(key);
+  const uint8_t* data = static_cast<const uint8_t*>(key); //PDB cast
   const std::size_t nblocks = len / 16;  //PDB: was const int nblocks
 
   uint32_t h1 = seeds[0];
@@ -317,7 +317,7 @@ void MurmurHash3_x86_128_incr ( const void * key, const std::size_t len,
   // body
 
   //PDB: const uint32_t * blocks = (const uint32_t *)(data + nblocks*16);
-  const uint32_t* blocks = reinterpret_cast<const uint32_t*>(data);
+  const uint32_t* blocks = reinterpret_cast<const uint32_t*>(data); //PDB cast
 
   //PDB: for(int i = -nblocks; i; i++)
   for(std::size_t i = 0; i < nblocks; i++)
@@ -347,7 +347,7 @@ void MurmurHash3_x86_128_incr ( const void * key, const std::size_t len,
   //----------
   // tail
 
-  const uint8_t* tail = static_cast<const uint8_t*>(data + nblocks * 16);
+  const uint8_t* tail = static_cast<const uint8_t*>(data + nblocks * 16); //PDB cast
 
   uint32_t k1 = 0;
   uint32_t k2 = 0;
@@ -380,10 +380,10 @@ void MurmurHash3_x86_128_incr ( const void * key, const std::size_t len,
            k1 *= c1; k1  = rotl32(k1,15); k1 *= c2; h1 ^= k1;
   };
 
-  static_cast<uint32_t*>(out)[0] = h1;
-  static_cast<uint32_t*>(out)[1] = h2;
-  static_cast<uint32_t*>(out)[2] = h3;
-  static_cast<uint32_t*>(out)[3] = h4;
+  static_cast<uint32_t*>(out)[0] = h1; //PDB cast
+  static_cast<uint32_t*>(out)[1] = h2; //PDB cast
+  static_cast<uint32_t*>(out)[2] = h3; //PDB cast
+  static_cast<uint32_t*>(out)[3] = h4; //PDB cast
 }
 
 //PDB - incremental hashing - finalization
@@ -434,7 +434,7 @@ void MurmurHash3_x64_128 ( const void * key, const std::size_t len,
   //----------
   // body
 
-  const uint64_t * blocks = reinterpret_cast<const uint64_t *>(data);
+  const uint64_t * blocks = reinterpret_cast<const uint64_t *>(data); //PDB cast
 
   for(std::size_t i = 0; i < nblocks; i++)  //PDB: was int i
   {
@@ -563,9 +563,9 @@ Murmur3::GetHash64(const char* buffer, const std::size_t size)
 void
 Murmur3::clear()
 {
-    m_hash32 = static_cast<uint32_t>(SEED);
+    m_hash32 = SEED;
     m_size32 = 0;
-    m_hash64[0] = m_hash64[1] = (static_cast<uint64_t>(SEED) << 32) | static_cast<uint32_t>(SEED);
+    m_hash64[0] = m_hash64[1] = (static_cast<uint64_t>(SEED) << 32) | SEED;
     m_size64 = 0;
 }
 

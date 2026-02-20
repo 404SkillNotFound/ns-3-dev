@@ -373,7 +373,7 @@ enum fnv_type {
 Fnv32_t
 fnv_32a_buf(void *buf, size_t len, Fnv32_t hval)
 {
-    unsigned char* bp = static_cast<unsigned char*>(buf);	/* start of buffer */
+    unsigned char *bp = (unsigned char *)buf;	/* start of buffer */
     unsigned char *be = bp + len;		/* beyond end of buffer */
 
     /*
@@ -412,7 +412,7 @@ fnv_32a_buf(void *buf, size_t len, Fnv32_t hval)
 Fnv32_t
 fnv_32a_str(char *str, Fnv32_t hval)
 {
-    unsigned char* s = reinterpret_cast<unsigned char*>(str);	/* unsigned string */
+    unsigned char *s = (unsigned char *)str;	/* unsigned string */
 
     /*
      * FNV-1a hash each octet in the buffer
@@ -751,14 +751,14 @@ Fnv1a::Fnv1a()
 uint32_t
 Fnv1a::GetHash32(const char* buffer, const std::size_t size)
 {
-    m_hash32 = Fnv1aImplementation::fnv_32a_buf(const_cast<char*>(buffer), size, m_hash32);
+    m_hash32 = Fnv1aImplementation::fnv_32a_buf((void*)buffer, size, m_hash32);
     return m_hash32;
 }
 
 uint64_t
 Fnv1a::GetHash64(const char* buffer, const std::size_t size)
 {
-    m_hash64 = Fnv1aImplementation::fnv_64a_buf(const_cast<char*>(buffer), size, m_hash64);
+    m_hash64 = Fnv1aImplementation::fnv_64a_buf((void*)buffer, size, m_hash64);
     return m_hash64;
 }
 
