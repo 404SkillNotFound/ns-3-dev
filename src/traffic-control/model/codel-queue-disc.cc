@@ -449,6 +449,12 @@ CoDelQueueDisc::CoDelTimeBeforeEq(uint32_t a, uint32_t b)
     return static_cast<int64_t>(a) - static_cast<int64_t>(b) <= 0;
 }
 
+uint32_t
+CoDelQueueDisc::Time2CoDel(Time t)
+{
+    return static_cast<uint32_t>(t.GetNanoSeconds() >> CODEL_SHIFT);
+}
+
 bool
 CoDelQueueDisc::CheckConfig()
 {
