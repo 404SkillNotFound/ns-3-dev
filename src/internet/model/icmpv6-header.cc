@@ -1964,7 +1964,7 @@ Icmpv6OptionLinkLayerAddress::Icmpv6OptionLinkLayerAddress(bool source, Address 
                    : Icmpv6Header::ICMPV6_OPT_LINK_LAYER_TARGET);
     SetAddress(addr);
 
-    uint8_t len = static_cast<uint8_t>((2 + m_addr.GetLength()) / 8);
+    auto len = static_cast<uint8_t>((2 + m_addr.GetLength()) / 8);
     if ((2 + m_addr.GetLength()) % 8)
     {
         len++;
@@ -2003,7 +2003,7 @@ uint32_t
 Icmpv6OptionLinkLayerAddress::GetSerializedSize() const
 {
     NS_LOG_FUNCTION(this);
-    uint8_t nb = static_cast<uint8_t>(GetLength() * 8);
+    auto nb = static_cast<uint8_t>(GetLength() * 8);
     return nb;
 }
 
