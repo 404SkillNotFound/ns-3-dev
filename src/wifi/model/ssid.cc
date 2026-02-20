@@ -68,7 +68,7 @@ Ssid::PeekString() const
 {
     // It is safe to return a pointer to the buffer because it is
     // guaranteed to be zero-terminated.
-    return (char*)m_ssid;
+    return reinterpret_cast<char*>(m_ssid);
 }
 
 WifiInformationElementId
