@@ -58,7 +58,7 @@ AmpduTag::Serialize(TagBuffer i) const
 {
     i.WriteU8(m_nbOfMpdus);
     int64_t duration = m_duration.GetTimeStep();
-    i.Write((const uint8_t*)&duration, sizeof(int64_t));
+    i.Write(reinterpret_cast<const uint8_t*>(&duration), sizeof(int64_t));
 }
 
 void
@@ -66,7 +66,7 @@ AmpduTag::Deserialize(TagBuffer i)
 {
     m_nbOfMpdus = i.ReadU8();
     int64_t duration;
-    i.Read((uint8_t*)&duration, sizeof(int64_t));
+    i.Read(reinterpret_cast<uint8_t*>(&duration), sizeof(int64_t));
     m_duration = Time(duration);
 }
 
