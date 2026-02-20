@@ -172,8 +172,8 @@ BulkSendApplication::SendData(const Address& from, const Address& to)
             packet = Create<Packet>(toSend);
         }
 
-        uint32_t actual = m_socket->Send(packet);
-        if (actual == toSend)
+        int actual = m_socket->Send(packet);
+        if (actual >= 0 && static_cast<uint64_t>(actual) == toSend)
         {
             m_totBytes += actual;
             m_txTrace(packet);
