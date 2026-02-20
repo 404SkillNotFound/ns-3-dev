@@ -333,7 +333,7 @@ XmlConfigLoad::Default()
         {
             NS_FATAL_ERROR("Invalid value");
         }
-        if (std::string((char*)type) == "default")
+        if (std::string(reinterpret_cast<const char*>(type)) == "default")
         {
             xmlChar* name = xmlTextReaderGetAttribute(reader, BAD_CAST "name");
             if (name == nullptr)
@@ -346,7 +346,8 @@ XmlConfigLoad::Default()
                 NS_FATAL_ERROR("Error getting attribute 'value'");
             }
             NS_LOG_DEBUG("default=" << (char*)name << ", value=" << value);
-            Config::SetDefault((char*)name, StringValue((char*)value));
+            Config::SetDefault(reinterpret_cast<const char*>(name),
+                               StringValue(reinterpret_cast<const char*>(value)));
             xmlFree(name);
             xmlFree(value);
         }
@@ -372,7 +373,7 @@ XmlConfigLoad::Global()
         {
             NS_FATAL_ERROR("Invalid value");
         }
-        if (std::string((char*)type) == "global")
+        if (std::string(reinterpret_cast<const char*>(type)) == "global")
         {
             xmlChar* name = xmlTextReaderGetAttribute(reader, BAD_CAST "name");
             if (name == nullptr)
@@ -385,7 +386,8 @@ XmlConfigLoad::Global()
                 NS_FATAL_ERROR("Error getting attribute 'value'");
             }
             NS_LOG_DEBUG("global=" << (char*)name << ", value=" << value);
-            Config::SetGlobal((char*)name, StringValue((char*)value));
+            Config::SetGlobal(reinterpret_cast<const char*>(name),
+                              StringValue(reinterpret_cast<const char*>(value)));
             xmlFree(name);
             xmlFree(value);
         }
@@ -411,7 +413,7 @@ XmlConfigLoad::Attributes()
         {
             NS_FATAL_ERROR("Invalid value");
         }
-        if (std::string((char*)type) == "value")
+        if (std::string(reinterpret_cast<const char*>(type)) == "value")
         {
             xmlChar* path = xmlTextReaderGetAttribute(reader, BAD_CAST "path");
             if (path == nullptr)
@@ -424,7 +426,8 @@ XmlConfigLoad::Attributes()
                 NS_FATAL_ERROR("Error getting attribute 'value'");
             }
             NS_LOG_DEBUG("path=" << (char*)path << ", value=" << (char*)value);
-            Config::Set((char*)path, StringValue((char*)value));
+            Config::Set(reinterpret_cast<const char*>(path),
+                        StringValue(reinterpret_cast<const char*>(value)));
             xmlFree(path);
             xmlFree(value);
         }
