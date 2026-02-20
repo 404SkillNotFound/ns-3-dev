@@ -50,7 +50,7 @@ FdNetDeviceFdReader::DoRead()
 {
     NS_LOG_FUNCTION(this);
 
-    auto buf = (uint8_t*)malloc(m_bufferSize);
+    auto buf = static_cast<uint8_t*>(malloc(m_bufferSize));
     NS_ABORT_MSG_IF(buf == nullptr, "malloc() failed");
 
     NS_LOG_LOGIC("Calling read on fd " << m_fd);
@@ -339,7 +339,7 @@ static void
 AddPIHeader(uint8_t*& buf, size_t& len)
 {
     // Synthesize PI header for our friend the kernel
-    auto buf2 = (uint8_t*)malloc(len + 4);
+    auto buf2 = static_cast<uint8_t*>(malloc(len + 4));
     memcpy(buf2 + 4, buf, len);
     len += 4;
 
@@ -392,7 +392,7 @@ RemovePIHeader(uint8_t*& buf, ssize_t& len)
 uint8_t*
 FdNetDevice::AllocateBuffer(size_t len)
 {
-    return (uint8_t*)malloc(len);
+    return static_cast<uint8_t*>(malloc(len));
 }
 
 void
