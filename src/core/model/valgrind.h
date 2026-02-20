@@ -75,6 +75,11 @@
 #ifndef __VALGRIND_H
 #define __VALGRIND_H
 
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#endif
+
 
 /* ------------------------------------------------------------------ */
 /* VERSION NUMBER OF VALGRIND                                         */
@@ -5622,6 +5627,10 @@ VALGRIND_PRINTF_BACKTRACE(const char *format, ...)
 #undef PLAT_s390x_linux
 #undef PLAT_mips32_linux
 #undef PLAT_mips64_linux
+
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 #endif   /* __VALGRIND_H */
 
