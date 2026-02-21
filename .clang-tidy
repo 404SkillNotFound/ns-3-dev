@@ -14,6 +14,7 @@ Checks: >
   bugprone-terminating-continue,
   bugprone-too-small-loop-variable,
   bugprone-virtual-near-miss,
+  cppcoreguidelines-pro-type-cstyle-cast,
   misc-header-include-cycle,
   misc-redundant-expression,
   misc-static-assert,
@@ -48,7 +49,6 @@ Checks: >
   readability-static-accessed-through-instance,
   readability-static-definition-in-anonymous-namespace,
   readability-string-compare,
-  cppcoreguidelines-pro-type-cstyle-cast,
 
 CheckOptions:
   - key: performance-unnecessary-copy-initialization.AllowedTypes
